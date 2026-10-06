@@ -1,0 +1,374 @@
+.department-selector .form-select {
+    background: #edf1fb;
+    border: none;
+    padding: 0 10px;
+}
+
+.sspace-profile {
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.sspace-profile i {
+    width: 16px;
+    text-align: center;
+    margin-right: 5px;
+    color: #888;
+}
+
+.sspace-profile span {
+    width: 70px;
+    display: inline-block;
+    color: #888;
+}
+
+.box-scores {
+    padding: 3px;
+}
+
+.block-label {
+    background-color: var(--orange);
+    padding: 10px 15px 6px 15px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.block-label i {
+    padding-right: 3px;
+}
+
+.top-radius {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.top-radius-none {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.bottom-radius-none {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.light-blue-bg {
+    background-color: var(--light-blue);
+}
+
+.light-gray-bg {
+    background-color: var(--light-gray);
+}
+
+.label-top-radius i {
+    margin-right: 5px;
+}
+
+.box-scores li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #e1e1e1;
+    font-size: 14px;
+    line-height: 38px;
+    padding: 0 10px;
+}
+
+.box-scores li:last-child {
+    border: none;
+}
+
+.subject {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.box-total-scores {
+    color: #222222;
+}
+
+.box-total-scores .subject {
+    color: #666666;
+}
+
+.tabs-scores ul {
+    border-bottom: none;
+}
+
+.tabs-scores .box-shadow {
+    border-top-left-radius: 0;
+    padding: 20px;
+}
+
+.tabs-scores .nav-link {
+    color: #222222;
+    padding: 14px 15px 10px 15px;
+    display: grid;
+    font-size: 15px;
+}
+
+.tabs-scores .nav-link:hover {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-color: transparent;
+    color: var(--orange);
+}
+
+.tabs-scores .nav-link.active {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-color: white;
+    color: var(--orange);
+    font-weight: bold;
+    display: grid;
+}
+
+.tabs-scores .nav-link i {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.tabs-scores .nav-link.active i {
+    font-weight: bold;
+}
+
+.transcrip-accordion .accordion-item {
+    border-left: none;
+    border-right: none;
+}
+
+.transcrip-accordion .accordion-item:first-child {
+    border-top: none;
+}
+
+.transcrip-accordion .accordion-item:last-child {
+    border-bottom: none;
+}
+
+.transcrip-accordion .accordion-item .header {
+    font-size: 14px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: #222222;
+}
+
+.transcrip-accordion .accordion-item .header i {
+    margin-right: 10px;
+}
+
+.transcrip-accordion .accordion-item .header:not(.collapsed) {
+    background-color: var(--dask-blue);
+    color: #fff;
+    font-weight: bold;
+}
+
+.transcrip-accordion .accordion-item .header:not(.collapsed) i {
+    transform: rotate(90deg);
+}
+
+.show-in-mobi {
+    display: none;
+}
+
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #e1e1e1 !important;
+}
+
+.transcrip-table {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.transcrip-table thead tr th,
+.tblKetQuaDangKy thead tr th,
+.table thead th {
+    background-color: #F4FBFD !important;
+    color: #888 !important;
+    font-weight: 400 !important;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    border-right: 1px solid #e1e1e1;
+}
+
+.transcrip-accordion .accordion-item .accordion-body {
+    padding: 0;
+    /* border-left: solid 1px #e1e1e1; */
+    /* border-right: solid 1px #e1e1e1; */
+    border-top: solid 1px #e1e1e1;
+}
+
+.summary-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    justify-content: space-between;
+    padding: 0 20px;
+    line-height: 28px;
+    font-size: 14px;
+}
+
+.accodion-block .accordion-item {
+    border: none;
+}
+
+.accodion-block .header:not(.collapsed) .fa-plus,
+.accodion-block .header.collapsed .fa-minus {
+    display: none;
+}
+
+.accodion-block {
+    font-size: 14px;
+}
+
+.accodion-block .header {
+    color: #222222;
+    display: block;
+    padding: 5px 0;
+}
+
+.accodion-block .header:hover {
+    color: var(--orange);
+}
+
+.accodion-block .header i {
+    margin-right: 5px;
+}
+
+.accodion-block .sub-block-header {
+    color: var(--dask-blue);
+    font-weight: bold;
+}
+
+.accodion-block .sub-block-header i {
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.accodion-block .block-table {
+    border: solid 1px #e1e1e1;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.tabs-scores {
+    height: 100%;
+}
+
+.tabs-scores .tab-content {
+    min-height: calc(100% - 40px);
+}
+
+.table-not-content {
+    font-size: 18px;
+    color: #86a6b1;
+}
+
+.transcrip-accordion .accordion-item .header:hover {
+    color: var(--orange);
+}
+
+.register-school-left .reg-money .form-add-info {
+    position: relative;
+}
+
+.register-school-left .reg-money .form-add-info::before {
+    position: absolute;
+    z-index: 10;
+    content: "";
+    top: 16px;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #ccc;
+}
+
+.register-school-left .reg-money .form-add-info .form-select {
+    background: #fff !important;
+    border: 1px solid #e1e1e1 !important;
+}
+
+.accordion-body.scroll-table-x {
+    padding: 0;
+}
+
+/* ---------------------------- */
+.zone_bangdiem .transcrip-table.table thead,
+.zone_bangdiem .transcrip-table.table tbody,
+.zone_bangdiem .transcrip-table.table thead tr,
+.zone_bangdiem .transcrip-table.table thead th,
+.zone_bangdiem .transcrip-table.table tfoot tr td,
+.zone_bangdiem .transcrip-table.table thead tr th:first-child,
+.zone_bangdiem .transcrip-table.table tbody tr th:first-child,
+.zone_bangdiem .transcrip-table.table tbody tr td:first-child,
+.zone_bangdiem .transcrip-table.table tbody tr td {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+
+.zone_bangdiem .transcrip-table.table thead tr th:first-child {
+    width: 50px !important;
+}
+
+.zone_bangdiem .transcrip-table.table thead tr th:nth-child(2) {
+    min-width: 110px;
+}
+
+/* ------------------- */
+#viewThanhPhan .table tr th:first-child {
+    width: 50px !important;
+}
+
+#viewThanhPhan .table tr th,
+#viewThanhPhan .table tr td {
+    border-top: 1px solid #e1e1e1;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+.zone_bangdiem .accordion-body .transcrip-table thead tr th:last-child {
+    width: 68px !important;
+}
+
+.btnEdit .fa,
+.btnEdit .fas {
+    font-weight: 300;
+    color: #0d6efd !important;
+}
+
+.btnEdit:hover .fa,
+.btnEdit:hover .fas {
+    color: var(--orange) !important;
+}
+
+.tblHocPhan tr td:nth-child(2) {
+    text-align: left !important;
+}
+
+.tblHocPhan tr td:nth-last-child(2) {
+    text-align: center !important;
+}
+
+.tblHocPhan_PhanBo tr td:last-child,
+.tblHocPhan_PhanBo tr td:first-child {
+    text-align: center;
+}
+
+.box-diem-new {
+    margin-top: 10px !important;
+}
+.box-tt-thanhtoan .tblThanhToan.table tr td:nth-chsild(3){
+    text-align: left !important;
+}
+.tblThanhToan.table th, .tblThanhToan.table td {
+    padding: 6px 0px 9px 0 !important;
+    vertical-align: middle;
+}
