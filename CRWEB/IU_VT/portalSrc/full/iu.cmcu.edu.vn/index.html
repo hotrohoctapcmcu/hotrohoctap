@@ -1,0 +1,1273 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education management</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=f369e5ba-564b-459f-9e93-8034a00e0330">
+    <link href="assets/select2/css/select2.min.css" rel="stylesheet">
+    <link href="assets/pagination/simplePagination.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.ico">
+<style id="chatbot-widget-styles">.chatbot-widget{--yourgptChatbotPrimaryColorHsl: 207 100% 40%;--yourgptChatbotSurfaceColorHsl: 0 0% 98%;--yourgptChatbotTextColorHsl: 210 100% 15%;--yourgptChatbotTextOnPrimaryColorHsl: 0 0% 100%;--yourgptChatbotBotMessageBgColorHsl: 207 50% 95%;--yourgptChatbotBotMessageTextColorHsl: 210 100% 15%;--yourgptChatbotUserMessageBgColorHsl: 210 100% 97%;--yourgptChatbotUserMessageTextColorHsl: 210 100% 15%;--fantastic4AccentColorHsl: 25 100% 50%;--fantastic4SecondaryBlueHsl: 207 80% 55%;--fantastic4GlowColor: rgba(0, 122, 204, .5);position:fixed;bottom:50px;right:32px;z-index:9999;font-family:Open Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif}.chatbot-button{background-color:transparent!important;border:3px solid #007ACC!important;border-radius:50%!important;box-shadow:0 4px 12px #007acc4d!important;transition:all .3s ease-in-out!important;transform:translateY(0)!important;width:56px;height:56px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;overflow:hidden}.chatbot-button svg{display:block;width:100%;height:100%}.chatbot-button img{display:block;width:100%;height:100%}.chatbot-button img{width:100%;height:100%}.chatbot-close img{width:16px;height:16px}.chatbot-close svg{width:16px;height:16px;display:block;color:currentColor}.chatbot-send img{width:20px;height:20px}.message-avatar img{width:100%;height:100%;display:block}.chatbot-button:hover{transform:translateY(-5px) scale(1.05)!important;box-shadow:0 6px 20px #007acc80!important;border-color:#005a9e!important}.chatbot-button:active{transform:translateY(0) scale(.98)!important;box-shadow:0 2px 8px #007acc4d!important}.chatbot-window{background-color:hsl(var(--yourgptChatbotSurfaceColorHsl))!important;border-radius:16px!important;box-shadow:0 4px 20px var(--fantastic4GlowColor),0 0 0 1px #009ddc33!important;overflow:hidden!important;width:432px;height:624px;display:flex;flex-direction:column;animation:slideUp .3s ease-out}@keyframes slideUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}.chatbot-avatar img{width:50%;height:50%;object-fit:cover;display:block}.chatbot-header{background-color:hsl(var(--yourgptChatbotPrimaryColorHsl))!important;color:hsl(var(--yourgptChatbotTextOnPrimaryColorHsl))!important;border-bottom:none!important;font-weight:600!important;padding:12px 16px!important;box-shadow:0 2px 10px #0075b14d!important;position:relative!important;overflow:hidden!important;display:flex;justify-content:space-between;align-items:center}.chatbot-header-content{display:flex;align-items:center;gap:12px}.chatbot-header h3{margin:0;font-size:18px;font-weight:600}.chatbot-header:after{content:""!important;position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;background:radial-gradient(circle at 30% 50%,hsl(var(--fantastic4SecondaryBlueHsl) / .6) 0%,transparent 60%),radial-gradient(circle at 70% 50%,hsl(var(--yourgptChatbotPrimaryColorHsl)),#085891)!important;z-index:-1!important}.chatbot-close{color:hsl(var(--yourgptChatbotTextOnPrimaryColorHsl))!important;border-radius:8px!important;transition:all .2s ease-in-out!important;padding:6px!important;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}.chatbot-close:hover{background-color:#fff3!important;transform:translateY(-2px)!important}.chatbot-close:active{transform:translateY(0)!important}.chatbot-reset{color:hsl(var(--yourgptChatbotTextOnPrimaryColorHsl))!important;border-radius:8px!important;transition:all .2s ease-in-out!important;padding:6px!important;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}.chatbot-reset:hover{background-color:#ffffff1f!important;transform:translateY(-2px)!important}.chatbot-reset svg{transition:transform .25s ease;width:14px;height:14px;display:block;color:currentColor}.chatbot-reset img{transition:transform .25s ease;width:18px;height:18px;display:block}.chatbot-reset.syncing svg,.chatbot-reset.syncing img{animation:spin 1s linear infinite}.chatbot-reset[disabled]{opacity:.6;cursor:not-allowed}@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.chatbot-messages{flex:1;overflow-y:auto;padding:16px!important;background-color:#f5f8fa!important;display:flex;flex-direction:column;gap:12px}.chatbot-messages::-webkit-scrollbar{width:6px}.chatbot-messages::-webkit-scrollbar-track{background:transparent}.chatbot-messages::-webkit-scrollbar-thumb{background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .5);border-radius:3px}.chatbot-messages::-webkit-scrollbar-thumb:hover{background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .7)}.message{display:flex;gap:12px;margin-bottom:16px;animation:fadeIn .3s ease-out}.message-avatar{width:28px;height:28px;flex-shrink:0;margin-top:4px;display:flex;align-items:center;justify-content:center;background:transparent;color:inherit;border:none;box-shadow:none;padding:0;border-radius:0;position:relative;overflow:visible}.message-avatar svg{width:100%;height:100%;display:block}.message-avatar:after{content:"";position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border-radius:50%;border:2px solid rgba(0,122,204,.12);filter:blur(4px);opacity:.9;pointer-events:none;z-index:0}.message-avatar svg{z-index:1}@keyframes fadeIn{0%{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.message-user{justify-content:flex-end}.message-bot{justify-content:flex-start}.message-content{max-width:72%;padding:10px 14px;border-radius:16px;word-wrap:break-word;overflow-wrap:anywhere;word-break:break-word;line-height:1.5;font-size:13.5px}.md-paragraph{margin:0 0 8px;line-height:1.55}.md-paragraph:last-child{margin-bottom:0}.md-strong{font-weight:600;color:hsl(var(--yourgptChatbotPrimaryColorHsl))}.md-em{font-style:italic;opacity:.92}.md-inline-code{background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .12);padding:2px 6px;border-radius:4px;font-family:SF Mono,Consolas,Monaco,monospace;font-size:.88em;color:hsl(var(--yourgptChatbotPrimaryColorHsl))}.md-code-block{background:#1d212b;color:#d6ebff;padding:12px 14px;border-radius:8px;overflow-x:auto;margin:10px 0;font-family:SF Mono,Consolas,Monaco,monospace;font-size:12.5px;line-height:1.5;border:1px solid hsl(220 20% 22%)}.md-code-block code{background:transparent;padding:0;color:inherit;font-size:inherit}.md-list{margin:8px 0;padding:0;list-style:none}.md-ul{padding-left:0}.md-ol{padding-left:0;counter-reset:list-counter}.md-list-item{display:flex;align-items:flex-start;gap:8px;margin:6px 0;line-height:1.5}.md-list-icon{flex-shrink:0;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:14px;color:hsl(var(--yourgptChatbotPrimaryColorHsl));font-weight:600;margin-top:1px}.md-ul .md-list-icon{font-size:8px;background:hsl(var(--yourgptChatbotPrimaryColorHsl));width:6px;height:6px;border-radius:50%;margin-top:7px;margin-left:6px;margin-right:6px}.md-list-content{flex:1}.md-list-content p{margin:0}.md-list-content .md-list{margin:4px 0 0}.md-heading{font-weight:600;color:hsl(var(--yourgptChatbotTextColorHsl));margin:14px 0 8px;line-height:1.3}.md-heading:first-child{margin-top:0}.md-h1{font-size:1.25em}.md-h2{font-size:1.15em}.md-h3{font-size:1.08em}.md-h4{font-size:1em}.md-link{color:hsl(var(--yourgptChatbotPrimaryColorHsl));text-decoration:none;border-bottom:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .4);transition:all .2s ease;display:inline-flex;align-items:center;gap:2px}.md-link:hover{color:hsl(var(--fantastic4SecondaryBlueHsl));border-bottom-color:hsl(var(--fantastic4SecondaryBlueHsl))}.md-link-icon{font-size:.75em;opacity:.7}.md-blockquote{position:relative;border-left:3px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .5);padding:8px 12px 8px 14px;margin:10px 0;background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .05);border-radius:0 8px 8px 0;font-style:italic}.md-quote-icon{position:absolute;top:-4px;left:6px;font-size:24px;color:hsl(var(--yourgptChatbotPrimaryColorHsl) / .25);font-family:Georgia,serif;line-height:1}.md-blockquote p{margin:0;color:hsl(var(--yourgptChatbotTextColorHsl) / .85)}.md-hr{border:none;height:1px;background:linear-gradient(to right,transparent,hsl(var(--yourgptChatbotPrimaryColorHsl) / .3),transparent);margin:14px 0}.md-table-wrapper{overflow-x:auto;margin:10px 0;border-radius:8px;border:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .2)}.md-table{width:100%;border-collapse:collapse;font-size:12.5px}.md-th{background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .1);padding:8px 12px;text-align:left;font-weight:600;border-bottom:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .2)}.md-td{padding:8px 12px;border-bottom:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .1)}.md-tr:last-child .md-td{border-bottom:none}.md-tr:hover .md-td{background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .03)}.message-bot .message-content{background-color:hsl(var(--yourgptChatbotBotMessageBgColorHsl))!important;color:hsl(var(--yourgptChatbotBotMessageTextColorHsl))!important;border-radius:4px 16px 16px!important;box-shadow:0 2px 5px #0000000d,0 0 0 1px hsl(var(--yourgptChatbotPrimaryColorHsl) / .15)!important;position:relative!important}.message-user .message-content{background-color:hsl(var(--fantastic4AccentColorHsl) / .1)!important;color:hsl(var(--yourgptChatbotUserMessageTextColorHsl))!important;border-radius:16px 4px 16px 16px!important;box-shadow:0 2px 5px #0000000d,0 0 0 1px hsl(var(--fantastic4AccentColorHsl) / .2)!important}.message-bot .message-content>*:first-child{margin-top:0}.message-bot .message-content>*:last-child{margin-bottom:0}.typing-indicator{display:flex;gap:4px;padding:4px 0}.typing-indicator span{width:8px;height:8px;border-radius:50%;background:hsl(var(--yourgptChatbotPrimaryColorHsl) / .6);animation:typing 1.4s infinite}.typing-indicator span:nth-child(2){animation-delay:.2s}.typing-indicator span:nth-child(3){animation-delay:.4s}@keyframes typing{0%,60%,to{transform:translateY(0);opacity:.7}30%{transform:translateY(-10px);opacity:1}}.chatbot-input-container{padding:12px 16px;background:hsl(var(--yourgptChatbotSurfaceColorHsl));border-top:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .15);display:flex;gap:12px;align-items:flex-end}.chatbot-input{flex:1;background-color:hsl(var(--yourgptChatbotSurfaceColorHsl))!important;border:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .3)!important;border-radius:12px!important;padding:10px 12px!important;font-size:13px;font-family:inherit;resize:none;max-height:100px;min-height:24px;outline:none;transition:all .2s ease-in-out}.chatbot-input:focus,.chatbot-input:hover{border-color:hsl(var(--yourgptChatbotPrimaryColorHsl))!important;box-shadow:0 0 0 2px hsl(var(--yourgptChatbotPrimaryColorHsl) / .2)!important}.chatbot-send{background-color:hsl(var(--yourgptChatbotPrimaryColorHsl))!important;color:hsl(var(--yourgptChatbotTextOnPrimaryColorHsl))!important;border-radius:8px!important;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s ease-in-out;width:36px;height:36px;flex-shrink:0}.chatbot-send:hover:not(:disabled){background-color:#09c!important;transform:scale(1.05)!important}.chatbot-send:active{transform:scale(1)!important}.chatbot-send:disabled{opacity:.5;cursor:not-allowed}.chatbot-footer{padding:8px 16px;border-top:1px solid hsl(var(--yourgptChatbotPrimaryColorHsl) / .2);background-color:hsl(var(--yourgptChatbotSurfaceColorHsl));text-align:center}.chatbot-powered-by{font-size:11px;color:hsl(var(--yourgptChatbotTextColorHsl) / .6);font-weight:500;letter-spacing:.5px}@media (max-width: 640px){.chatbot-window{width:100vw;height:100vh;border-radius:0;bottom:0;right:0;position:fixed}.chatbot-button{bottom:20px;right:20px}}</style><style>.--savior-overlay-transform-reset {
+  transform: none !important;
+}
+.--savior-overlay-z-index-top {
+  z-index: 2147483643 !important;
+}
+.--savior-overlay-position-relative {
+  position: relative;
+}
+.--savior-overlay-position-static {
+  position: static !important;
+}
+.--savior-overlay-overflow-hidden {
+  overflow: hidden !important;
+}
+.--savior-overlay-overflow-x-visible {
+  overflow-x: visible !important;
+}
+.--savior-overlay-overflow-y-visible {
+  overflow-y: visible !important;
+}
+.--savior-overlay-z-index-reset {
+  z-index: auto !important;
+}
+.--savior-overlay-display-none {
+  display: none !important;
+}
+.--savior-overlay-clearfix {
+  clear: both;
+}
+.--savior-overlay-reset-filter {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+.--savior-tooltip-host {
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+}
+/*Override css styles for Twitch.tv*/
+main.--savior-overlay-z-index-reset {
+  z-index: auto !important;
+}
+.modal__backdrop.--savior-overlay-z-index-reset {
+  position: static !important;
+}
+main.--savior-overlay-z-index-top {
+  z-index: auto !important;
+}
+main.--savior-overlay-z-index-top .channel-root__player-container + div,
+main.--savior-overlay-z-index-top .video-player-hosting-ui__container + div {
+  opacity: 0.1;
+}
+/*Dirty hack for facebook big video page e.g: https://www.facebook.com/abc/videos/...*/
+.--savior-backdrop {
+  position: fixed !important;
+  z-index: 2147483642 !important;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw !important;
+  background-color: rgba(0,0,0,0.9);
+}
+.--savior-overlay-twitter-video-player {
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+}
+.--savior-overlay-z-index-reset [class*="DivSideNavContainer"],
+.--savior-overlay-z-index-reset [class*="DivHeaderContainer"],
+.--savior-overlay-z-index-reset [class*="DivBottomContainer"],
+.--savior-overlay-z-index-reset [class*="DivCategoryListWrapper"],
+.--savior-overlay-z-index-reset [data-testid="sidebarColumn"],
+.--savior-overlay-z-index-reset header[role="banner"],
+.--savior-overlay-z-index-reset [data-testid="cellInnerDiv"]:not(.--savior-overlay-z-index-reset),
+.--savior-overlay-z-index-reset [aria-label="Home timeline"]>div:first-child,
+.--savior-overlay-z-index-reset [aria-label="Home timeline"]>div:nth-child(3) {
+  z-index: -1 !important;
+}
+.--savior-overlay-z-index-reset [data-testid="cellInnerDiv"] .--savior-backdrop+div {
+  z-index: 2147483643 !important;
+}
+.--savior-overlay-z-index-reset [data-testid="primaryColumn"]>[aria-label="Home timeline"] {
+  z-index: 0 !important;
+}
+.--savior-overlay-z-index-reset#mtLayer,
+.--savior-overlay-z-index-reset.media-layer {
+  z-index: 3000 !important;
+}
+.--savior-overlay-position-relative [class*="SecBar_secBar_"],
+.--savior-overlay-position-relative .woo-box-flex [class*="Frame_top_"] {
+  z-index: 0 !important;
+}
+.--savior-overlay-position-relative .vue-recycle-scroller__item-view:not(.--savior-overlay-z-index-reset),
+.--savior-overlay-position-relative .woo-panel-main[class*="BackTop_main_"],
+.--savior-overlay-position-relative [class*="Main_side_"] {
+  z-index: -1 !important;
+}
+/* Fix conflict css with zingmp3 */
+.zm-video-modal.--savior-overlay-z-index-reset {
+  position: absolute;
+}
+/* Dirty hack for xvideos99 */
+#page #main.--savior-overlay-z-index-reset {
+  z-index: auto !important;
+}
+/* Overlay for ok.ru */
+#vp_w.--savior-overlay-z-index-reset.media-layer.media-layer__video {
+  overflow-y: hidden;
+  z-index: 2147483643 !important;
+}
+/* Fix missing controller for tv.naver.com */
+.--savior-overlay-z-index-top.rmc_controller,
+.--savior-overlay-z-index-top.rmc_setting_intro,
+.--savior-overlay-z-index-top.rmc_highlight,
+.--savior-overlay-z-index-top.rmc_control_settings {
+  z-index: 2147483644 !important;
+}
+/* Dirty hack for douyi.com */
+.swiper-wrapper.--savior-overlay-z-index-reset .swiper-slide:not(.swiper-slide-active),
+.swiper-wrapper.--savior-overlay-transform-reset .swiper-slide:not(.swiper-slide-active) {
+  display: none;
+}
+.videoWrap + div > div {
+  pointer-events: unset;
+}
+/* Dirty hack for fpt.ai */
+.mfp-wrap.--savior-overlay-z-index-top {
+  position: relative;
+}
+.mfp-wrap.--savior-overlay-z-index-top .mfp-close {
+  display: none;
+}
+.mfp-wrap.--savior-overlay-z-index-top .mfp-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset + nav {
+  z-index: -1 !important;
+}
+section.--savior-overlay-z-index-reset>main[role="main"].--savior-overlay-z-index-reset section.--savior-overlay-z-index-reset div.--savior-overlay-z-index-reset ~ div {
+  position: relative;
+}
+.watching-movie #video-player.--savior-overlay-z-index-top {
+  z-index: 2147483644 !important;
+}
+div[class^="tiktok"].--savior-overlay-z-index-reset {
+  z-index: 2147483644 !important;
+}
+.--savior-lightoff-fix section:not(:has([class*="--savior-overlay-"])),
+.--savior-lightoff-fix section.section_video ~ section {
+  z-index: -1;
+  position: relative;
+}
+.--savior-lightoff-fix header,
+.--savior-lightoff-fix footer,
+.--savior-lightoff-fix .top-header,
+.--savior-lightoff-fix .swiper-container,
+.--savior-lightoff-fix #to_top,
+.--savior-lightoff-fix #button-adblock {
+  z-index: -1 !important;
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style></head>
+
+<body>
+<div class="wrapper">
+    <div id="overlay" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2051; background: rgb(255, 255, 255); padding: 30px 55px; border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 30px; text-align: center; min-width: 220px; display: none;">
+        <i class="fas fa-spinner fa-spin fa-3x" style="color:#223771;"></i>
+        <h5 style="margin:18px 0 0; color:#223771; font-weight:600; font-size:15px;">Đang tải dữ liệu...</h5>
+    </div>
+    <div class="left-sidebar">
+        <div class="sidebar-top">
+            <a href="javascript:void(0)" class="menu-icon">
+                <i class="fal fa-indent"></i>
+            </a>
+            <a href="javascript:void(0)" class="menu-icon-mobi">
+                <i class="fal fa-indent"></i>
+            </a>
+            
+            <div class="logo-single">
+                <img src="logo.png" alt="" id="siteLogo">
+            </div>
+            <script>
+                (function () {
+                    var logoMap = {
+                        'daotao.utt.edu.vn': 'assets/logocactruong/CNGT.jpg'
+                    };
+                    var host = (location.hostname || '').toLowerCase();
+                    var src = logoMap[host];
+                    if (src) {
+                        var img = document.getElementById('siteLogo');
+                        if (img) img.src = src;
+                    }
+                })();
+            </script>
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+            <div class="line-hiden"></div>
+        </div>
+
+        <div class="sidebar-menu">
+            <div class="accordion">
+                <div class="sidebar-menu-item refeshtrangchu">
+                    <a class="sidebar-menu-header" href="#">
+                        <i class="fas fa-house item-icon"></i>
+                        <span>Trang chủ</span>
+                    </a>
+                </div>
+            </div>
+            <div class="accordion" id="sidebar-menu"><div class="sidebar-menu-item"><a class="sidebar-menu-header collapsed" id="chucnangE8FBCAF09EC841A598C32E87BEB45608" style="display:none" onclick="edu.system.initMain('#dashboard','/modules/dashboard/html/dashboard.html','E8FBCAF09EC841A598C32E87BEB45608')" href="#dashboard"><i class="fal fa-dashboard item-icon"></i><span>Dashboard</span></a></div><div class="sidebar-menu-item"><a class="sidebar-menu-header collapsed" id="chucnang15346B6F33834D7897591527289DB0F8" onclick="edu.system.initMain('#tintuc','/modules/tintuc/html/tintuc.html','15346B6F33834D7897591527289DB0F8')" href="#tintuc"><i class="fal fa-newspaper item-icon"></i><span>Tin tức</span></a></div><div class="sidebar-menu-item"><a class="sidebar-menu-header collapsed" id="chucnangC0BA880594CA49CBA9F75084940A20DF" href="" data-bs-toggle="collapse" data-bs-target="#collapseC0BA880594CA49CBA9F75084940A20DF"><i class="fal fa-id-card item-icon"></i><span>Profile</span><i class="fal fa-chevron-right item-arrow-icon"></i><i class="fal fa-chevron-down item-arrow-icon down"></i></a><div class="sidebar-menu-sub collapse" id="collapseC0BA880594CA49CBA9F75084940A20DF" data-bs-parent="#sidebar-menu"><a id="chucnang00C591A472C84BB89FB00F18B70C108B" onclick="edu.system.initMain('#tunhaphoso','/modules/profile/html/tunhaphoso.html','00C591A472C84BB89FB00F18B70C108B')" href="#tunhaphoso">Khai báo Hồ sơ nhập học</a><a id="chucnang3D78FCBEEE9D4582BF6323C6AF549673" onclick="edu.system.initMain('#hoso','/modules/profile/html/hoso.html','3D78FCBEEE9D4582BF6323C6AF549673')" href="#hoso">Xem hồ sơ</a><a id="chucnang8DD5F8734712425CB6324D087AE64B0F" onclick="edu.system.initMain('#xinxacnhan','/modules/thutuchanhchinh/html/xinxacnhan.html','8DD5F8734712425CB6324D087AE64B0F')" href="#xinxacnhan">Xin xác nhận</a></div></div><div class="sidebar-menu-item active"><a class="sidebar-menu-header" id="chucnang41C2266E0ED749A3AEB177C3CEE21673" href="" data-bs-toggle="collapse" data-bs-target="#collapse41C2266E0ED749A3AEB177C3CEE21673" aria-expanded="true"><i class="fa fa-cubes item-icon"></i><span>Góc học tập</span><i class="fal fa-chevron-right item-arrow-icon"></i><i class="fal fa-chevron-down item-arrow-icon down"></i></a><div class="sidebar-menu-sub collapse show" id="collapse41C2266E0ED749A3AEB177C3CEE21673" data-bs-parent="#sidebar-menu" style=""><a id="chucnang458922CCB7064213A3D94F7511852261" onclick="edu.system.initMain('#diemhoc','/modules/hoctap/html/diemhoc.html','458922CCB7064213A3D94F7511852261')" href="#diemhoc" class="active">Tra cứu điểm</a><a id="chucnangDAC468818D094C01A36A5FD220EF40BB" onclick="edu.system.initMain('#diemrenluyen','/modules/hoctap/html/diemrenluyen.html','DAC468818D094C01A36A5FD220EF40BB')" href="#diemrenluyen">Điểm rèn luyện</a><a id="chucnang447511AE19614853B3F46E8F6027E4E8" onclick="edu.system.initMain('#chuontrinhhoc','/modules/hoctap/html/chuontrinhhoc.html','447511AE19614853B3F46E8F6027E4E8')" href="#chuontrinhhoc">Chương trình học</a><a id="chucnang3FC6DBD3CF2441FDBD35B08B0E46984E" onclick="edu.system.initMain('#phuckhao','/modules/hoctap/html/phuckhao.html','3FC6DBD3CF2441FDBD35B08B0E46984E')" href="#phuckhao">Đăng ký xin phúc khảo</a></div></div><div class="sidebar-menu-item"><a class="sidebar-menu-header collapsed" id="chucnangB4149861150F41A4B8687F513E02D726" href="" data-bs-toggle="collapse" data-bs-target="#collapseB4149861150F41A4B8687F513E02D726"><i class="fal fa-users-class item-icon"></i><span>Đăng ký trực tuyến</span><i class="fal fa-chevron-right item-arrow-icon"></i><i class="fal fa-chevron-down item-arrow-icon down"></i></a><div class="sidebar-menu-sub collapse" id="collapseB4149861150F41A4B8687F513E02D726" data-bs-parent="#sidebar-menu"><a id="chucnang6D01F8288B3146BAA9864693699E6CD0" onclick="edu.system.initMain('#dangkyhoc','/modules/dangkyhoc/html/dangky.html','6D01F8288B3146BAA9864693699E6CD0')" href="#dangkyhoc">Đăng ký học</a><a id="chucnangFFAE40F92EF444F2A1506B376D7AFCD6" onclick="edu.system.initMain('#nguyenvong','/modules/dangkyhoc/html/nguyenvong.html','FFAE40F92EF444F2A1506B376D7AFCD6')" href="#nguyenvong">Đăng ký nguyện vọng</a><a id="chucnang73FFAF6A09FF4E159D64970BE009EC55" onclick="edu.system.initMain('#xemnv','/modules/dangkyhoc/html/nguyenvong.html','73FFAF6A09FF4E159D64970BE009EC55')" href="#xemnv">Xem kết quả đăng ký NV</a><a id="chucnangA9CE858670AE453B90BB0A74458EFA34" onclick="edu.system.initMain('#tracuu','/modules/dangkyhoc/html/tracuu.html','A9CE858670AE453B90BB0A74458EFA34')" href="#tracuu">Tra cứu kết quả đăng ký</a><a id="chucnang8A9407EB4E78451BB0DDCF8921AB42B9" onclick="edu.system.initMain('#CSVDKTMT','/modules/dangkyhoc/html/thilai.html','8A9407EB4E78451BB0DDCF8921AB42B9')" href="#CSVDKTMT">Đăng ký thi</a><a id="chucnang378608975F894E94B8CB4C428DD47E03" onclick="edu.system.initMain('#CSVDKDH','/modules/dangkyhoc/html/dinhhuong.html','378608975F894E94B8CB4C428DD47E03')" href="#CSVDKDH">Đăng ký định hướng ĐT</a></div></div><div class="sidebar-menu-item"><a class="sidebar-menu-header collapsed" id="chucnang8EFEB0CD7D594881B9DF9FAED4A87C01" href="" data-bs-toggle="collapse" data-bs-target="#collapse8EFEB0CD7D594881B9DF9FAED4A87C01" aria-expanded="false"><i class="fa fa-calendar item-icon"></i><span>Thời khóa biểu</span><i class="fal fa-chevron-right item-arrow-icon"></i><i class="fal fa-chevron-down item-arrow-icon down"></i></a><div class="sidebar-menu-sub collapse" id="collapse8EFEB0CD7D594881B9DF9FAED4A87C01" data-bs-parent="#sidebar-menu" style=""><a id="chucnangB46109CD333D4E3DAC50D43E8607ED46" onclick="edu.system.initMain('#lichhoc','/modules/thoikhoabieu/html/lichhoc.html','B46109CD333D4E3DAC50D43E8607ED46')" href="#lichhoc" class="">Lịch học</a><a id="chucnangAF6FFE7566A84F058C31083395D4ED4B" onclick="edu.system.initMain('#lichthi','/modules/thoikhoabieu/html/lichthi.html','AF6FFE7566A84F058C31083395D4ED4B')" href="#lichthi">Lịch thi</a></div></div><div class="sidebar-menu-item"><a class="sidebar-menu-header collapsed" id="chucnangDF52CE53C3884FAB94005CCF95C81B2D" href="" data-bs-toggle="collapse" data-bs-target="#collapseDF52CE53C3884FAB94005CCF95C81B2D"><i class="fal fa-sack-dollar item-icon"></i><span>Tài chính</span><i class="fal fa-chevron-right item-arrow-icon"></i><i class="fal fa-chevron-down item-arrow-icon down"></i></a><div class="sidebar-menu-sub collapse" id="collapseDF52CE53C3884FAB94005CCF95C81B2D" data-bs-parent="#sidebar-menu"><a id="chucnang7A425B5F926A4EFCAB2ACC5D0A9B8F36" onclick="edu.system.initMain('#tinhhinhhocphi','/modules/tinhhinhhocphi/html/tinhhinhhocphi.html','7A425B5F926A4EFCAB2ACC5D0A9B8F36')" href="#tinhhinhhocphi">Học phí</a></div></div></div>
+        </div>
+    </div>
+    <div class="content-page ">
+        <!-- navbar -->
+        <div class="navbar">
+            <div class="search-group-in-mobi">
+                <i class="fal fa-search mobi-search-icon" style="display: inline;"></i>
+                <form class="search-group">
+                    <input type="email" class="search-form" placeholder="Tìm kiếm thông tin">
+                    <button><i class="fal fa-search"></i></button>
+                </form>
+            </div>
+            <div class="in-mobi-group">
+                <div class="nav-account">
+                    <div class="dropdown">
+                        <button class=" " type="button" data-bs-toggle="dropdown">
+                            <div class="user-image">
+                                <img class="user-image" id="imgavatar" src="https://iu.cmcu.edu.vn/upload/Core/images/no-avatar.png">
+                            </div>
+                            <span>VŨ VĂN TUẤN</span>
+                            <i class="fal fa-chevron-down user-arrow"></i>
+
+
+                        </button>
+                        
+                        <ul class="dropdown-menu user-drop">
+                            <li class="img-user">
+                                <div class="user-avata-img">
+                                    <img src="assets/images/avata.png" id="lblAvatar">
+                                </div>
+                                <span id="lblHoTenNguoiDangNhap">VŨ VĂN TUẤN</span>
+                                
+                            </li>
+                            <li><a class="dropdown-item" href="Pages/ChangePass.aspx"><i class="fal fa-key-skeleton"></i>Thay đổi mật
+                                khẩu</a></li>
+                            <li><a class="dropdown-item" id="btnLogout" style="cursor: pointer"><i class="fal fa-sign-out"></i>Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">AXYZCLRVN = () => "OlgIPC4OKjI1ElhpY1UZPC8dDjsuFB0nKBRYf2MIFTw1KhsnKS8KPy4bHnF7WFUmMRYVMiVYVnE0CR8hCB5YaWM5PmNwOTkWBzw4F3VOTBIEOz4ReThLZgc/SmVxO0lgBFhWcTUVETYvMC0HY0BYNjgwEjEGGRMcKDAzBjszSx0oMwkaLyhPMAIzTBoqCiIFAjBDfSQDMGIjFxYrJS0sNSMXPCcbKTNlCBE0Fgw+PBcQSiwUExEwFg8+K2EQLywREz8zZxAQP2ITES8kDxA4EQwANBUOSDcqDz4vZxs9KD4PACthDBArZw49N2cYSDA6DwAjKQwQP2MOPTdmGxAeOA4AMyQMECMrDD47KgwQM2IMPi9mCBMNOiMXMD4IEBUrDwARJA4uL2EMEC9mDTkwPyQyOzoOED9gDi43YQwAK2EPLhEgCBcWOyU5M2UMLhlmDD4RYg8QM2IOKQ06ICI0KQgQFTogMihjIj4VJQ1IAiUYSDwgID1DKSU5MyAIFzxiGzkzZQgXEmMlMjtlDQNDICNINDsjPRIlIkkrOicrVBJ0AyMMB1dCNQBLHDA7FygCBQMuPTErTWEwLS02MCU7BXgTDQYEFAxmADNYf2MIGyUkFFhpYxIeZgsQCgAtOx45cAAdMjcWExYtACgfIAIrZSYqShB3N0gwMT1IeBcqC2QNOzYVKDhCNDMwMxoXQ041LixNASIXKxEoMCkQAEkoGik/H2IGThM5BA8xBRcySSkATUlldTMQFCUPMjETVQ5jEENLEQI3LwcnKxkyBTYIIwQ7PBwLCBs6ABADAnBMO2INOBM7LwkRNCNMMCQrT0s+G007PQw2CAsrGSI4GT4RFxcMLykyTQImKCMPKxcATSMSL08dDj4zCRsLTxQKShsaFUMzPhU8ERIbAipjMxU1FHAtMgJ2Tz42FBQCCXM5KjUjVStnFwsyAAcLIHw0DgA0BEMiPStITgYQFQobExMsNyYsNGcPThQkFBgyOwlILjkzDU4mJEoMaztMDWcsDk42CBxKAgRLMyYkSEoZbjIyFy4tUWV4Cz58eTs5JQcoNnx0GFUnBRtLZwJVHW58WAc="</script>
+
+        <!-- end navbar -->
+        <!-- end navbar -->
+        <!-- content -->
+        <div class="content" id="main-content-wrapper"><div class="one-door study-space">
+    <div class="row register-school aps-diemhoc">
+        <div class="col-12 col-md-3 register-school-left">
+            <!--Thông các khoản tiền và đang ký học-->
+            <div class="reg-money box-shadow pd-15">
+                <div class="department-selector">
+                    <div class="form-item d-flex mb-15 form-add-info">
+                        <div class="input-group">
+                            <select class="form-select" aria-label="Default select example" id="dropSearch_ChuongTrinh"><option value="">Chọn chương trình</option><option id="undefined" value="4003B15D22EA4AEDBB22603F82600181" name="undefined"> Cử nhân Kỹ thuật phần mềm_K4</option></select>
+                        </div>
+                    </div>
+                </div>
+                <ul class="sspace-profile list-unstyled">
+                    <li>
+                        <i class="fal fa-user-alt"></i>
+                        <span class="label">Họ tên:</span>
+                        <b class="lblHoTen" id="lblHoTen_DiemHoc">VŨ VĂN TUẤN</b>
+                    </li>
+                    <li>
+                        <i class="fal fa-id-card"></i>
+                        <span class="label">Mã số:</span>
+                        <b id="lblMaSo">BSE250047</b>
+                    </li>
+                    <li>
+                        <i class="fal fa-calendar-alt"></i>
+                        <span class="label">Ngày sinh:</span>
+                        <b id="lblNgaySinh">14/11/2006</b>
+                    </li>
+                    <li>
+                        <i class="fal fa-user-alt"></i>
+                        <span class="label">Giới tính:</span>
+                        <b id="lblGioiTinh">Nam</b>
+                    </li>
+                    <li>
+                        <i class="fal fa-file-upload"></i>
+                        <span class="label">Trạng thái:</span>
+                        <b id="lblTrangThai">Đang học chuyên môn</b>
+                    </li>
+                    <li>
+                        <i class="fal fa-users-class"></i>
+                        <span class="label">Lớp:</span>
+                        <b id="lblLop">25SE</b>
+                    </li>
+                </ul>
+            </div>
+            <!--   Box -->
+            <div class="box-diem-new mt-3 box-shadow box-scores bottom-radius-none">
+                <div class="block-label top-radius">
+                    <i class="fas fa-file-signature"></i>
+                    <span>Điểm mới</span>
+                </div>
+                <ul class="list-unstyled mb-0" id="zoneDiemMoi"><li id="E62B3CE7FA334DEA80AD36561346EA01" class="chitietdiem"><span class="subject">Toán rời rạc - MATH2005</span><span class="color-red"><b>0</b></span></li><li id="F98963896797470E8E3620889CCC7811" class="chitietdiem"><span class="subject">Lập trình hướng đối tượng - PROG2006</span><span class="color-blue"><b>7</b></span></li><li id="C1621A614E5C430ABF7314C0DB16AD44" class="chitietdiem"><span class="subject">Võ cổ truyền - GENE1021</span><span class=""><b>5.2</b></span></li><li id="7E575777327F405AB41C7B09D650D613" class="chitietdiem"><span class="subject">Kỹ năng mềm và tư duy khởi nghiệp - GENE1007</span><span class="color-green"><b>9</b></span></li><li id="970DE8E96E054EC08AAF7F3377E23FB4" class="chitietdiem"><span class="subject">Cơ sở dữ liệu - INFO2007</span><span class=""><b>5.2</b></span></li><li id="CCFDA682E2CB41A6B8E6ABCE76675C08" class="chitietdiem"><span class="subject">Cơ sở lập trình - PROG2005</span><span class="color-blue"><b>8.4</b></span></li></ul>
+            </div>
+            <!--   Box -->
+            <div class="box-tongdiem mt-2 box-shadow box-scores top-radius-none box-total-scores">
+                <div class="block-label light-gray-bg text-dark">
+                    <i class="fas fa-file-spreadsheet"></i>
+                    <span>Tổng điểm</span>
+                </div>
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <span class="subject">Tổng số tín chỉ chương trình</span>
+                        <span id="lblTongTinChiCTDT">126</span>
+                    </li>
+                    <li>
+                        <span class="subject">Tổng số tín chỉ đã học</span>
+                        <span id="lblTongTinChi">28</span>
+                    </li>
+                    <li>
+                        <span class="subject">Tổng số tín chỉ đã tích lũy</span>
+                        <span id="lblTichLuy">25</span>
+                    </li>
+                    <li>
+                        <span class="subject">Điểm trung bình hệ 10</span>
+                        <span id="lblTrungBinh10">5.95</span>
+                    </li>
+                    <li>
+                        <span class="subject">Điểm trung bình hệ 4</span>
+                        <span id="lblTrungBinh4">2.25</span>
+                    </li>
+                    <li>
+                        <span class="subject">Điểm trung bình tích lũy hệ 10</span>
+                        <span id="lblTichLuy10">6.66</span>
+                    </li>
+                    <li>
+                        <span class="subject">Điểm trung bình tích lũy hệ 4</span>
+                        <span id="lblTichLuy4">2.52</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-9 register-school-right">
+            <div class="tabs-scores">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                            <i class="fal fa-file-invoice"></i>
+                            <span>Bảng điểm</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                            <i class="fal fa-file-times"></i>
+                            <span>Học phần nợ</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fal fa-head-side-virus"></i>
+                            <span>Khối kiến thức</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#dangkyhoc" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fal fa-users-class"></i>
+                            <span>Kết quả đăng ký học</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#xulyketqua" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fal fa-info-circle"></i>
+                            <span>Quyết định</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#vanbangchungchi" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fal fa-archive"></i>
+                            <span>Văn bằng - chứng chỉ</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#xulyhocvu" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fal fa-archive"></i>
+                            <span>Cảnh báo học vụ</span>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#diemrenluyen" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                            <i class="fal fa-archive"></i>
+                            <span>Điểm rèn luyện</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content box-shadow" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="accordion transcrip-accordion zone_bangdiem" id="zone_bangdiem"><div class="accordion-item"><div class="accordion-header"><a class="header banghocphan" href="#hocky_2025_2026_3" data-bs-toggle="collapse"><i class="fal fa-chevron-circle-right"></i><span>Năm học 2025_2026 - Học kỳ 3</span></a></div><div id="hocky_2025_2026_3" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body"><table class="table transcrip-table"><thead><tr><th class="text-center" scope="col">STT</th><th scope="col">Mã học phần</th><th scope="col">Tên học phần</th><th class="text-center" scope="col">Số tín chỉ</th><th class="text-center" scope="col">Lần học</th><th class="text-center" scope="col">Lần thi</th><th class="text-center" scope="col">Điểm hệ 10</th><th class="text-center" scope="col">Điểm hệ 4</th><th class="text-center" scope="col">Điểm chữ</th><th class="text-center" scope="col">Đánh giá</th><th class="text-center" scope="col">Ghi chú</th><th scope="col">Chi tiết</th></tr></thead><tbody><tr class="row-diem" data-id="970DE8E96E054EC08AAF7F3377E23FB4" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>1</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>INFO2007</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Cơ sở dữ liệu</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>4</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.2</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>1.5</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>D+</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="970DE8E96E054EC08AAF7F3377E23FB4"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="CCFDA682E2CB41A6B8E6ABCE76675C08" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>2</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>PROG2005</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Cơ sở lập trình</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>4</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>8.4</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>3.5</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>B+</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="CCFDA682E2CB41A6B8E6ABCE76675C08"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="13CD77E6D30A4F35BFE89C40A6718D55" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>3</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>MATH2002</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Đại số tuyến tính</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>3</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>2</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.2</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>1.5</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>D+</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="13CD77E6D30A4F35BFE89C40A6718D55"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="7E575777327F405AB41C7B09D650D613" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>4</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>GENE1007</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Kỹ năng mềm và tư duy khởi nghiệp</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>2</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>9</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>4</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>A+</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="7E575777327F405AB41C7B09D650D613"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="F98963896797470E8E3620889CCC7811" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>5</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>PROG2006</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Lập trình hướng đối tượng</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>4</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>7</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>3</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>B</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="F98963896797470E8E3620889CCC7811"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="E62B3CE7FA334DEA80AD36561346EA01" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>6</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>MATH2005</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Toán rời rạc</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>3</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>F</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Không đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="E62B3CE7FA334DEA80AD36561346EA01"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="C1621A614E5C430ABF7314C0DB16AD44" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>7</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>GENE1021</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Võ cổ truyền</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.2</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>P</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="C1621A614E5C430ABF7314C0DB16AD44"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr></tbody><tfoot></tfoot></table><div class="row py-4"><div class="synthetic-line"></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Tổng tín chỉ</span><span>20</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Tổng số tín chỉ tích lũy</span><span>17</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình hệ 10</span><span>6.82</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình hệ 4</span><span>2.23</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình tích lũy hệ 10</span><span>6.82</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình tích lũy hệ 4</span><span>2.62</span></div></div></div></div></div></div><div class="accordion-item"><div class="accordion-header"><a class="header banghocphan" href="#hocky_2025_2026_2" data-bs-toggle="collapse"><i class="fal fa-chevron-circle-right"></i><span>Năm học 2025_2026 - Học kỳ 2</span></a></div><div id="hocky_2025_2026_2" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body"><table class="table transcrip-table"><thead><tr><th class="text-center" scope="col">STT</th><th scope="col">Mã học phần</th><th scope="col">Tên học phần</th><th class="text-center" scope="col">Số tín chỉ</th><th class="text-center" scope="col">Lần học</th><th class="text-center" scope="col">Lần thi</th><th class="text-center" scope="col">Điểm hệ 10</th><th class="text-center" scope="col">Điểm hệ 4</th><th class="text-center" scope="col">Điểm chữ</th><th class="text-center" scope="col">Đánh giá</th><th class="text-center" scope="col">Ghi chú</th><th scope="col">Chi tiết</th></tr></thead><tbody><tr class="row-diem" data-id="C246B20CE8694F328C5DE7EE3D31496C" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>1</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>MATH2002</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Đại số tuyến tính</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>3</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>F</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Không đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="C246B20CE8694F328C5DE7EE3D31496C"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="CA5E1C1429654244AA8B822FB81EC948" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>2</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>GENE1004</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Lịch sử Đảng Cộng sản Việt Nam</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>2</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>4.6</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>D</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="CA5E1C1429654244AA8B822FB81EC948"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="72CF032F95FC4C7CB79C2EE1A8E90DD0" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>3</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>ENG-1004</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Tiếng Anh cấp độ 4</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>8</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.3</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>P</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="72CF032F95FC4C7CB79C2EE1A8E90DD0"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="7F569548EF1E47898D4F7B97E00F12EB" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>4</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>GENE1001</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Triết học Mác - Lênin</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>3</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.2</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>1.5</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>D+</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="7F569548EF1E47898D4F7B97E00F12EB"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr></tbody><tfoot></tfoot></table><div class="row py-4"><div class="synthetic-line"></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Tổng tín chỉ</span><span>8</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Tổng số tín chỉ tích lũy</span><span>5</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình hệ 10</span><span>4.96</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình hệ 4</span><span>0.81</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình tích lũy hệ 10</span><span>4.96</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình tích lũy hệ 4</span><span>1.3</span></div></div></div></div></div></div><div class="accordion-item"><div class="accordion-header"><a class="header banghocphan" href="#hocky_2025_2026_1" data-bs-toggle="collapse"><i class="fal fa-chevron-circle-right"></i><span>Năm học 2025_2026 - Học kỳ 1</span></a></div><div id="hocky_2025_2026_1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body"><table class="table transcrip-table"><thead><tr><th class="text-center" scope="col">STT</th><th scope="col">Mã học phần</th><th scope="col">Tên học phần</th><th class="text-center" scope="col">Số tín chỉ</th><th class="text-center" scope="col">Lần học</th><th class="text-center" scope="col">Lần thi</th><th class="text-center" scope="col">Điểm hệ 10</th><th class="text-center" scope="col">Điểm hệ 4</th><th class="text-center" scope="col">Điểm chữ</th><th class="text-center" scope="col">Đánh giá</th><th class="text-center" scope="col">Ghi chú</th><th scope="col">Chi tiết</th></tr></thead><tbody><tr class="row-diem" data-id="FDDD02D8A3F447DC87457EA3B84472AB" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>1</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>GENE1012</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Bóng chuyền hơi</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>8.8</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>P</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="FDDD02D8A3F447DC87457EA3B84472AB"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="E06DD23225AD40E5867DEE8E75081AC2" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>2</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>GENE1011</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Bóng rổ</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>6.8</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>P</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="E06DD23225AD40E5867DEE8E75081AC2"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="83BD4A6AA2CC45E1A3D042CA9BD50574" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>3</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>INFO2013</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Nhập môn công nghệ thông tin</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>3</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>8.6</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>4</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>A</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="83BD4A6AA2CC45E1A3D042CA9BD50574"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="822F9C303D5E452B830360A1496A99A8" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>4</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>ENG-1002</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Tiếng Anh cấp độ 2</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>8</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>P</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="822F9C303D5E452B830360A1496A99A8"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr><tr class="row-diem" data-id="D4EE46C695A245AB84FD29BF6447C156" style="cursor: pointer;" title="Click để xem chi tiết điểm thành phần"><th class="text-center" scope="row"><em class="show-in-mobi">STT</em><span>5</span></th><td><em class="show-in-mobi">Mã học phần:</em><span>ENG-1003</span></td><td><em class="show-in-mobi">Tên học phần:</em><span>Tiếng Anh cấp độ 3</span></td><td class="text-center"><em class="show-in-mobi">Số tín chỉ:</em><span>8</span></td><td class="text-center"><em class="show-in-mobi">Lần học:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Lần thi:</em><span>1</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 10:</em><span>5.5</span></td><td class="text-center"><em class="show-in-mobi">Điểm hệ 4:</em><span>0</span></td><td class="text-center"><em class="show-in-mobi">Điểm chữ:</em><span>P</span></td><td class="text-center"><em class="show-in-mobi">Đánh giá:</em><span>Đạt</span></td><td class="text-center"><em class="show-in-mobi">Ghi chú:</em><span></span></td><td class="btnXemDiemThanhPhan" id="D4EE46C695A245AB84FD29BF6447C156"><em class="show-in-mobi">Chi tiết:</em><a href="#">Chi tiết</a></td></tr></tbody><tfoot></tfoot></table><div class="row py-4"><div class="synthetic-line"></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Tổng tín chỉ</span><span>3</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Tổng số tín chỉ tích lũy</span><span>3</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình hệ 10</span><span>8.6</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình hệ 4</span><span>4</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình tích lũy hệ 10</span><span>8.6</span></div></div><div class="col-12 col-md-6"><div class="summary-row"><span class="color-66">Điểm trung bình tích lũy hệ 4</span><span>4</span></div></div></div></div></div></div></div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="accordion-body scroll-table-x pd-0">
+                            <table class="table transcrip-table table-bordered table-noborder tblHocPhanChuaQua" id="tblHocPhanChuaQua">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-50px" scope="col">STT</th>
+                                        <th scope="col">Mã học phần</th>
+                                        <th scope="col">Tên học phần</th>
+                                        <th class="text-center" scope="col">Học trình</th>
+                                        <th class="text-center" scope="col">Kết quả</th>
+                                        <th class="text-center" scope="col">Đánh giá</th>
+                                        <th class="text-center" scope="col">Lần học</th>
+                                        <th class="text-center" scope="col">Lần thi</th>
+                                        <th class="text-center" scope="col">Thời gian</th>
+                                        <th class="text-center" scope="col">Lớp học phần</th>
+                                    </tr>
+                                </thead>
+                                <tbody><tr id="E62B3CE7FA334DEA80AD36561346EA01"><td style="text-align: center;">1</td><td>MATH2005</td><td>Toán rời rạc</td><td style="text-align: center;">3</td><td style="text-align: center;">0</td><td style="text-align: center;">Không đạt</td><td style="text-align: center;">1</td><td style="text-align: center;">1</td><td style="text-align: center;">2025_2026_3,1</td><td style="text-align: center;">Toán rời rạc-1-3-25(N06).LT/LT+TH</td></tr></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="accordion accodion-block" id="accordion_block">
+                            <p class="mb-1 fz16 aps-title"><b>Tổng điểm theo khối</b></p>
+                            <div class="aps-table-select scroll-table-x">
+                                <table class="table table-classroom table-bordered table-noborder tblTongHopDiem" id="tblTongHopDiem">
+                                    <thead>
+                                        <tr style="background: #223771 !important; color: white;">
+                                            <th class="text-center w-50px">STT</th>
+                                            <th class="">Mã khối</th>
+                                            <th class="">Tên khối</th>
+                                            <th class="text-center">Tổng số tín chỉ</th>
+                                            <th class="text-center">Tổng số tín bắt buộc</th>
+                                            <th class="text-center">Tổng số tín đã tích lũy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr id="undefined"><td style="text-align: center;">1</td><td>CN</td><td>Chuyên ngành</td><td style="text-align: center;">9</td><td style="text-align: center;">9</td><td style="text-align: center;"></td></tr><tr id="undefined"><td style="text-align: center;">2</td><td>CSKN</td><td>Cơ sở khối ngành</td><td style="text-align: center;">31</td><td style="text-align: center;">31</td><td style="text-align: center;">15</td></tr><tr id="undefined"><td style="text-align: center;">3</td><td>CSN</td><td>Cơ sở ngành</td><td style="text-align: center;">25</td><td style="text-align: center;">25</td><td style="text-align: center;"></td></tr><tr id="undefined"><td style="text-align: center;">4</td><td>KHCB</td><td>Toán và khoa học cơ bản</td><td style="text-align: center;">9</td><td style="text-align: center;">9</td><td style="text-align: center;">3</td></tr><tr id="undefined"><td style="text-align: center;">5</td><td>KNM</td><td>Kỹ năng mềm</td><td style="text-align: center;">2</td><td style="text-align: center;">2</td><td style="text-align: center;">2</td></tr><tr id="undefined"><td style="text-align: center;">6</td><td>LLCT</td><td>Lý luận chính trị và pháp luật</td><td style="text-align: center;">13</td><td style="text-align: center;">13</td><td style="text-align: center;">5</td></tr><tr id="undefined"><td style="text-align: center;">7</td><td>TTTN</td><td>Thực tập nghề nghiệp và tốt nghiệp</td><td style="text-align: center;">16</td><td style="text-align: center;">16</td><td style="text-align: center;"></td></tr><tr id="undefined"><td style="text-align: center;">8</td><td>CSNTC</td><td>Cơ sở ngành (Tự chọn)</td><td style="text-align: center;">40</td><td style="text-align: center;">21</td><td style="text-align: center;"></td></tr><tr id="undefined"><td style="text-align: center;">9</td><td>ENG</td><td>Tiếng Anh</td><td style="text-align: center;">48</td><td style="text-align: center;">0</td><td style="text-align: center;">0</td></tr><tr id="undefined"><td style="text-align: center;">10</td><td>GDTC</td><td>GDTC</td><td style="text-align: center;">10</td><td style="text-align: center;">3</td><td style="text-align: center;">3</td></tr></tbody>
+                                    <tfoot style="background: #f1f1f1; text-align: center"><tr style="font-weight: bold"><td>Tổng</td><td></td><td></td><td>203</td><td>129</td><td>28</td></tr></tfoot>
+                                </table>
+                            </div>
+                            <p class="mb-1 fz16 mt-10 aps-title"><b>Tổng hợp chi tiết theo khối và học phần</b></p>
+                            <div class="aps-table-select scroll-table-x">
+                                <table class="table table-classroom table-border tblTongHopDiemHP" id="tblTongHopDiemHP">
+                                    <thead>
+                                        <tr style="background: #f26522; color: white;">
+                                            <th class="text-center ">Mã khối</th>
+                                            <th class="">Tên khối</th>
+                                            <th class="text-center">STT</th>
+                                            <th class="">Mã học phần</th>
+                                            <th class="">Tên học phần</th>
+                                            <th class="text-center">Số tín chỉ</th>
+                                            <th class="text-center">Điểm</th>
+                                            <th class="text-center">Đánh giá</th>
+                                            <th class="text-center">Điểm quy đổi</th>
+                                            <th class="text-center">Điểm chữ</th>
+                                            <th class="text-center">Kết quả</th>
+                                            <th class="text-center">Ghi chú</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr id="undefined"><td style="text-align: center; display: none;">1</td><td rowspan="3" style="text-align: center;">CN</td><td rowspan="3">Chuyên ngành</td><td style="text-align: center;">1</td><td>SENG3008</td><td>Đồ án chuyên ngành KTPM</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">2</td><td style="text-align: center;">2</td><td>SENG3009</td><td>Phát triển ứng dụng web nâng cao</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">3</td><td style="text-align: center;">3</td><td>PROG3002</td><td>Phát triển ứng dụng di động</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">4</td><td rowspan="9" style="text-align: center;">CSKN</td><td rowspan="9">Cơ sở khối ngành</td><td style="text-align: center;">4</td><td>INFO2011</td><td>Công nghệ phần mềm</td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">5</td><td style="text-align: center;">5</td><td>MATH2005</td><td>Toán rời rạc</td><td style="text-align: center;">3</td><td style="text-align: center;">0</td><td style="text-align: center;">Không đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">F</td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">6</td><td style="text-align: center;">6</td><td>PROG2008</td><td>Phát triển ứng dụng web</td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">7</td><td style="text-align: center;">7</td><td>INFO2002</td><td>Cấu trúc dữ liệu và giải thuật</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">8</td><td style="text-align: center;">8</td><td>INFO3001</td><td>Pháp lý và Đạo đức nghề nghiệp</td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">9</td><td style="text-align: center;">9</td><td>INFO2007</td><td>Cơ sở dữ liệu</td><td style="text-align: center;">4</td><td style="text-align: center;">5.2</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">1.5</td><td style="text-align: center;">D+</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">10</td><td style="text-align: center;">10</td><td>PROG2006</td><td>Lập trình hướng đối tượng</td><td style="text-align: center;">4</td><td style="text-align: center;">7</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">3</td><td style="text-align: center;">B</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">11</td><td style="text-align: center;">11</td><td>PROG2005</td><td>Cơ sở lập trình</td><td style="text-align: center;">4</td><td style="text-align: center;">8.4</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">3.5</td><td style="text-align: center;">B+</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">12</td><td style="text-align: center;">12</td><td>INFO2013</td><td>Nhập môn công nghệ thông tin</td><td style="text-align: center;">3</td><td style="text-align: center;">8.6</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">4</td><td style="text-align: center;">A</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">13</td><td rowspan="8" style="text-align: center;">CSN</td><td rowspan="8">Cơ sở ngành</td><td style="text-align: center;">13</td><td>INFO2008</td><td>Dự án công nghệ mới</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">14</td><td style="text-align: center;">14</td><td>INFO3006</td><td>An toàn thông tin</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">15</td><td style="text-align: center;">15</td><td>INFO3005</td><td>Trí tuệ nhân tạo</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">16</td><td style="text-align: center;">16</td><td>INFO2009</td><td>Phân tích thiết kế hệ thống</td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">17</td><td style="text-align: center;">17</td><td>INFO3007</td><td>Mạng máy tính và truyền thông</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">18</td><td style="text-align: center;">18</td><td>SOFT4003</td><td>Kiểm thử phần mềm</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">19</td><td style="text-align: center;">19</td><td>INFO3008</td><td>Điện toán đám mây</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">20</td><td style="text-align: center;">20</td><td>INFO3020</td><td>Khoa học dữ liệu</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">21</td><td rowspan="13" style="text-align: center;">CSNTC</td><td rowspan="13">Cơ sở ngành (Tự chọn)</td><td style="text-align: center;">21</td><td>MATH2004</td><td>Phương pháp tính</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">22</td><td style="text-align: center;">22</td><td>SOFT4002</td><td>Thiết kế và xây dựng phần mềm</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">23</td><td style="text-align: center;">23</td><td>SECU4006</td><td>Công nghệ chuỗi khối</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">24</td><td style="text-align: center;">24</td><td>INFO2010</td><td>Cơ sở hệ thống máy tính</td><td style="text-align: center;">4</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">25</td><td style="text-align: center;">25</td><td>BIGD4001</td><td>Học sâu và ứng dụng</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">26</td><td style="text-align: center;">26</td><td>INFO3009</td><td>Quản lý dự án CNTT</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">27</td><td style="text-align: center;">27</td><td>INFO4002</td><td>Mô hình ngôn ngữ lớn</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">28</td><td style="text-align: center;">28</td><td>COSC4002</td><td>Lập trình trò chơi</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">29</td><td style="text-align: center;">29</td><td>COSC4001</td><td>Hệ thống nhúng</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">30</td><td style="text-align: center;">30</td><td>INFO4003</td><td>Học máy</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">31</td><td style="text-align: center;">31</td><td>BIGD4003</td><td>Xử lý ngôn ngữ tự nhiên</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">32</td><td style="text-align: center;">32</td><td>INFO4001</td><td>Tác tử thông minh</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">33</td><td style="text-align: center;">33</td><td>SECU4005</td><td>An ninh mạng</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">34</td><td rowspan="8" style="text-align: center;">ENG</td><td rowspan="8">Tiếng Anh</td><td style="text-align: center;">34</td><td>ENG-1003</td><td>Tiếng Anh cấp độ 3</td><td style="text-align: center;">8</td><td style="text-align: center;">5.5</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">P</td><td style="text-align: center;">Hoàn thành</td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">35</td><td style="text-align: center;">35</td><td>ENG-1001</td><td>Tiếng Anh cấp độ 1</td><td style="text-align: center;">8</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">36</td><td style="text-align: center;">36</td><td>ENG-1005</td><td>Tiếng Anh cấp độ 5</td><td style="text-align: center;">8</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">37</td><td style="text-align: center;">37</td><td>ENG-1006</td><td>Tiếng Anh cấp độ 6</td><td style="text-align: center;">8</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">38</td><td style="text-align: center;">38</td><td>ENG-1002</td><td>Tiếng Anh cấp độ 2</td><td style="text-align: center;">8</td><td style="text-align: center;">5.1</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">P</td><td style="text-align: center;">Hoàn thành</td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">39</td><td style="text-align: center;">39</td><td>ENG-1004</td><td>Tiếng Anh cấp độ 4</td><td style="text-align: center;">8</td><td style="text-align: center;">5.3</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">P</td><td style="text-align: center;">Hoàn thành</td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">40</td><td style="text-align: center;">40</td><td>ĐGNLTAB1</td><td>Đánh giá năng lực tiếng Anh B1</td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">41</td><td style="text-align: center;">41</td><td>KTPLTĐTA</td><td>Kiểm tra phân loại trình độ tiếng Anh (Placement test)</td><td style="text-align: center;">0</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">42</td><td rowspan="10" style="text-align: center;">GDTC</td><td rowspan="10">GDTC</td><td style="text-align: center;">42</td><td>GENE1016</td><td>Bóng chuyền da</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">43</td><td style="text-align: center;">43</td><td>GENE1018</td><td>Võ Taekwondo</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">44</td><td style="text-align: center;">44</td><td>GENE1015</td><td>Khiêu vũ</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">45</td><td style="text-align: center;">45</td><td>GENE1012</td><td>Bóng chuyền hơi</td><td style="text-align: center;">1</td><td style="text-align: center;">8.8</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">P</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">46</td><td style="text-align: center;">46</td><td>GENE1010</td><td>Giáo dục thể chất cơ bản</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">47</td><td style="text-align: center;">47</td><td>GENE1017</td><td>Đá cầu</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">48</td><td style="text-align: center;">48</td><td>GENE1019</td><td>Aerobic</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">49</td><td style="text-align: center;">49</td><td>GENE1021</td><td>Võ cổ truyền</td><td style="text-align: center;">1</td><td style="text-align: center;">5.2</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">P</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">50</td><td style="text-align: center;">50</td><td>GENE1013</td><td>Điền kinh</td><td style="text-align: center;">1</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td>Thừa TUDONG</td></tr><tr id="undefined"><td style="text-align: center; display: none;">51</td><td style="text-align: center;">51</td><td>GENE1011</td><td>Bóng rổ</td><td style="text-align: center;">1</td><td style="text-align: center;">6.8</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">0</td><td style="text-align: center;">P</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">52</td><td rowspan="3" style="text-align: center;">KHCB</td><td rowspan="3">Toán và khoa học cơ bản</td><td style="text-align: center;">52</td><td>MATH2003</td><td>Xác suất thống kê</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">53</td><td style="text-align: center;">53</td><td>MATH2001</td><td>Giải tích</td><td style="text-align: center;">3</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">54</td><td style="text-align: center;">54</td><td>MATH2002</td><td>Đại số tuyến tính</td><td style="text-align: center;">3</td><td style="text-align: center;">5.2</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">1.5</td><td style="text-align: center;">D+</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">55</td><td style="text-align: center;">KNM</td><td>Kỹ năng mềm</td><td style="text-align: center;">55</td><td>GENE1007</td><td>Kỹ năng mềm và tư duy khởi nghiệp</td><td style="text-align: center;">2</td><td style="text-align: center;">9</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">4</td><td style="text-align: center;">A+</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">56</td><td rowspan="6" style="text-align: center;">LLCT</td><td rowspan="6">Lý luận chính trị và pháp luật</td><td style="text-align: center;">56</td><td>GENE1006</td><td>Pháp luật đại cương</td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">57</td><td style="text-align: center;">57</td><td>GENE1005</td><td>Tư tưởng Hồ Chí Minh</td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">58</td><td style="text-align: center;">58</td><td>GENE1002</td><td>Kinh tế chính trị Mác - Lênin</td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">59</td><td style="text-align: center;">59</td><td>GENE1001</td><td>Triết học Mác - Lênin</td><td style="text-align: center;">3</td><td style="text-align: center;">5.2</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">1.5</td><td style="text-align: center;">D+</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">60</td><td style="text-align: center;">60</td><td>GENE1003</td><td>Chủ nghĩa xã hội khoa học</td><td style="text-align: center;">2</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">61</td><td style="text-align: center;">61</td><td>GENE1004</td><td>Lịch sử Đảng Cộng sản Việt Nam</td><td style="text-align: center;">2</td><td style="text-align: center;">4.6</td><td style="text-align: center;">Đạt</td><td style="text-align: center;">1</td><td style="text-align: center;">D</td><td style="text-align: center;">Hoàn thành</td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">62</td><td rowspan="2" style="text-align: center;">TTTN</td><td rowspan="2">Thực tập nghề nghiệp và tốt nghiệp</td><td style="text-align: center;">62</td><td>SENG5002</td><td>Đồ án tốt nghiệp</td><td style="text-align: center;">6</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr><tr id="undefined"><td style="text-align: center; display: none;">63</td><td style="text-align: center;">63</td><td>SENG5001</td><td>Thực tập nghề nghiệp</td><td style="text-align: center;">10</td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td style="text-align: center;"></td><td></td></tr></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                            <!--<p class="mb-1"><b>Tổng hợp chi tiết theo khối và học phần</b></p>-->
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="dangkyhoc" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="accordion accodion-block" id="accordion_block">
+                            <div class="mb-5 fz16 aps-title">
+                                <b>Kết quả đăng ký học</b>
+                                <div class="form-item d-flex  form-add-info col-12 col-lg-2" style="margin-left: 10px; float: right; margin-bottom: 5px; margin-top: -10px">
+                                    <div class="input-group no-icon">
+                                        <select class="form-select select-opt select2-hidden-accessible" id="dropSearch_ThoiGianDangKy" aria-label="Default select example" tabindex="-1" aria-hidden="true"><option value="">Chọn thời gian</option><option id="undefined" value="16ACF59F24AF4552BFCC70EBF6E72F5F" name="undefined"> 2026_2027_1,1</option><option id="undefined" value="BD567C20AD4C4B12BD911476D7E5B2DD" name="undefined"> 2025_2026_3,2</option><option id="undefined" value="A668A0539AC440B9AE42ECACCEDD63F9" name="undefined"> 2025_2026_3,1</option><option id="undefined" value="61C17BD02BD744E6A30F4DDD2D5EF658" name="undefined"> 2025_2026_2,3</option><option id="undefined" value="D1E1060A0A874F45B85983BEE6694889" name="undefined"> 2025_2026_2,1</option><option id="undefined" value="DEB7F2B1F49E4BB2AA4348EEBD477FE2" name="undefined"> 2025_2026_1,3</option><option id="undefined" value="5EEEA893758B49D3929792FF7DE0D9E5" name="undefined"> 2025_2026_1,1</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-dropSearch_ThoiGianDangKy-container"><span class="select2-selection__rendered" id="select2-dropSearch_ThoiGianDangKy-container" title="Chọn thời gian">Chọn thời gian</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="aps-table-select scroll-table-x mt-5">
+                                <table class="table table-classroom tblKetQuaDangKy table-noborder" id="tblKetQuaDangKy">
+                                    <thead>
+                                        <tr>
+                                            <th style="background: #223771 !important; color: white !important;" class=" text-center w-50px">
+                                                STT</th>
+                                            <th style="background: #223771 !important; color: white  !important;" class=" ">Mã lớp
+                                                học
+                                                phần</th>
+                                            <th style="background: #223771 !important; color: white !important;" class=" ">Tên lớp
+                                                học
+                                                phần</th>
+                                            <th style="background: #223771 !important; color: white !important;" class="text-center">Số
+                                                tín</th>
+                                            <th style="background: #223771 !important; color: white !important;" class="">Giảng
+                                                viên
+                                            </th>
+                                            <th style="background: #223771 !important; color: white !important;" class=" ">Kiểu học
+                                            </th>
+                                            <th style="background: #223771 !important; color: white !important;" class=" ">Thời
+                                                gian
+                                                thực hiện</th>
+                                            <th style="background: #223771 !important; color: white !important;" class=" ">Người
+                                                thực
+                                                hiện</th>
+                                            <th style="background: #223771 !important; color: white !important;" class=" ">Học kỳ,
+                                                đợt
+                                            </th>
+                                            <th style="background: #223771 !important; color: white !important;" class="">Chương
+                                                trình
+                                            </th>
+                                            <th style="background: #223771 !important; color: white !important;" class="">Điểm quá
+                                                trình</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr id="C5D8057CB6B644948CD145C6B6CCCDE7"><td style="text-align: center;">1</td><td>GENE1011-1-1-25(N10)</td><td>Bóng rổ-1-1-25(N10).GDTC</td><td style="text-align: center;">1</td><td></td><td>Học đi</td><td>26/09/2025  13:26:43</td><td>20090</td><td>2025_2026_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="390117E69B4E49FEA83F0B7FE6473C3E" title="Bóng rổ-1-1-25(N10).GDTC">Điểm quá trình</button></td></tr><tr id="F6EAAE1D70744AF9844DE9B8E9BC2C6C"><td style="text-align: center;">2</td><td>GENE1009-1-1-25(N01)</td><td>Giáo dục Quốc phòng và An ninh-1-1-25(N01).GDQP&amp;AN</td><td style="text-align: center;">8</td><td></td><td>Học đi</td><td>15/10/2025  09:15:17</td><td>20090</td><td>2025_2026_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="089DE101D2B44BBD944AFCD498E5539D" title="Giáo dục Quốc phòng và An ninh-1-1-25(N01).GDQP&amp;AN">Điểm quá trình</button></td></tr><tr id="939F60FD6667487F8DEC0EBB1FDB07EF"><td style="text-align: center;">3</td><td>INFO2013-1-1-25(25ICT04)</td><td>Nhập môn công nghệ thông tin-1-1-25(25ICT4).LT/LT+TH</td><td style="text-align: center;">3</td><td>Nguyễn Khánh Sơn</td><td>Học đi</td><td>22/09/2025  17:15:53</td><td>20090</td><td>2025_2026_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="7A51DC4386BB4AFB838E3864C2F26F84" title="Nhập môn công nghệ thông tin-1-1-25(25ICT4).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="85EB0EBA95544C1FAE480BB3C6D6F35F"><td style="text-align: center;">4</td><td>GENE1012-1-1-25(N01)</td><td>Bóng chuyền hơi-1-1-25(N01).GDTC</td><td style="text-align: center;">1</td><td></td><td>Học đi</td><td>14/10/2025  14:58:56</td><td>20090</td><td>2025_2026_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="EA207E4643F34814A9C7B0553FAB0CC6" title="Bóng chuyền hơi-1-1-25(N01).GDTC">Điểm quá trình</button></td></tr><tr id="594A693353954B1AB4C1CC13F7FF78B2"><td style="text-align: center;">5</td><td>ENG-1003-3-1-25(K4S2.L3.04)</td><td>Tiếng Anh cấp độ 3-3-1-25(K4S2.L3.04)</td><td style="text-align: center;">8</td><td>Rob Carmichael,Tô Vân Hòa,Nguyễn Bích Hồng,Vũ Trung Thanh Ngọc,Trần Thị Thu Hằng,Dan Frangulea</td><td>Học đi</td><td>23/11/2025  11:12:52</td><td>CFS</td><td>2025_2026_1,3</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="6830F8CC198D42E48EE73030E9EEBE24" title="Tiếng Anh cấp độ 3-3-1-25(K4S2.L3.04)">Điểm quá trình</button></td></tr><tr id="C4230F29EC6F4EA7AAE3FA63EB78E98B"><td style="text-align: center;">6</td><td>ENG-1002-3-1-25(N05)</td><td>Tiếng Anh cấp độ 2-3-1-25(K4S1.L2.05)</td><td style="text-align: center;">8</td><td>Lưu Thị Mai Thanh,Phạm Đặng Thuỳ Dung,Nguyễn Thanh Nhàn,Ann Gubaton Mina,Phạm Quang Trúc,Bạch Thị Thúy Nga</td><td>Học đi</td><td>24/09/2025  11:39:05</td><td>CFS</td><td>2025_2026_1,3</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="66AD279594E54C7A9AE2008EB07E6D0E" title="Tiếng Anh cấp độ 2-3-1-25(K4S1.L2.05)">Điểm quá trình</button></td></tr><tr id="CBA5EFF7E63E4D4B949F1494AFF2649B"><td style="text-align: center;">7</td><td>KTPLTĐTA-3-1-25(N01)</td><td>Kiểm tra phân loại trình độ tiếng Anh (Placement test)-3-1-25(K4S1)</td><td style="text-align: center;">0</td><td></td><td>Học đi</td><td>26/08/2025  09:41:52</td><td>CFS</td><td>2025_2026_1,3</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="6208A37AD0FF4DF3A26912EC77F17B94" title="Kiểm tra phân loại trình độ tiếng Anh (Placement test)-3-1-25(K4S1)">Điểm quá trình</button></td></tr><tr id="0DE8D60065FB42A5B44BDF33CF01EFF6"><td style="text-align: center;">8</td><td>GENE1004-1-2-25(N02)</td><td>Lịch sử Đảng Cộng sản Việt Nam-1-2-25(N02).EL.K4</td><td style="text-align: center;">2</td><td>Trần Thị Yên</td><td>Học đi</td><td>17/01/2026  12:34:59</td><td>20090</td><td>2025_2026_2,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="F17BE3627B944C7FB9F644013BC87D3C" title="Lịch sử Đảng Cộng sản Việt Nam-1-2-25(N02).EL.K4">Điểm quá trình</button></td></tr><tr id="46A12BE4F0FE466DA8EF706B7CD4D60A"><td style="text-align: center;">9</td><td>GENE1001-1-2-25(N01)</td><td>Triết học Mác - Lênin-1-2-25(N01).EL.K4</td><td style="text-align: center;">3</td><td>Trần Thị Minh Châu</td><td>Học đi</td><td>17/01/2026  12:33:47</td><td>20090</td><td>2025_2026_2,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="A544F0F0D4984B23969F5AE5A9E9C916" title="Triết học Mác - Lênin-1-2-25(N01).EL.K4">Điểm quá trình</button></td></tr><tr id="648A932A5BAF4F949E3AB11975C261FB"><td style="text-align: center;">10</td><td>MATH2002-1-2-25(N05)</td><td>Đại số tuyến tính-1-2-25(N05).LT/25ICT00a.K4</td><td style="text-align: center;">3</td><td>Nguyễn Năng Tâm</td><td>Học đi</td><td>12/01/2026  14:48:28</td><td>20090</td><td>2025_2026_2,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="61E2AAD736504A06948762971BCECA72" title="Đại số tuyến tính-1-2-25(N05).LT/25ICT00a.K4">Điểm quá trình</button></td></tr><tr id="242D07BFC25F4D9F8BFEFF9BA5A10FA8"><td style="text-align: center;">11</td><td>ENG-1004-3-2-25(K4S3.L4.10)</td><td>Tiếng Anh cấp độ 4-3-2-25(K4S3.L4.10).ENG</td><td style="text-align: center;">8</td><td>Đinh Thị Kim Chung,Hoàng Thị Trang,Nguyễn Thị Diệp,Trần Thị Thu Hằng,Rory Howard,Phạm Đặng Thuỳ Dung</td><td>Học đi</td><td>15/01/2026  15:56:16</td><td>CFS</td><td>2025_2026_2,3</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="A980134336B54AC7A46C35D4A54F8B7B" title="Tiếng Anh cấp độ 4-3-2-25(K4S3.L4.10).ENG">Điểm quá trình</button></td></tr><tr id="E54E09E2F9C248A09D94CAFCEB010E1A"><td style="text-align: center;">12</td><td>INFO2007-1-3-25(N06)</td><td>Cơ sở dữ liệu-1-3-25(N06).LT/LT+TH</td><td style="text-align: center;">4</td><td>Phạm Thị Anh Lê</td><td>Học đi</td><td>23/04/2026  15:25:04</td><td>20136</td><td>2025_2026_3,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="1AF0554626374C599A51891E1F79C530" title="Cơ sở dữ liệu-1-3-25(N06).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="44D564A8C7BD405E83177F5172DF82CA"><td style="text-align: center;">13</td><td>MATH2005-1-3-25(N06)</td><td>Toán rời rạc-1-3-25(N06).LT/LT+TH</td><td style="text-align: center;">3</td><td>Trần Đức Dũng</td><td>Học đi</td><td>23/04/2026  15:24:42</td><td>20136</td><td>2025_2026_3,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="74F992FB73B141E6A3C55F9DF8714EDB" title="Toán rời rạc-1-3-25(N06).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="E59993C94C44462799FA6525E392D8DE"><td style="text-align: center;">14</td><td>GENE1007-1-3-25(N09)</td><td>Kỹ năng mềm và tư duy khởi nghiệp-1-3-25(N09).LT/LT+TH</td><td style="text-align: center;">2</td><td>Nguyễn Thị Thu Hằng</td><td>Học đi</td><td>23/04/2026  15:23:55</td><td>20136</td><td>2025_2026_3,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="956E4295D3574F65B3F85D2CFD76E13D" title="Kỹ năng mềm và tư duy khởi nghiệp-1-3-25(N09).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="FD41E5CB537444C0A1155379A190652D"><td style="text-align: center;">15</td><td>PROG2006-1-3-25(N06)</td><td>Lập trình hướng đối tượng-1-3-25(N06).LT/LT+TH</td><td style="text-align: center;">4</td><td>Vũ Việt Vũ,Phan Duy Thắng,Nguyễn Đức Giang</td><td>Học đi</td><td>23/04/2026  15:25:31</td><td>20136</td><td>2025_2026_3,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="8359106525624C76AA4FB3520FC5F2C9" title="Lập trình hướng đối tượng-1-3-25(N06).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="A349DAF6A19D40B68EFFF0593D46CCED"><td style="text-align: center;">16</td><td>GENE1021-1-3-25(N01)</td><td>Võ cổ truyền-1-3-25(N01).GDTC</td><td style="text-align: center;">1</td><td></td><td>Học đi</td><td>23/04/2026  17:56:12</td><td>20090</td><td>2025_2026_3,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="49C42E164FC04F6A8F5B84BB37A75620" title="Võ cổ truyền-1-3-25(N01).GDTC">Điểm quá trình</button></td></tr><tr id="E8A24888A129422C9B3B9046C53F8A4D"><td style="text-align: center;">17</td><td>PROG2005-1-3-25(N02)</td><td>Cơ sở lập trình-1-3-25(N02).LT/LT+TH</td><td style="text-align: center;">4</td><td>Nguyễn Khánh Sơn,Phan Duy Thắng</td><td>Học đi</td><td>23/04/2026  15:25:17</td><td>20136</td><td>2025_2026_3,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="BF0627F3C6004CE6B055B22367541F42" title="Cơ sở lập trình-1-3-25(N02).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="A674BED0289646B0A5251959271B2C89"><td style="text-align: center;">18</td><td>MATH2002-2-3-25(N01)</td><td>Đại số tuyến tính-2-3-25(N01).LT/LT+TH</td><td style="text-align: center;">3</td><td>Nguyễn Thế Hoàng</td><td>Học lại</td><td>22/07/2026  14:06:11</td><td>20090</td><td>2025_2026_3,2</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="786BB7793ABE4CA7A3959ADC398CE31D" title="Đại số tuyến tính-2-3-25(N01).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="78FF57080F9C428083938CC3D91E8B32"><td style="text-align: center;">19</td><td>INFO3001-1-1-26(N07)</td><td>Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH</td><td style="text-align: center;">2</td><td>Lê Minh  Tú</td><td>Học đi</td><td>20/08/2026  13:43:06</td><td>20090</td><td>2026_2027_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="94B8A326DC9646CE8A6F6DD0D6DE6A39" title="Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="14841D687C50420DBBB091D652BAF4FE"><td style="text-align: center;">20</td><td>INFO2002-1-1-26(N03)</td><td>Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH</td><td style="text-align: center;">3</td><td>Nguyễn Khánh Sơn</td><td>Học đi</td><td>20/08/2026  13:42:20</td><td>20090</td><td>2026_2027_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="7B4D783FC5FA440889750CB56624D380" title="Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="A96EA11B40C940C79FB8693AB656FF5C"><td style="text-align: center;">21</td><td>PROG2008-1-1-26(N07)</td><td>Phát triển ứng dụng web-1-1-26(N07).LT/LT+TH</td><td style="text-align: center;">4</td><td>Nguyễn Quang Duy</td><td>Học đi</td><td>20/08/2026  13:42:57</td><td>20090</td><td>2026_2027_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="F7E37D9A9B3449A5BE3038EFC5EC87DD" title="Phát triển ứng dụng web-1-1-26(N07).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="09E591F89CF34D33B3BB3F2CF3239B41"><td style="text-align: center;">22</td><td>INFO2011-1-1-26(N08)</td><td>Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td style="text-align: center;">4</td><td>Nguyễn Thị Vân Anh</td><td>Học đi</td><td>20/08/2026  13:42:40</td><td>20090</td><td>2026_2027_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="A1C6AD2580E44F0998F2487C07110E30" title="Công nghệ phần mềm-1-1-26(N08).LT/LT+TH">Điểm quá trình</button></td></tr><tr id="CFC163AF15F74092B20A0DDA1821FFE9"><td style="text-align: center;">23</td><td>MATH2001-1-1-26(N07)</td><td>Giải tích-1-1-26(N07).LT/LT+TH</td><td style="text-align: center;">3</td><td>Nguyễn Quang Trưởng</td><td>Học đi</td><td>20/08/2026  13:42:32</td><td>20090</td><td>2026_2027_1,1</td><td>Cử nhân Kỹ thuật phần mềm_K4</td><td><button class="btn btn-view-detail btnChiTietDiemQuaTrinh" id="6EB0E59364D34E329CE841CA4436BDAD" title="Giải tích-1-1-26(N07).LT/LT+TH">Điểm quá trình</button></td></tr></tbody>
+                                    <tfoot style="background: #f1f1f1; text-align: center"><tr style="font-weight: bold"><td>Tổng</td><td></td><td></td><td>82</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tfoot>
+                                </table>
+                            </div>
+                            <p class="mb-1 mt-10 fz16 aps-title"><b>Lịch sử đăng ký học</b></p>
+                            <div class="aps-table-select scroll-table-x mt-5">
+                                <table class="table table-classroom table-noborder tblLichSu" id="tblLichSu">
+                                    <thead>
+                                        <tr>
+                                            <th class="td-fixed td-center w-50px">Stt</th>
+                                            <th class="">Người thực hiện</th>
+                                            <th class="">Hành động</th>
+                                            <th class="">Kết quả</th>
+                                            <th class="">Thời gian thực hiện</th>
+                                            <th class="">Mã học phần</th>
+                                            <th class="">Tên học phần</th>
+                                            <th class="">Lớp học phần</th>
+                                            <th class="">Mã chương trình</th>
+                                            <th class="">Tên chương trình</th>
+                                        </tr>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody><tr id="undefined"><td style="text-align: center;">1</td><td>CFS</td><td>DangKyHocTrucTiep</td><td></td><td>26/08/2025  09:41:52</td><td>KTPLTĐTA</td><td>Kiểm tra phân loại trình độ tiếng Anh (Placement test)</td><td>Kiểm tra phân loại trình độ tiếng Anh (Placement test)-3-1-25(K4S1)</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">2</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>22/09/2025  17:15:53</td><td>INFO2013</td><td>Nhập môn công nghệ thông tin</td><td>Nhập môn công nghệ thông tin-1-1-25(25ICT4).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">3</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>22/09/2025  19:55:43</td><td>GENE1011</td><td>Bóng rổ</td><td>Bóng rổ-1-1-25(N10).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">4</td><td>CFS</td><td>DangKyHocTrucTiep</td><td></td><td>24/09/2025  11:39:05</td><td>ENG-1002</td><td>Tiếng Anh cấp độ 2</td><td>Tiếng Anh cấp độ 2-3-1-25(K4S1.L2.05)</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">5</td><td>20090</td><td>ThucHienHuyDangKyHoc</td><td></td><td>26/09/2025  10:20:54</td><td>GENE1011</td><td>Bóng rổ</td><td>Bóng rổ-1-1-25(N10).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">6</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>26/09/2025  10:32:45</td><td>GENE1011</td><td>Bóng rổ</td><td>Bóng rổ-1-1-25(N10).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">7</td><td>20090</td><td>ThucHienHuyDangKyHoc</td><td></td><td>26/09/2025  13:21:50</td><td>GENE1011</td><td>Bóng rổ</td><td>Bóng rổ-1-1-25(N10).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">8</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>26/09/2025  13:26:43</td><td>GENE1011</td><td>Bóng rổ</td><td>Bóng rổ-1-1-25(N10).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">9</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Nhập môn công nghệ thông tin-1-1-25(25ICT4).LT/LT+TH</td><td>26/09/2025  15:19:08</td><td>GENE1017</td><td>Đá cầu</td><td>Đá cầu-1-1-25(N01).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">10</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Tiếng Anh cấp độ 2-3-1-25(K4S1.L2.05)</td><td>26/09/2025  15:19:23</td><td>GENE1017</td><td>Đá cầu</td><td>Đá cầu-1-1-25(N02).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">11</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Nhập môn công nghệ thông tin-1-1-25(25ICT4).LT/LT+TH</td><td>27/09/2025  12:04:24</td><td>GENE1017</td><td>Đá cầu</td><td>Đá cầu-1-1-25(N01).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">12</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Tiếng Anh cấp độ 2-3-1-25(K4S1.L2.05)</td><td>27/09/2025  12:04:41</td><td>GENE1017</td><td>Đá cầu</td><td>Đá cầu-1-1-25(N02).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">13</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan khong thuoc dinh huong dang ky</td><td>14/10/2025  14:37:34</td><td>GENE1012</td><td>Bóng chuyền hơi</td><td>Bóng chuyền hơi-1-1-25(N01).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">14</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan khong thuoc dinh huong dang ky</td><td>14/10/2025  14:42:16</td><td>GENE1012</td><td>Bóng chuyền hơi</td><td>Bóng chuyền hơi-1-1-25(N01).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">15</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>14/10/2025  14:58:56</td><td>GENE1012</td><td>Bóng chuyền hơi</td><td>Bóng chuyền hơi-1-1-25(N01).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">16</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan khong thuoc dinh huong dang ky</td><td>14/10/2025  17:17:07</td><td>GENE1009</td><td>Giáo dục Quốc phòng và An ninh</td><td>Giáo dục Quốc phòng và An ninh-1-1-25(N01).GDQP&amp;AN</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">17</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan khong thuoc dinh huong dang ky</td><td>15/10/2025  08:08:11</td><td>GENE1009</td><td>Giáo dục Quốc phòng và An ninh</td><td>Giáo dục Quốc phòng và An ninh-1-1-25(N01).GDQP&amp;AN</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">18</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>15/10/2025  09:15:17</td><td>GENE1009</td><td>Giáo dục Quốc phòng và An ninh</td><td>Giáo dục Quốc phòng và An ninh-1-1-25(N01).GDQP&amp;AN</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">19</td><td>CFS</td><td>DangKyHocTrucTiep</td><td></td><td>23/11/2025  11:12:51</td><td>ENG-1003</td><td>Tiếng Anh cấp độ 3</td><td>Tiếng Anh cấp độ 3-3-1-25(K4S2.L3.04)</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">20</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>12/01/2026  14:48:28</td><td>MATH2002</td><td>Đại số tuyến tính</td><td>Đại số tuyến tính-1-2-25(N05).LT/25ICT00a.K4</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">21</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>14/01/2026  15:07:34</td><td>GENE1006</td><td>Pháp luật đại cương</td><td>Pháp luật đại cương-1-2-25(N02).EL.K4</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">22</td><td>CFS</td><td>DangKyHocTrucTiep</td><td></td><td>15/01/2026  15:56:16</td><td>ENG-1004</td><td>Tiếng Anh cấp độ 4</td><td>Tiếng Anh cấp độ 4-3-2-25(K4S3.L4.10).ENG</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">23</td><td>20090</td><td>ThucHienHuyDangKyHoc</td><td></td><td>17/01/2026  12:28:11</td><td>GENE1006</td><td>Pháp luật đại cương</td><td>Pháp luật đại cương-1-2-25(N02).EL.K4</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">24</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>17/01/2026  12:33:47</td><td>GENE1001</td><td>Triết học Mác - Lênin</td><td>Triết học Mác - Lênin-1-2-25(N01).EL.K4</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">25</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>17/01/2026  12:34:59</td><td>GENE1004</td><td>Lịch sử Đảng Cộng sản Việt Nam</td><td>Lịch sử Đảng Cộng sản Việt Nam-1-2-25(N02).EL.K4</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">26</td><td>20136</td><td>DangKyHocTrucTiep</td><td></td><td>23/04/2026  15:23:55</td><td>GENE1007</td><td>Kỹ năng mềm và tư duy khởi nghiệp</td><td>Kỹ năng mềm và tư duy khởi nghiệp-1-3-25(N09).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">27</td><td>20136</td><td>DangKyHocTrucTiep</td><td></td><td>23/04/2026  15:24:42</td><td>MATH2005</td><td>Toán rời rạc</td><td>Toán rời rạc-1-3-25(N06).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">28</td><td>20136</td><td>DangKyHocTrucTiep</td><td></td><td>23/04/2026  15:25:04</td><td>INFO2007</td><td>Cơ sở dữ liệu</td><td>Cơ sở dữ liệu-1-3-25(N06).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">29</td><td>20136</td><td>DangKyHocTrucTiep</td><td></td><td>23/04/2026  15:25:17</td><td>PROG2005</td><td>Cơ sở lập trình</td><td>Cơ sở lập trình-1-3-25(N02).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">30</td><td>20136</td><td>DangKyHocTrucTiep</td><td></td><td>23/04/2026  15:25:31</td><td>PROG2006</td><td>Lập trình hướng đối tượng</td><td>Lập trình hướng đối tượng-1-3-25(N06).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">31</td><td>20136</td><td>DangKyHocTrucTiep</td><td>Khong thoa man dieu kien hoc phan:Kieu hoc khong phu hop voi ke hoach to chuc,vDieuKienHocPhan:0</td><td>23/04/2026  15:26:01</td><td>GENE1001</td><td>Triết học Mác - Lênin</td><td>Triết học Mác - Lênin-1-3-25(N01).EL</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">32</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>23/04/2026  17:56:12</td><td>GENE1021</td><td>Võ cổ truyền</td><td>Võ cổ truyền-1-3-25(N01).GDTC</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">33</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Vượt số lượng quy định</td><td>14/05/2026  18:16:54</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-3-25(N02).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">34</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Võ cổ truyền-1-3-25(N01).GDTC</td><td>14/05/2026  18:17:39</td><td>PROG2008</td><td>Phát triển ứng dụng web</td><td>Phát triển ứng dụng web-1-3-25(N03).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">35</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Vượt số lượng quy định</td><td>14/05/2026  18:19:00</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-3-25(N02).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">36</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Vượt số lượng quy định</td><td>14/05/2026  18:32:03</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-3-25(N02).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">37</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Chi rut va khong dang ky</td><td>19/05/2026  10:31:06</td><td>GENE1001</td><td>Triết học Mác - Lênin</td><td>Triết học Mác - Lênin-1-3-25(N01).EL</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">38</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Chi rut va khong dang ky</td><td>19/05/2026  10:31:58</td><td>GENE1004</td><td>Lịch sử Đảng Cộng sản Việt Nam</td><td>Lịch sử Đảng Cộng sản Việt Nam-1-3-25(N01).EL</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">39</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>22/07/2026  14:06:11</td><td>MATH2002</td><td>Đại số tuyến tính</td><td>Đại số tuyến tính-2-3-25(N01).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">40</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>20/08/2026  13:42:20</td><td>INFO2002</td><td>Cấu trúc dữ liệu và giải thuật</td><td>Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">41</td><td>20090</td><td>DangKyHocTrucTiep</td><td>ORA-00001: unique constraint (CMCDB.DK_SINHVIEN_LOPHOCPHAN_UNI) violated</td><td>20/08/2026  13:42:20</td><td>INFO2002</td><td>Cấu trúc dữ liệu và giải thuật</td><td>Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">42</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:42:29</td><td>INFO2002</td><td>Cấu trúc dữ liệu và giải thuật</td><td>Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">43</td><td>20090</td><td>DangKyHocTrucTiep</td><td>ORA-00001: unique constraint (CMCDB.DK_SINHVIEN_LOPHOCPHAN_UNI) violated</td><td>20/08/2026  13:42:32</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">44</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>20/08/2026  13:42:32</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">45</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:42:33</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">46</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan da duoc dang ky hoc trong ke hoach roi</td><td>20/08/2026  13:42:40</td><td>INFO2011</td><td>Công nghệ phần mềm</td><td>Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">47</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan da duoc dang ky hoc trong ke hoach roi</td><td>20/08/2026  13:42:40</td><td>INFO2011</td><td>Công nghệ phần mềm</td><td>Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">48</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>20/08/2026  13:42:40</td><td>INFO2011</td><td>Công nghệ phần mềm</td><td>Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">49</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan da duoc dang ky hoc trong ke hoach roi</td><td>20/08/2026  13:42:57</td><td>PROG2008</td><td>Phát triển ứng dụng web</td><td>Phát triển ứng dụng web-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">50</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan da duoc dang ky hoc trong ke hoach roi</td><td>20/08/2026  13:42:57</td><td>PROG2008</td><td>Phát triển ứng dụng web</td><td>Phát triển ứng dụng web-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">51</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>20/08/2026  13:42:57</td><td>PROG2008</td><td>Phát triển ứng dụng web</td><td>Phát triển ứng dụng web-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">52</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Hoc phan da duoc dang ky hoc trong ke hoach roi</td><td>20/08/2026  13:43:06</td><td>INFO3001</td><td>Pháp lý và Đạo đức nghề nghiệp</td><td>Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">53</td><td>20090</td><td>DangKyHocTrucTiep</td><td></td><td>20/08/2026  13:43:06</td><td>INFO3001</td><td>Pháp lý và Đạo đức nghề nghiệp</td><td>Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">54</td><td>20090</td><td>DangKyHocTrucTiep</td><td>ORA-00001: unique constraint (CMCDB.DK_SINHVIEN_LOPHOCPHAN_UNI) violated</td><td>20/08/2026  13:43:06</td><td>INFO3001</td><td>Pháp lý và Đạo đức nghề nghiệp</td><td>Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">55</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:43:13</td><td>INFO2002</td><td>Cấu trúc dữ liệu và giải thuật</td><td>Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">56</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:43:19</td><td>MATH2001</td><td>Giải tích</td><td>Giải tích-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">57</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:43:23</td><td>INFO2011</td><td>Công nghệ phần mềm</td><td>Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">58</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:43:27</td><td>PROG2008</td><td>Phát triển ứng dụng web</td><td>Phát triển ứng dụng web-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">59</td><td>20090</td><td>DangKyHocTrucTiep</td><td>Đã đăng ký học rồi</td><td>20/08/2026  13:43:31</td><td>INFO3001</td><td>Pháp lý và Đạo đức nghề nghiệp</td><td>Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">60</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td>08/09/2026  10:40:10</td><td>INFO3005</td><td>Trí tuệ nhân tạo</td><td>Trí tuệ nhân tạo-1-1-26(N01).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">61</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Công nghệ phần mềm-1-1-26(N08).LT/LT+TH</td><td>08/09/2026  10:44:06</td><td>INFO3005</td><td>Trí tuệ nhân tạo</td><td>Trí tuệ nhân tạo-1-1-26(N01).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">62</td><td>BSE250047</td><td>DangKyHocTrucTiep</td><td>Trùng lịch với các lớp sau -&gt; Cấu trúc dữ liệu và giải thuật-1-1-26(N03).LT/LT+TH,Pháp lý và Đạo đức nghề nghiệp-1-1-26(N07).LT/LT+TH</td><td>08/09/2026  10:51:50</td><td>INFO3007</td><td>Mạng máy tính và truyền thông</td><td>Mạng máy tính và truyền thông-1-1-26(N01).LT/LT+TH</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr><tr id="undefined"><td style="text-align: center;">63</td><td>20155</td><td>DangKyHocTrucTiep</td><td>Vượt số lượng quy định</td><td>30/09/2026  11:53:14</td><td>GENE1009</td><td>Giáo dục Quốc phòng và An ninh</td><td>Giáo dục Quốc phòng và An ninh-1-1-26(N02).GDQP&amp;AN</td><td>7480103_25</td><td>Cử nhân Kỹ thuật phần mềm_K4</td></tr></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="xulyketqua" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="aps-table-select scroll-table-x">
+                            <table class="table block-table fs-14 table-noborder tblQuyetDinh" id="tblQuyetDinh">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-50px" scope="col">STT</th>
+                                        <th scope="col" style="min-width: 150px;">Số quyết định</th>
+                                        <th scope="col" class="text-left" style="min-width: 150px;">Ngày quyết định
+                                        </th>
+                                        <th scope="col" class="text-left" style="min-width: 150px;">Ngày hiệu lực</th>
+                                        <th scope="col">Nội dung</th>
+                                        <th scope="col">Loại quyết định</th>
+                                    </tr>
+                                </thead>
+                                <tbody><tr id="undefined"><td style="text-align: center;">1</td><td>288/2025/QĐ-ĐHCMC-ĐT</td><td style="text-align: center;">09/09/2025</td><td style="text-align: center;">09/09/2025</td><td> Về việc Công nhận sinh viên khóa 4 của Trường Đại học CMC</td><td>Quyết định nhập trường</td></tr><tr id="undefined"><td style="text-align: center;">2</td><td>Số 187/QĐ-TTGDQP&amp;AN</td><td style="text-align: center;">24/09/2025</td><td style="text-align: center;">24/09/2025</td><td>Công nhận hoàn thành Chương trình GDQP&amp;AN cho sinh viên K4 và sinh viên chưa học, năm học 2025-2026</td><td>Quyết định công nhận hoàn thành chương trình GDQP</td></tr><tr id="undefined"><td style="text-align: center;">3</td><td>02/2026/QĐ-PĐT</td><td style="text-align: center;">09/02/2026</td><td style="text-align: center;">09/02/2026</td><td>Phân loại sinh viên K4 đang học chuyên môn và tiếng Anh</td><td>Quyết định đang học chuyên môn và tiếng Anh</td></tr><tr id="undefined"><td style="text-align: center;">4</td><td>05/2026/QĐ-PĐT</td><td style="text-align: center;">03/04/2026</td><td style="text-align: center;">03/04/2026</td><td>Phân loại sinh viên K4 đang học chuyên môn</td><td>Quyết định đang học chuyên môn</td></tr><tr id="undefined"><td style="text-align: center;">5</td><td>14/2026/QĐ-PĐT</td><td style="text-align: center;">18/05/2026</td><td style="text-align: center;">07/09/2026</td><td>Phân loại sinh viên K4 đang học chuyên môn từ HK Hạ, 2025-2026</td><td>Quyết định đang học chuyên môn</td></tr><tr id="undefined"><td style="text-align: center;">6</td><td> 277/2026/QĐ-ĐHCMC-ĐT</td><td style="text-align: center;">25/06/2026</td><td style="text-align: center;">25/06/2026</td><td>Cảnh báo kết quả học tập đối với sinh viên - học kỳ Xuân năm học 2025-2026</td><td>Quyết định cảnh báo học tập</td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="vanbangchungchi" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="aps-table-select scroll-table-x">
+                            <table class="table block-table fs-14 table-noborder tblVangBangChungChi" id="tblVangBangChungChi">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-50px" scope="col">STT</th>
+                                        <th scope="col" class="text-left">Loại chứng chỉ - văn bằng</th>
+                                        <th scope="col" class="text-left">Chương trình học</th>
+                                        <th scope="col" class="text-left">Xếp loại</th>
+                                        <th scope="col" class="text-left">Số hiệu</th>
+                                        <th scope="col" class="text-left">Số vào sổ</th>
+                                    </tr>
+                                </thead>
+                                <tbody><tr id="4C6740D9CD0A4FE09C44949AB1F2B983"><td style="text-align: center;">1</td><td>Xét chứng chỉ quốc phòng - an ninh</td><td>Kỹ thuật phần mềm</td><td style="text-align: center;">Trung bình khá</td><td style="text-align: center;">c02007339</td><td style="text-align: center;">CMC-25/3771</td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="xulyhocvu" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="aps-table-select scroll-table-x">
+                            <table class="table block-table fs-14 table-noborder tblCanhBaoHocVu" id="tblCanhBaoHocVu">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center w-50px" scope="col">STT</th>
+                                        <th scope="col">Thời gian</th>
+                                        <th scope="col">Mức xử lý</th>
+                                        <th scope="col">Chương trình học </th>
+                                        <th scope="col">Lớp</th>
+                                        <th scope="col">Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody><tr id="undefined"><td style="text-align: center;">1</td><td><em class="show-in-mobi">Thời gian:</em><span>2025_2026_2,1</span></td><td style="text-align: center;"><em class="show-in-mobi">Mức xử lý:</em><span>Cảnh báo học tập</span></td><td><em class="show-in-mobi">Chương trình học:</em><span>Cử nhân Kỹ thuật phần mềm_K4</span></td><td><em class="show-in-mobi">Lớp:</em><span>25SE</span></td><td><em class="show-in-mobi">Ghi chú:</em><span></span></td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="diemrenluyen" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="accordion accodion-block" id="accordion_block">
+                            <div class="mb-1 fz16 aps-title">Kỳ</div>
+                            <div class="aps-table-select scroll-table-x">
+                                <table class="table table-classroom table-noborder tblDRL_Ky" id="tblDRL_Ky">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center w-50px">STT</th>
+                                            <th class="text-left">Mã số</th>
+                                            <th class="text-left">Họ tên</th>
+                                            <th class="text-left">Chương trình</th>
+                                            <th class="text-left">Điểm</th>
+                                            <th class="text-left">Xếp loại</th>
+                                            <th class="text-left">Kỳ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr id="9557D235485A4B44879E6EEA779ADA47"><td style="text-align: center;">1</td><td>BSE250047</td><td>VŨ VĂN TUẤN</td><td>Cử nhân Kỹ thuật phần mềm_K4 (7480103_25)</td><td><em class="show-in-mobi">Điểm:</em><span>75</span></td><td><em class="show-in-mobi">Xếp loại:</em><span>Khá</span></td><td><em class="show-in-mobi">Thời gian:</em><span>2025_2026_1</span></td></tr><tr id="3071B14930E1449BBF2D60676A92D3EC"><td style="text-align: center;">2</td><td>BSE250047</td><td>VŨ VĂN TUẤN</td><td>Cử nhân Kỹ thuật phần mềm_K4 (7480103_25)</td><td><em class="show-in-mobi">Điểm:</em><span>45</span></td><td><em class="show-in-mobi">Xếp loại:</em><span>Yếu</span></td><td><em class="show-in-mobi">Thời gian:</em><span>2025_2026_2</span></td></tr></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                            <div class="mb-1 fz16 mt-10 aps-title">Năm</div>
+                            <div class="aps-table-select scroll-table-x">
+                                <table class="table table-classroom table-noborder tblDRL_Nam" id="tblDRL_Nam">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center w-50px">STT</th>
+                                            <th class="text-left">Mã số</th>
+                                            <th class="text-left">Họ tên</th>
+                                            <th class="text-left">Chương trình</th>
+                                            <th class="text-left">Điểm</th>
+                                            <th class="text-left">Xếp loại</th>
+                                            <th class="text-left">Năm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr class="empty-state-row"><td colspan="7" style="text-align:center; padding:36px 16px; border:none;"><div style="display:inline-block; padding:18px 28px; background:#fafbff; border:1px dashed #d9deeb; border-radius:14px; color:#7a8499;"><i class="fal fa-medal" style="font-size:42px; color:#b8c0d4; display:block; margin-bottom:8px;"></i><div style="font-size:14px;">Hiện tại chưa có điểm rèn luyện theo năm</div></div></td></tr></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                            <div class="mb-1 fz16 mt-10 aps-title">Toàn khóa</div>
+                            <div class="aps-table-select scroll-table-x">
+                                <table class="table table-classroom table-noborder tblDRL_ToanKhoa" id="tblDRL_ToanKhoa">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center w-50px">STT</th>
+                                            <th class="text-left">Mã số</th>
+                                            <th class="text-left">Họ tên</th>
+                                            <th class="text-left">Chương trình</th>
+                                            <th class="text-left">Điểm</th>
+                                            <th class="text-left">Xếp loại</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody><tr id="150DC1F6465F4FB7BF99FA6552DE8CBA"><td style="text-align: center;">1</td><td>BSE250047</td><td>VŨ VĂN TUẤN</td><td>Cử nhân Kỹ thuật phần mềm_K4 (7480103_25)</td><td><em class="show-in-mobi">Điểm:</em><span>60</span></td><td><em class="show-in-mobi">Xếp loại:</em><span>Trung bình</span></td></tr></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------ -->
+ <div class="aps-all-button ml-20 aps-gap-10" style="display: none !important;">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_XacNhan">
+        Hoàn thành nhập điểm</button>
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal_XacNhanDiem">
+        Vi phạm điều kiện thi</button>
+</div>
+<!-- -------------- -->
+<!-- modal xác nhận-->
+<div class="modal fade finance-modal my-calendar confirm_scores modal_ThanhPhan" id="modal_ThanhPhan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-700">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="finance-user-info in-modal ">
+                    <p><b>Chi tiết thành phần</b></p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-3" id="viewThanhPhan">
+                <div class="aps-table-select scroll-table-x">
+                    <!--<table id="tblThanhPhan" class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="td-fixed">Stt</th>
+                            <th class="td-center"><span class="lang" key="">Thành phần</span></th>
+                            <th class="td-center"><span class="lang" key="">Điểm</span></th>
+                            <th class="td-center"><span class="lang" key="">Lần học</span></th>
+                            <th class="td-center"><span class="lang" key="">Lần thi</span></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Điểm quá trình-->
+<div class="modal fade detail-classroom diem_qua_trinh" id="diem_qua_trinh" tabindex="-1" aria-labelledby="zoomfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-700">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="zoomfileLabel">
+                    <span>Điểm quá trình: </span><span class="zoomfileLabel"></span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="aps-table-select scroll-table-x">
+                    <table class="table table-classroom table-noborder tblDiemQuaTrinh" id="tblDiemQuaTrinh">
+                        <thead>
+                            <tr style="background: #f1f1f1">
+                                <th class="text-center w-50px">STT</th>
+                                <th class="">Loại điểm</th>
+                                <th class="text-left">Kết quả</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page script -->
+<script src="ApisCongSinhVien/modules/hoctap/script/diemhoc.js?v=0846.6035.6781.8672"></script>
+<script type="text/javascript">
+    var main_beta = {};
+    main_beta['DiemHoc'] = new DiemHoc();
+    $(document).ready(function () {
+        main_beta.DiemHoc.init();
+    });
+</script>
+</div><div id="modalBaoCao" class="modal fade finance-modal my-calendar confirm_scores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" style="width: 1220px;max-width: 1220px"><div class="modal-content"><div class="modal-header"><div class="finance-user-info in-modal "><p><b>Báo cáo</b></p> <a class="btn btn-primary" id="btnDownloadFileBaoCao" title="" href="#"><i class="fa fa-cloud-download"></i> Tải file</a></div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×<span class="sr-only">Close</span></button></div><div class="modal-body" id="modal_body"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-bs-dismiss="modal"><i class="fa fa-times-circle-o"></i> <span class="lang" key="">Đóng</span></button></div></div></div></div>
+        <!-- end content -->
+        <div id="alert"></div>
+        <!-- copy right -->
+        <div class="copyright ">
+            <marquee>
+                Đơn vị phát triển: Công ty Cổ Phần dịch vụ Công nghệ APIS - Địa chỉ: Tầng 6 Tháp Tây, Tòa nhà Hancorp,
+                Số, 72 Trần Đăng Ninh, P, Cầu Giấy, Hà Nội - Điện thoại: 024 3204 5867
+            </marquee>
+        </div>
+        <!-- end copy right -->
+
+    </div>
+    <div class="chat-single-group">
+        
+        <div class="chat-box-group" id="zoneChat">
+        </div>
+    </div>
+</div>
+    
+
+
+<script src="assets/js/bootstrap.bundle.min.js "></script>
+<script src="assets/js/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/js/select2.min.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/slick.js"></script>
+<script src="assets/js/tab.js"></script>
+<script src="assets/js/crypto-js.js?v=32"></script>
+<script src="assets/pagination/jquery.simplePagination.min.js?v=331"></script>
+<script src="assets/js/masonry.pkgd.min.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="assets/js/cleave.min.js"></script>
+    
+    <script type="text/javascript" src="Core/constant.js?v=7b943c5e-a217-43ec-85b6-6a72d6111c5f"></script>    <!--CORE JS-->
+    <script type="text/javascript" src="Core/systemroot.js?v=14546696-ae18-44fe-ad8d-bd93eee03a39"></script>  <!--CORE JS-->
+    <script type="text/javascript" src="Core/util.js?v=3fab881d-3a1e-495f-b97f-7168bdd7c313"></script>        <!--CORE JS-->
+    <script type="text/javascript" src="Core/systemextend.js?v=3d092c4e-c972-4ea8-bca5-4bee397c077f"></script><!--CORE JS-->
+    <script type="text/javascript" src="Config.js?v=4309d4a0-e135-4d8f-ae09-eda97f470ecf"></script><!--CORE JS-->
+    <script src="/upload/Core/uploadfile.js?v=1.0.0.12"></script><!--CORE JS-->
+    <script src="/upload/Core/uploadavatar.js?v=1.0.0.12"></script><!--CORE JS-->
+    <script async="" type="text/javascript" src="https://api-apis.com/socket.io/socket.io.js"></script><!--CORE JS-->
+    <script src="Scripts/MathJax/es5/tex-mml-chtml.js"></script>
+    
+                <script src="https://cmcu.edu.vn/wp-content/uploads/js-host/chatbot-iu.js"></script>
+<script>
+    window.Chatbot.init({
+        chatflowid: "widget-1768376656952-rrbpia",
+        apiHost: "https://api-wa.cmcu.edu.vn",
+        provider: "openai-stream"
+    });
+</script><div id="chatbot-widget-container"><div class="chatbot-widget"><button class="chatbot-button" aria-label="Open chat"><svg xmlns="http://www.w3.org/2000/svg" class="" width="56" height="56" viewBox="0 0 508 508" aria-hidden="true"><circle cx="254" cy="254" r="254" style="fill: rgb(84, 192, 235);"></circle><path d="M303.7,303.3c30.5-17.3,51-50.1,51-87.6c0-55.7-45.1-100.8-100.8-100.8S153.2,160,153.2,215.6
+      c0,37.6,20.6,70.3,51,87.6C141,319.3,89.7,365,66,424.8c46.5,51.1,113.5,83.2,188,83.2s141.5-32.1,188-83.2
+      C418.3,365,367,319.3,303.7,303.3z" style="fill: rgb(255, 255, 255);"></path><path d="M401.6,182.3h-15.8C370.9,123.4,317.5,79.6,254,79.6s-116.9,43.7-131.8,102.7h-15.8
+      c-5.4,0-9.8,4.4-9.8,9.8V240c0,5.4,4.4,9.8,9.8,9.8h20c6.1,0,10.8-5.5,9.7-11.4c-2-10.4-2.7-21.3-1.8-32.5
+      c4.8-59.3,53.6-106.9,113.1-110.1c69.2-3.8,126.8,51.5,126.8,119.9c0,7.8-0.8,15.3-2.2,22.7c-1.2,6,3.6,11.5,9.6,11.5h1.8
+      c-4.2,13-14.9,37.2-38.3,50.2c-19.6,10.9-44.3,11.9-73.4,2.8c-1.5-6.7-8.9-14.6-16.5-18.3c-9.8-4.9-15.9-0.8-19.4,6.2
+      s-3,14.3,6.7,19.2c8.6,4.3,21.6,5.2,27,0.5c13.9,4.3,26.9,6.5,39,6.5c15,0,28.5-3.3,40.4-10c27.5-15.3,38.8-43.7,42.8-57.2h9.9
+      c5.4,0,9.8-4.4,9.8-9.8v-47.9C411.4,186.7,407,182.3,401.6,182.3z" style="fill: rgb(50, 74, 94);"></path></svg></button></div></div>  
+              
+    <script type="text/javascript">
+        function getBrowser(){
+	var ua = navigator.userAgent, browser;
+
+	// helper functions to deal with common regex
+	function getFirstMatch(regex) {
+		var match = ua.match(regex);
+		return (match && match.length > 1 && match[1]) || '';
+	}
+
+	function getSecondMatch(regex) {
+		var match = ua.match(regex);
+		return (match && match.length > 1 && match[2]) || '';
+	}
+
+	// start detecting
+	if (/opera|opr/i.test(ua)) {
+		browser = {
+			name: 'Opera',
+			type: 'opera',
+			version: getFirstMatch(/version\/(\d+(\.\d+)?)/i) || getFirstMatch(/(?:opera|opr)[\s\/](\d+(\.\d+)?)/i)
+		}
+	}  else if (/msie|trident/i.test(ua)) {
+		browser = {
+			name: 'Internet Explorer',
+			type: 'msie',
+			version: getFirstMatch(/(?:msie |rv:)(\d+(\.\d+)?)/i)
+		}
+	} else if (/chrome.+? edge/i.test(ua)) {
+		browser = {
+			name: 'Microsft Edge',
+			type: 'msedge',
+			version: getFirstMatch(/edge\/(\d+(\.\d+)?)/i)
+		}
+	} else if (/chrome|crios|crmo/i.test(ua)) {
+		browser = {
+			name: 'Google Chrome',
+			type: 'chrome',
+			version: getFirstMatch(/(?:chrome|crios|crmo)\/(\d+(\.\d+)?)/i)
+		}
+	} else if (/firefox/i.test(ua)) {
+		browser = {
+			name: 'Firefox',
+			type: 'firefox',
+			version: getFirstMatch(/(?:firefox)[ \/](\d+(\.\d+)?)/i)
+		}
+	} else if (!(/like android/i.test(ua)) && /android/i.test(ua)) {
+		browser = {
+			name: 'Android',
+			type: 'android',
+			version: getFirstMatch(/version\/(\d+(\.\d+)?)/i)
+		}
+	} else if (/safari/i.test(ua)) {
+		browser = {
+			name: 'Safari',
+			type: 'safari',
+			version: getFirstMatch(/version\/(\d+(\.\d+)?)/i)
+		}
+	} else {
+		browser = {
+			name: getFirstMatch(/^(.*)\/(.*) /),
+			version: getSecondMatch(/^(.*)\/(.*) /)
+		}
+		browser.type = browser.name.toLowerCase().replace(/\s/g, '');
+	}
+	return browser;
+}
+            
+        var edu = {};
+        edu['system']   = new systemroot();
+        edu['extend']   = new systemextend();
+        edu['constant'] = new constant();
+        edu['util']     = new util();
+        $(document).ready(function () {
+            edu.system.startApp();
+            edu.extend.init();
+            edu.constant.init();
+        });
+    </script>
+
+    <!-- ====== Dashboard styles + logic (inline trong index.aspx) ====== -->
+    <style>
+        /* Hero banner */
+        .db-hero {
+            margin: 12px 22px 20px;
+            padding: 24px 28px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(37, 99, 235, 0.25);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .db-hero::before {
+            content: ''; position: absolute; right: -60px; top: -60px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);
+            border-radius: 50%;
+        }
+        .db-hero::after {
+            content: ''; position: absolute; left: 40%; bottom: -80px;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+            border-radius: 50%;
+        }
+        .db-hero-text { flex: 1; min-width: 0; position: relative; z-index: 1; }
+        .db-hero-hello { font-size: 15px; opacity: 0.9; margin: 0 0 6px; }
+        .db-hero-name { font-size: 28px; font-weight: 700; margin: 0 0 8px; line-height: 1.2; color: #fff; }
+        .db-hero-date { font-size: 13.5px; opacity: 0.85; margin: 0; display: flex; align-items: center; gap: 8px; }
+        .db-hero-icon {
+            flex-shrink: 0; width: 90px; height: 90px;
+            background: rgba(255,255,255,0.18); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 44px; position: relative; z-index: 1;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        @media (max-width: 768px) {
+            .db-hero { padding: 18px 20px; margin: 8px 12px 14px; }
+            .db-hero-name { font-size: 20px; }
+            .db-hero-icon { width: 60px; height: 60px; font-size: 30px; border-radius: 14px; }
+        }
+
+        /* Quick access */
+        .db-quick {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+            margin: 0 22px 22px;
+        }
+        @media (max-width: 992px) { .db-quick { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 520px) { .db-quick { grid-template-columns: 1fr; margin: 0 12px 16px; } }
+        .db-quick-card {
+            background: #fff; border: 1px solid #e6ebf5; border-radius: 12px;
+            padding: 16px 18px; display: flex; align-items: center; gap: 14px;
+            cursor: pointer; transition: all 0.2s ease;
+            text-decoration: none; color: #212529;
+            box-shadow: 0 2px 8px rgba(30, 60, 130, 0.04);
+        }
+        .db-quick-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12);
+            border-color: #c7d8f7; color: #212529; text-decoration: none;
+        }
+        .db-quick-icon {
+            flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 20px;
+        }
+        .db-quick-icon.c1 { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .db-quick-icon.c2 { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .db-quick-icon.c3 { background: linear-gradient(135deg, #10b981, #059669); }
+        .db-quick-icon.c4 { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .db-quick-text { flex: 1; min-width: 0; }
+        .db-quick-label { font-size: 12px; color: #8a94a8; margin: 0 0 2px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .db-quick-title { font-size: 14.5px; font-weight: 600; color: #1a3b8b; margin: 0; }
+
+        /* Tin tuc 3 muc */
+        .tintuc-home-wrap { padding: 0 22px 24px; max-width: 100%; }
+        .tintuc-home-wrap .news-group {
+            background: #fff; border: 1px solid #e6ebf5; border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(30, 60, 130, 0.05);
+            margin-bottom: 0px; overflow: hidden;
+        }
+        .tintuc-home-wrap .news-group-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 20px;
+            background: linear-gradient(90deg, #eff4ff, #f8faff);
+            border-bottom: 2px solid #2563eb;
+        }
+        .tintuc-home-wrap .news-group-title {
+            font-size: 15px; font-weight: 700; color: #1a3b8b;
+            text-transform: uppercase; letter-spacing: 0.4px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .tintuc-home-wrap .news-group-title::before {
+            content: ''; display: inline-block; width: 4px; height: 18px;
+            background: #2563eb; border-radius: 2px;
+        }
+        .tintuc-home-wrap .news-group-more {
+            font-size: 12.5px; font-weight: 500; color: #2563eb;
+            padding: 4px 14px; border: 1px solid #c7d8f7; border-radius: 20px;
+            cursor: pointer; text-decoration: none; background: #fff;
+            transition: all 0.2s ease;
+        }
+        .tintuc-home-wrap .news-group-more:hover {
+            background: #2563eb; color: #fff; border-color: #2563eb;
+        }
+        .tintuc-home-wrap .news-group-body { padding: 4px 20px; }
+        .tintuc-home-wrap .news-group-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 10px 0; border-bottom: 1px dashed #eef1f7;
+            cursor: pointer; transition: padding-left 0.2s ease;
+        }
+        .tintuc-home-wrap .news-group-item:last-child { border-bottom: none; }
+        .tintuc-home-wrap .news-group-item:hover { padding-left: 4px; }
+        .tintuc-home-wrap .news-group-item:hover .news-group-item-title { color: #2563eb; }
+        .tintuc-home-wrap .news-group-item-icon {
+            flex-shrink: 0; width: 20px; color: #2563eb;
+            font-size: 14px; padding-top: 2px; text-align: center;
+        }
+        .tintuc-home-wrap .news-group-item-content { flex: 1; min-width: 0; }
+        .tintuc-home-wrap .news-group-item-title {
+            font-size: 14.5px; font-weight: 500; color: #212529;
+            line-height: 1.5; margin-bottom: 3px;
+            display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;
+            -webkit-box-orient: vertical; overflow: hidden;
+            transition: color 0.15s ease;
+        }
+        .tintuc-home-wrap .news-group-item-meta {
+            display: flex; gap: 14px; font-size: 12.5px; color: #8a94a8;
+        }
+        .tintuc-home-wrap .news-group-item-meta i { margin-right: 4px; color: #94a3b8; }
+        .tintuc-home-wrap .news-group-empty {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 26px 0; color: #a5adbf; font-size: 13.5px; font-style: italic;
+        }
+        .tintuc-home-wrap .news-group-empty i { font-size: 22px; color: #cbd3e0; }
+
+        /* Su kien (nam trong zoneTinTucHome) */
+        .tintuc-home-wrap .db-events {
+            background: #fff;
+            border: 1px solid #e6ebf5; border-radius: 12px;
+            margin-bottom: 18px; overflow: hidden;
+            box-shadow: 0 2px 10px rgba(30, 60, 130, 0.05);
+        }
+        .tintuc-home-wrap .db-events:last-child { margin-bottom: 0; }
+        .db-events-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 20px;
+            background: linear-gradient(90deg, #fff7ed, #fffbeb);
+            border-bottom: 2px solid #f59e0b;
+        }
+        .db-events-title {
+            font-size: 15px; font-weight: 700; color: #92400e;
+            text-transform: uppercase; letter-spacing: 0.4px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .db-events-title::before {
+            content: ''; display: inline-block; width: 4px; height: 18px;
+            background: #f59e0b; border-radius: 2px;
+        }
+        .db-events-body { padding: 12px 20px; }
+        .db-events-empty {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 26px 0; color: #a5adbf; font-size: 13.5px; font-style: italic;
+        }
+        .db-events-empty i { font-size: 22px; color: #cbd3e0; }
+    </style>
+
+    <script>
+    (function () {
+        var _dtTinTuc = [];
+
+        function setGreeting() {
+            var strTen = '';
+            try {
+                strTen = ($('#lblHoTenNguoiDangNhap').text() || '').trim();
+                if (!strTen) {
+                    strTen = ($('.nav-account .dropdown button > span').first().text() || '').trim();
+                }
+            } catch (e) {}
+            var now = new Date();
+            var iGio = parseInt(now.toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', hour12: false }), 10);
+            var strChao = (iGio >= 5 && iGio < 11) ? 'Chào buổi sáng'
+                        : (iGio >= 11 && iGio < 13) ? 'Chào buổi trưa'
+                        : (iGio >= 13 && iGio < 18) ? 'Chào buổi chiều'
+                        : (iGio >= 18 && iGio < 22) ? 'Chào buổi tối'
+                        : 'Chào buổi đêm';
+            var arrThu = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+            var pad = function (n) { n = n.toString(); return n.length < 2 ? '0' + n : n; };
+            var strNgay = arrThu[now.getDay()] + ', ngày ' + pad(now.getDate())
+                        + '/' + pad(now.getMonth() + 1) + '/' + now.getFullYear();
+            $('#dbHeroHello').text(strChao + ',');
+            $('#dbHeroName').text(strTen || 'Sinh viên');
+            $('#dbHeroDate span').text(strNgay);
+        }
+
+        function toAlias(s) {
+            s = (s || '').toString().toLowerCase();
+            return (window.edu && edu.system && typeof edu.system.change_alias === 'function')
+                ? edu.system.change_alias(s) : s;
+        }
+        function classify(item) {
+            // Uu tien 1: CHUYENMUC (ghep ca MA + TEN de bat ca ma tat va ten day du)
+            var cmRaw = ((item.CHUYENMUC_MA || '') + ' ' + (item.CHUYENMUC_TEN || '')).trim();
+            if (cmRaw) {
+                var cm = toAlias(cmRaw);
+                if (/hdsv|hoat dong sinh vien|hoat dong sv/.test(cm)) return 'hoatdongsv';
+                if (/tdt|tin dao tao|dao tao|khao thi/.test(cm)) return 'daotao';
+                if (/ttnt|nha truong|thong bao chung/.test(cm)) return 'nhatruong';
+                return 'nhatruong';
+            }
+            // Fallback: doan theo ten don vi dang tin (tin chua gan chuyen muc)
+            var dv = toAlias(item.DAOTAO_COCAUTOCHUC_TEN);
+            if (/cthssv|cong tac (hoc sinh )?sinh vien|doan thanh nien|hoi sinh vien|sinh vien/.test(dv)) return 'hoatdongsv';
+            if (/dao tao|khao thi/.test(dv)) return 'daotao';
+            return 'nhatruong';
+        }
+
+        function esc(s) {
+            return (s == null ? '' : ('' + s))
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function renderBoxes(data) {
+            var $host = $('#zoneTinTucHome');
+            if (!$host.length) return;
+            var CATEGORIES = [
+                { key: 'nhatruong', ten: 'Tin nhà trường' },
+                { key: 'daotao', ten: 'Tin đào tạo' },
+                { key: 'hoatdongsv', ten: 'Hoạt động sinh viên' }
+            ];
+            var groups = { nhatruong: [], daotao: [], hoatdongsv: [] };
+            (data || []).forEach(function (e) { groups[classify(e)].push(e); });
+            var PREVIEW = 3;
+            var html = '';
+            CATEGORIES.forEach(function (cat) {
+                var items = groups[cat.key];
+                var shown = items.slice(0, PREVIEW);
+                html += '<div class="news-group"><div class="news-group-header">';
+                html += '<span class="news-group-title">' + cat.ten + '</span>';
+                if (items.length > 0) html += '<a href="#" class="news-group-more">Xem tất cả</a>';
+                html += '</div><div class="news-group-body">';
+                if (!shown.length) {
+                    html += '<div class="news-group-empty"><i class="fal fa-inbox"></i><span>Chưa có tin nào</span></div>';
+                } else {
+                    shown.forEach(function (e) {
+                        var strNgay = (e.NGAYBATDAU || e.NGAYTAO_DD_MM_YYYY || '').toString().trim();
+                        html += '<div class="news-group-item bantin-home" data-id="' + esc(e.ID) + '">';
+                        html += '<div class="news-group-item-icon"><i class="fas fa-thumbtack"></i></div>';
+                        html += '<div class="news-group-item-content">';
+                        html += '<div class="news-group-item-title">' + esc(e.TIEUDE) + '</div>';
+                        if (strNgay) html += '<div class="news-group-item-meta"><span><i class="fal fa-calendar-alt"></i>' + esc(strNgay) + '</span></div>';
+                        html += '</div></div>';
+                    });
+                }
+                html += '</div></div>';
+            });
+            html += renderEvents();
+            $host.html(html);
+        }
+
+        function renderEvents() {
+            var html = '<div class="db-events">';
+            html += '<div class="db-events-header">';
+            html += '<span class="db-events-title">Sự kiện sắp tới</span>';
+            html += '</div>';
+            html += '<div class="db-events-body" id="dbEventsBody">';
+            html += '<div class="db-events-empty"><i class="fal fa-calendar-check"></i><span>Chưa có sự kiện nào</span></div>';
+            html += '</div></div>';
+            return html;
+        }
+
+        function fetchTinTuc() {
+            if (!window.edu || !edu.system || !edu.system.makeRequest) return;
+            var payload = {
+                action: 'TS_TinTuc_MH/DSA4BRIVKC8VNCIeAyAvJhUoLx4PJjQuKAU0LyYP',
+                func: 'pkg_tintuc.LayDSTinTuc_BangTin_NguoiDung',
+                iM: edu.system.iM,
+                strTuKhoa: '', strTuNgay: '', strDenNgay: '',
+                strNguoiThucHien_Id: edu.system.userId,
+                strChuyenMuc_Id: '',
+                strChung_UngDung_Id: edu.system.appId,
+                dTinQuanTrong: -1,
+                strDaoTao_CoCauToChuc_Id: '',
+                dHieuLuc: 1,
+                pageIndex: 1, pageSize: 100
+            };
+            edu.system.makeRequest({
+                success: function (data) {
+                    if (data && data.Success) {
+                        _dtTinTuc = data.Data || [];
+                        renderBoxes(_dtTinTuc);
+                    }
+                },
+                error: function () {},
+                type: 'POST',
+                action: payload.action,
+                contentType: true,
+                data: payload,
+                fakedb: []
+            }, false, false, false, null);
+        }
+
+        function waitAndInit() {
+            setGreeting();
+            renderBoxes([]);
+            var tries = 0;
+            var timer = setInterval(function () {
+                tries++;
+                if (window.edu && edu.system && edu.system.userId && edu.system.iM) {
+                    clearInterval(timer);
+                    fetchTinTuc();
+                } else if (tries > 100) {
+                    clearInterval(timer);
+                }
+            }, 100);
+        }
+
+        // Click tin -> mo chi tiet trong module tin tuc
+        $(document).on('click', '#zoneTinTucHome .bantin-home', function () {
+            var id = $(this).data('id');
+            var obj = _dtTinTuc.find(function (e) { return e.ID == id; });
+            if (!obj) return;
+            if (!window.main_doc) window.main_doc = {};
+            main_doc.DashBoard = { objTinTuc: obj };
+            if (edu && edu.system && edu.system.triggerChucNang_MaHienThi) {
+                edu.system.triggerChucNang_MaHienThi('#tintuc');
+            }
+        });
+
+        $(document).on('click', '#zoneTinTucHome .news-group-more', function (e) {
+            e.preventDefault();
+            if (edu && edu.system && edu.system.triggerChucNang_MaHienThi) {
+                edu.system.triggerChucNang_MaHienThi('#tintuc');
+            }
+        });
+
+        // Quick access -> navigate to chuc nang
+        $(document).on('click', '.db-quick-card', function (e) {
+            e.preventDefault();
+            var strMa = $(this).data('goto');
+            if (strMa && edu && edu.system && edu.system.triggerChucNang_MaHienThi) {
+                edu.system.triggerChucNang_MaHienThi(strMa);
+            }
+        });
+
+        $(document).ready(waitAndInit);
+    })();
+    </script>
+
+<div class="noti-fix-screen" id="zoneThongBao"></div></body><en2vi-host class="corom-element" version="3" style="all: initial; position: absolute; top: 0; left: 0; right: 0; height: 0; margin: 0; text-align: left; z-index: 10000000000; pointer-events: none; border: none; display: block"></en2vi-host><savior-host style="all: unset; position: absolute; top: 0; left: 0; z-index: 99999999999999; display: block !important; overflow: unset"></savior-host></html>

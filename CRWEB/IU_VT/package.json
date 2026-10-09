@@ -1,0 +1,13 @@
+{
+  "name": "iu-portal-modules",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cac cum module lam viec voi cong IU (iu.cmcu.edu.vn): login/ dang nhap SSO, crypto/ ma hoa va giai ma, payload/ dung request, capture/ bat API va test. portalSrc/ la source tham chieu.",
+  "scripts": {
+    "test:giaima": "node capture/test-giaima.js",
+    "test:diemhoc": "electron capture/test-diemhoc.js"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11"
+  }
+}
