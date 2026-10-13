@@ -1,0 +1,567 @@
+/**
+ * UniStudy CMC - Landing Page Styles
+ * Khôi phục chuẩn xác theo demo gốc và references/01_trang_mo_dau.png
+ */
+
+/* Landing Page Wrapper */
+.landing {
+  min-height: 100vh;
+  padding: 20px clamp(28px, 4vw, 68px) 18px;
+  background: #fafaff;
+  position: relative;
+  overflow-x: hidden;
+  color: var(--ink-950);
+}
+
+.landing::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 66px 0 auto 0;
+  height: 180px;
+  background: linear-gradient(110deg, transparent 15%, rgba(124, 58, 237, 0.06) 15.2%, rgba(124, 58, 237, 0.02) 36%, transparent 36.2%);
+  transform: skewY(-3deg);
+  pointer-events: none;
+}
+
+.landing::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -160px -90px;
+  width: 520px;
+  height: 340px;
+  background: #8b5cf6;
+  opacity: 0.12;
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+/* Header */
+.landing-top {
+  width: min(1560px, 100%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-top .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 1.35rem;
+  color: var(--violet-800);
+}
+
+.landing-top .brand-mark {
+  width: 43px;
+  height: 43px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: var(--violet-600);
+  background: transparent;
+  box-shadow: none;
+  font-size: 1.2rem;
+}
+
+.landing-top .brand-mark svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2;
+}
+
+.landing-top .brand-copy span {
+  display: block;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.landing-top .brand-copy small {
+  display: block;
+  margin-top: 1px;
+  font-size: 0.67rem;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 0.75;
+}
+
+/* Landing Main Grid (2 cột) */
+.landing-main {
+  width: min(1560px, 100%);
+  margin: 30px auto 0;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(430px, 0.72fr) minmax(720px, 1.28fr);
+  gap: 38px;
+  align-items: center;
+}
+
+/* Cột trái: Giới thiệu */
+.landing-copy {
+  padding: 24px 0 20px;
+  align-self: center;
+}
+
+.landing-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  color: var(--violet-700);
+  border-radius: 999px;
+  background: var(--violet-50);
+  font-size: 0.87rem;
+  font-weight: 750;
+  border: 1px solid var(--violet-100);
+}
+
+.landing-kicker svg {
+  width: 18px;
+  height: 18px;
+  color: var(--violet-600);
+}
+
+.landing-copy h1 {
+  margin: 20px 0 16px;
+  color: #18103f;
+  font-size: clamp(3.2rem, 4.5vw, 5.15rem);
+  line-height: 1.02;
+  letter-spacing: -0.062em;
+  font-weight: 900;
+}
+
+.landing-copy h1 span {
+  color: var(--violet-600);
+}
+
+.landing-copy > p {
+  max-width: 600px;
+  margin: 0 0 26px;
+  color: #5f5a79;
+  font-size: 1.05rem;
+  line-height: 1.68;
+}
+
+.landing-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.landing-actions .button {
+  min-height: 46px;
+  font-size: 0.92rem;
+  padding: 0 22px;
+}
+
+/* Cột phải: Preview Window */
+.product-preview {
+  min-height: 0;
+  align-self: center;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.video-preview-link:focus-visible {
+  outline: 4px solid rgba(124, 58, 237, 0.25);
+  outline-offset: 6px;
+  border-radius: 22px;
+}
+
+.preview-window {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(109, 40, 217, 0.12);
+  border-radius: 21px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 24px 64px rgba(78, 48, 165, 0.16);
+  backdrop-filter: blur(12px);
+  transform: rotate(-1deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.video-preview-link:hover .preview-window {
+  transform: rotate(0) translateY(-3px);
+  box-shadow: 0 30px 78px rgba(78, 48, 165, 0.21);
+}
+
+.preview-browser {
+  border: 1px solid #e9e5ff;
+  border-radius: 15px;
+  box-shadow: 0 6px 22px rgba(46, 16, 101, 0.06);
+  overflow: hidden;
+  background: #fbfaff;
+}
+
+.preview-body {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  min-height: 430px;
+}
+
+.preview-mini-sidebar {
+  padding: 18px 11px;
+  background: linear-gradient(180deg, #5630d6, #301b8c);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-mini-logo {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 26px;
+  border-radius: 12px;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  display: grid;
+  place-items: center;
+}
+
+.preview-mini-logo svg {
+  width: 22px;
+  height: 22px;
+}
+
+.preview-mini-nav {
+  display: grid;
+  gap: 15px;
+}
+
+.preview-mini-nav span {
+  width: 56px;
+  height: 8px;
+  border-radius: 99px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.preview-mini-nav span.active {
+  background: white;
+}
+
+.preview-content {
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  background: #f7f7ff;
+}
+
+.preview-heading {
+  height: 38px;
+  margin: -16px -16px 12px;
+  padding: 0 13px;
+  border-bottom: 1px solid #eeecfa;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-heading b {
+  font-size: 0.65rem;
+  color: var(--ink-800);
+}
+
+.preview-search {
+  width: 240px;
+  height: 25px;
+  border: 1px solid #eeecfa;
+  border-radius: 8px;
+  background: #fafafe;
+}
+
+.preview-dashboard-title {
+  margin-bottom: 10px;
+}
+
+.preview-dashboard-title b {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--ink-950);
+}
+
+.preview-dashboard-title span {
+  color: var(--ink-500);
+  font-size: 0.62rem;
+}
+
+.preview-notice-list {
+  width: 69%;
+  display: grid;
+  gap: 7px;
+}
+
+.preview-notice-list > div {
+  min-height: 57px;
+  padding: 8px 10px;
+  border: 1px solid #ece9f8;
+  border-radius: 9px;
+  background: white;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.preview-notice-list i {
+  width: 27px;
+  height: 27px;
+  border-radius: 7px;
+  background: var(--violet-100);
+}
+
+.preview-notice-list i.red { background: var(--red-100); }
+.preview-notice-list i.blue { background: var(--sky-100); }
+.preview-notice-list i.green { background: var(--green-100); }
+
+.preview-notice-list b,
+.preview-notice-list small {
+  display: block;
+  font-style: normal;
+}
+
+.preview-notice-list b {
+  font-size: 0.64rem;
+  color: var(--ink-950);
+}
+
+.preview-notice-list small {
+  margin-top: 2px;
+  color: var(--ink-500);
+  font-size: 0.54rem;
+}
+
+.preview-notice-list em {
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: var(--violet-700);
+  background: var(--violet-50);
+  font-size: 0.52rem;
+  font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.preview-settings {
+  position: absolute;
+  top: 64px;
+  right: 14px;
+  width: 26%;
+  padding: 10px;
+  border: 1px solid #ece9f8;
+  border-radius: 10px;
+  background: white;
+  display: grid;
+  gap: 12px;
+}
+
+.preview-settings b {
+  font-size: 0.65rem;
+  color: var(--ink-950);
+}
+
+.preview-settings span {
+  height: 7px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--violet-600) 72%, #ece9f8 72%);
+}
+
+.landing-mascot {
+  position: absolute;
+  z-index: 3;
+  width: 170px;
+  right: 23%;
+  bottom: -16px;
+  filter: drop-shadow(0 12px 17px rgba(87, 46, 202, 0.16));
+  pointer-events: none;
+}
+
+.video-preview-badge {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  z-index: 5;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: white;
+  background: rgba(82, 35, 196, 0.92);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  box-shadow: 0 8px 22px rgba(76, 29, 149, 0.25);
+}
+
+.video-preview-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Feature Strip (4 cards ở dưới cùng theo UI01) */
+.landing-feature-strip {
+  position: relative;
+  z-index: 2;
+  width: min(1560px, 100%);
+  margin: 18px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.landing-feature-strip button {
+  min-height: 92px;
+  padding: 16px;
+  border: 1px solid #ebe8fa;
+  border-radius: 14px;
+  background: white;
+  display: grid;
+  grid-template-columns: 42px 1fr 16px;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.18s ease;
+}
+
+.landing-feature-strip button:hover {
+  border-color: var(--violet-300);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.landing-feature-strip b,
+.landing-feature-strip small {
+  display: block;
+}
+
+.landing-feature-strip b {
+  margin-bottom: 4px;
+  font-size: 0.88rem;
+  color: var(--ink-950);
+}
+
+.landing-feature-strip small {
+  color: var(--ink-500);
+  font-size: 0.71rem;
+  line-height: 1.45;
+}
+
+.feature-strip-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: var(--violet-700);
+  background: var(--violet-100);
+}
+
+.feature-strip-icon.green { color: var(--green-600); background: var(--green-100); }
+.feature-strip-icon.red { color: var(--red-600); background: var(--red-100); }
+.feature-strip-icon.blue { color: var(--sky-600); background: var(--sky-100); }
+
+.feature-strip-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.landing-feature-strip > button > svg {
+  width: 16px;
+  color: var(--violet-600);
+}
+
+/* Note dưới cùng */
+.landing-preview-note {
+  position: relative;
+  z-index: 2;
+  margin: 16px auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #7b748c;
+  font-size: 0.74rem;
+}
+
+.landing-preview-note span {
+  width: 90px;
+  height: 1px;
+  background: #d9d4e7;
+}
+
+/* Responsive Breakpoints theo Demo */
+@media (max-width: 1250px) {
+  .landing-main {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 28px;
+  }
+  .landing-feature-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 1000px) {
+  .landing-main {
+    grid-template-columns: 1fr;
+  }
+  .landing-copy {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  .landing-copy > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .landing-actions {
+    justify-content: center;
+  }
+  .product-preview {
+    width: min(820px, 100%);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .landing {
+    padding: 16px 14px 24px;
+  }
+  .landing-copy h1 {
+    font-size: 2.65rem;
+  }
+  .landing-feature-strip {
+    grid-template-columns: 1fr;
+  }
+  .landing-preview-note {
+    display: none;
+  }
+  .preview-body {
+    grid-template-columns: 58px 1fr;
+  }
+  .preview-mini-nav span {
+    width: 32px;
+  }
+  .preview-notice-list {
+    width: 100%;
+  }
+  .preview-settings,
+  .landing-mascot {
+    display: none;
+  }
+  .product-preview {
+    min-height: 400px;
+  }
+}
