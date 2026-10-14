@@ -1,0 +1,25 @@
+{
+  "name": "hotrohoctap",
+  "version": "1.0.0",
+  "description": "Smart Study Hub - CMC University: Backend API + Frontend + IU crawler",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "start:headless": "node index.js",
+    "start:iu": "npx electron CRWEB/IU_VT/test.js",
+    "dev:api": "node API/index.js",
+    "test:api": "node API/test.js",
+    "test:sprint1": "node database/test_sprint1.js",
+    "test:diemhoc": "npx electron CRWEB/IU_VT/capture/test-diemhoc.js",
+    "test:giaima": "node CRWEB/IU_VT/capture/test-giaima.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "electron": "^44.7.0",
+    "express": "^4.22.3",
+    "jsonwebtoken": "^9.0.3",
+    "mssql": "^10.0.5"
+  }
+}

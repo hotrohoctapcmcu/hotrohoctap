@@ -8,8 +8,8 @@
  * ===================================================================================
  */
 
-const { getPool, executeQuery, executeProcedure, sql } = require('../../database/connection/db');
-const { saveIUData } = require('../../database/functions/sync');
+const { getPool, executeQuery, executeProcedure, sql } = require('./connection/db');
+const { saveIUData } = require('./functions/sync');
 
 // ===================================================================================
 // 1. CHỨC NĂNG 18: HỒ SƠ HỌC TẬP CÁ NHÂN (PERSONAL ACADEMIC PROFILE)

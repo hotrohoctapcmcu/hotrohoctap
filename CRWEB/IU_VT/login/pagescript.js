@@ -54,4 +54,18 @@ function portalAuthStateScript() {
     }
 }
 
-module.exports = { clickMsSignInScript, portalAuthStateScript };
+// Phát hiện trang lỗi Microsoft (chạy trong page context, ES5).
+// Trả về mã lỗi dạng chuỗi, "" nếu không có lỗi.
+// AADSTS50020 = sai tài khoản (Gmail cá nhân thay vì email trường).
+function msLoginErrorScript() {
+    try {
+        var t = (document.body ? document.body.innerText : "") || "";
+        if (/AADSTS50020/i.test(t)) return "AADSTS50020";
+        if (/does not exist in tenant/i.test(t)) return "WRONG_TENANT";
+        return "";
+    } catch (e) {
+        return "";
+    }
+}
+
+module.exports = { clickMsSignInScript, portalAuthStateScript, msLoginErrorScript };

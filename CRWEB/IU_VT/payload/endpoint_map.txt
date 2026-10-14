@@ -4,7 +4,8 @@ Quy uoc giai ma: AD(suffix, "A") = XOR tung byte voi 0x41 (chu 'A') roi base64.
 Ten ham duoc doi chieu voi field 'func' (pkg_*.TenHam) trong source -> khop 100%.
 VD URL day du: https://iu.cmcu.edu.vn/sinhvienapi/api/SV_ThongTin_MH/DSA4CiQ1EDQgFSgiKQ00OBUpJC4KKS4o
 Khi goi API: dung NGUYEN doan ma goc (khong dung ten da giai).
-Tong: 112 endpoint | doi chieu dung: 112 | lech: 0
+Tong: 109 endpoint (unique theo ten ham; mot so ten xuat hien o nhieu
+module nhung cung suffix, vd LayDSTabThongTinNguoiHoc) | doi chieu dung: 109 | lech: 0
 
 ======================================================================
 MODULE: CMS_Chung_MH (1 endpoint)
@@ -100,6 +101,10 @@ MODULE: SV_HoSoHocVien_MH (1 endpoint)
 ======================================================================
 Sua_QLSV_NguoiHoc_1 : EjQgHhANEhceDyY0LigJLiIecAPP   # pkg_hosohocvien.Sua_QLSV_NguoiHoc_1
 ======================================================================
+MODULE: SV_Custom (1 endpoint)
+======================================================================
+LayThongTinChiTietHoSo : DSA4FSkuLyYVKC8CKSgVKCQ1CS4SLgPP   # pkg_hosohocvien.LayThongTinChiTietHoSo
+======================================================================
 MODULE: SV_HoSoHocVien_Quyen_MH (2 endpoint)
 ======================================================================
 LayDSHoSoChoPhepCBNhap : DSA4BRIJLhIuAikuESkkMQIDDykgMQPP   # pkg_hosohocvien_quyen.LayDSHoSoChoPhepCBNhap
@@ -122,7 +127,7 @@ Them_MotCua_NguoiHoc_YeuCau : FSkkLB4MLjUCNCAeDyY0LigJLiIeGCQ0AiA0   # pkg_hanhc
 Xoa_MotCua_DanhMuc : GS4gHgwuNQI0IB4FIC8pDDQi   # pkg_hanhchinhmotcua_thongtin.Xoa_MotCua_DanhMuc
 Xoa_MotCua_NguoiHoc_YeuCau : GS4gHgwuNQI0IB4PJjQuKAkuIh4YJDQCIDQP   # pkg_hanhchinhmotcua_thongtin.Xoa_MotCua_NguoiHoc_YeuCau
 ======================================================================
-MODULE: SV_ThongTin_MH (18 endpoint)
+MODULE: SV_ThongTin_MH (19 endpoint)
 ======================================================================
 KetQuaHocTapCaNhan : CiQ1EDQgCS4iFSAxAiAPKSAv   # pkg_congthongtin_hssv_thongtin.KetQuaHocTapCaNhan
 LatKetQuaDiemCaNhanTheoLop : DSA1CiQ1EDQgBSgkLAIgDykgLxUpJC4NLjEP   # pkg_congthongtin_hssv_thongtin.LatKetQuaDiemCaNhanTheoLop
@@ -134,6 +139,7 @@ LayDSKetQuaXuLyHocVu : DSA4BRIKJDUQNCAZNA04CS4iFzQP   # pkg_congthongtin_hssv_th
 LayDSLichCaNhan : DSA4BRINKCIpAiAPKSAv   # pkg_congthongtin_hssv_thongtin.LayDSLichCaNhan
 LayDSQDCaNhan : DSA4BRIQBQIgDykgLwPP   # pkg_congthongtin_hssv_thongtin.LayDSQDCaNhan
 LayDSThoiGianLichHoc : DSA4BRIVKS4oBiggLw0oIikJLiIP   # pkg_congthongtin_hssv_thongtin.LayDSThoiGianLichHoc
+LayDSLichThi_KeHoachThi : DSA4BRINKCIpFSkoHgokCS4gIikVKSgP   # pkg_congthongtin_hssv_thongtin.LayDSLichThi_KeHoachThi
 LayDSThoiGianLichThi : DSA4BRIVKS4oBiggLw0oIikVKSgP   # pkg_congthongtin_hssv_thongtin.LayDSThoiGianLichThi
 LayDSTN_KetQua_CongNhan_VB : DSA4BRIVDx4KJDUQNCAeAi4vJg8pIC8eFwMP   # pkg_congthongtin_hssv_thongtin.LayDSTN_KetQua_CongNhan_VB
 LayKetQuaDangKyHocCaNhan : DSA4CiQ1EDQgBSAvJgo4CS4iAiAPKSAv   # pkg_congthongtin_hssv_thongtin.LayKetQuaDangKyHocCaNhan

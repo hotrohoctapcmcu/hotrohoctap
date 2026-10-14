@@ -3,23 +3,21 @@
 /**
  * endpoints.js — Bang tra cuu endpoint ma hoa cua portal IU.
  *
- * NHIEM VU: doc file endpoint_map.txt (112 endpoint, 35 module) thanh object
- * tra cuu { TenHamThat: { module, suffix, func } }. Chi doc + tra cuu, khong
- * dung payload, khong ma hoa.
+ * NHIEM VU:
+ * Doc endpoint_map.txt thanh object tra cuu:
+ * { TenHamThat: { module, suffix, func } }.
+ * Chi doc va tra cuu, khong dung payload, khong ma hoa.
  *
  * NGUON DU LIEU:
- *  - payload/endpoint_map.txt: quet tu source portal trong portalSrc/
- *    (cac module trong ApisCongSinhVien/modules/*/script/*.js + Core +
- *    Index.aspx), giai suffix bang key "A", doi chieu voi field func that
- *    (pkg_*.TenHam) di kem moi request — khop 100%.
- *  - Bang du phong gon (3 endpoint diem) phong khi thieu file txt.
+ * - payload/endpoint_map.txt: endpoint trich tu source portal trong portalSrc,
+ *   gom cac module, thu muc script, tep JavaScript, Core va Index.aspx.
+ *   Suffix duoc giai bang key "A", sau do doi chieu voi field func that
+ *   (pkg_*.TenHam) di kem moi request.
+ * - Bang du phong gom 3 endpoint diem khi khong co file txt hop le.
  *
  * CACH DUNG:
  *   const { traEndpoint, lietKeEndpoint } = require("./endpoints");
  *   traEndpoint("KetQuaHocTapCaNhan");
- *   // -> { module: "SV_ThongTin_MH",
- *   //      suffix: "CiQ1EDQgCS4iFSAxAiAPKSAv",
- *   //      func: "pkg_congthongtin_hssv_thongtin.KetQuaHocTapCaNhan" }
  */
 
 const fs = require("fs");
@@ -29,24 +27,38 @@ let ENDPOINTS = null;
 
 function docBangEndpoint() {
     if (ENDPOINTS) return ENDPOINTS;
+
     ENDPOINTS = {};
+
     try {
-        const txt = fs.readFileSync(path.join(__dirname, "endpoint_map.txt"), "utf8");
+        const duongDan = path.join(__dirname, "endpoint_map.txt");
+        const txt = fs.readFileSync(duongDan, "utf8");
+
         let modHienTai = "";
-        for (const line of txt.split("\n")) {
+
+        for (const line of txt.split(/\r?\n/)) {
             const mMod = /^\s*MODULE:\s*(\S+)/.exec(line);
+
             if (mMod) {
                 modHienTai = mMod[1];
                 continue;
             }
-            const m = /^\s*([A-Za-z0-9_]+)\s*:\s*([A-Za-z0-9+/=]+)(?:\s+#\s+(\S+))?/.exec(line);
+
+            const m =
+                /^\s*([A-Za-z0-9_]+)\s*:\s*([A-Za-z0-9+/=]+)(?:\s+#\s+(\S+))?/.exec(line);
+
             if (m && modHienTai) {
-                ENDPOINTS[m[1]] = { module: modHienTai, suffix: m[2], func: m[3] || "" };
+                ENDPOINTS[m[1]] = {
+                    module: modHienTai,
+                    suffix: m[2],
+                    func: m[3] || "",
+                };
             }
         }
     } catch {
-        /* khong co file txt — dung bang du phong ben duoi */
+        // Khong co file endpoint_map.txt hoac khong doc duoc file.
     }
+
     if (Object.keys(ENDPOINTS).length === 0) {
         ENDPOINTS = {
             KetQuaHocTapCaNhan: {
@@ -54,11 +66,13 @@ function docBangEndpoint() {
                 suffix: "CiQ1EDQgCS4iFSAxAiAPKSAv",
                 func: "pkg_congthongtin_hssv_thongtin.KetQuaHocTapCaNhan",
             },
+
             LayKetQuaTichLuyTheoKhoi: {
                 module: "SV_ThongTin_MH",
                 suffix: "DSA4CiQ1EDQgFSgiKQ00OBUpJC4KKS4o",
                 func: "pkg_congthongtin_hssv_thongtin.LayKetQuaTichLuyTheoKhoi",
             },
+
             LayDSThoiGianLichHoc: {
                 module: "SV_ThongTin_MH",
                 suffix: "DSA4BRIVKS4oBiggLw0oIikJLiIP",
@@ -66,24 +80,40 @@ function docBangEndpoint() {
             },
         };
     }
+
     return ENDPOINTS;
 }
 
-// Tra 1 endpoint theo ten ham that. Throw neu ten la (tra cot trai endpoint_map.txt).
+/**
+ * Tra cuu endpoint theo ten ham that.
+ * Nem loi neu endpoint khong ton tai.
+ */
 function traEndpoint(tenEndpoint) {
+    if (typeof tenEndpoint !== "string" || !tenEndpoint.trim()) {
+        throw new TypeError("Ten endpoint phai la chuoi khong rong.");
+    }
+
     const bang = docBangEndpoint();
-    const ep = bang[tenEndpoint];
-    if (!ep) {
+    const endpoint = bang[tenEndpoint];
+
+    if (!endpoint) {
         throw new Error(
-            "Endpoint la: " + tenEndpoint + ". Tra trong payload/endpoint_map.txt lay ten o cot trai."
+            `Khong tim thay endpoint "${tenEndpoint}". ` +
+            "Hay kiem tra ten endpoint trong payload/endpoint_map.txt."
         );
     }
-    return ep;
+
+    return endpoint;
 }
 
-// Liet ke ten tat ca endpoint (de goi y / autocomplete).
+/**
+ * Liet ke ten tat ca endpoint theo thu tu alphabet.
+ */
 function lietKeEndpoint() {
     return Object.keys(docBangEndpoint()).sort();
 }
 
-module.exports = { traEndpoint, lietKeEndpoint };
+module.exports = {
+    traEndpoint,
+    lietKeEndpoint,
+};

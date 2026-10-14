@@ -43,6 +43,30 @@ const THAM_SO_MAC_DINH = {
     LatKetQuaDiemQuaTrinh: ["strNguoiThucHien_Id", "strQLSV_NguoiHoc_Id", "strDaoTao_LopHocPhan_Id"],
     LayDSKetQuaXuLyHocVu: ["strQLSV_NguoiHoc_Id", "strDaoTao_ChuongTrinh_Id", "strNguoiThucHien_Id"],
     LayKQRenLuyenCaNhan: ["strQLSV_NguoiHoc_Id", "strDaoTao_ChuongTrinh_Id", "strNguoiThucHien_Id"],
+    // -- Bo sung cho Smart Study Hub (schema IU cua nguoi dung) --
+    // Tin tuc dashboard: index.html/ApisCongSinhVien dashboard.js getList_TinTuc.
+    // (portal gui them strDaoTao_CoCauToChuc_Id/dHieuLuc/pageIndex/pageSize).
+    LayDSTinTuc_BangTin_NguoiDung: ["strTuKhoa", "strTuNgay", "strDenNgay", "strNguoiThucHien_Id", "strChuyenMuc_Id", "strChung_UngDung_Id", "dTinQuanTrong", "strDaoTao_CoCauToChuc_Id", "dHieuLuc", "pageIndex", "pageSize"],
+    // Ho so sinh vien (profile/hoso.js viewForm_SinhVien + LayDSTabThongTinNguoiHoc).
+    LayDSTabThongTinNguoiHoc: ["strChucNang_Id", "strQLSV_NguoiHoc_Id", "strDaoTao_ChuongTrinh_Id", "strNguoiThucHien_Id"],
+    // Lich hoc ca nhan theo tuan (thoikhoabieu lichgiang.js getList_TuanHienTai).
+    LayDSLichCaNhan: ["strQLSV_NguoiHoc_Id", "strNgayBatDau", "strNgayKetThuc"],
+    // Lich thi: hoc ky -> hoc phan -> chi tiet (thoikhoabieu lichthi.js).
+    // Luu y: lichthi.js dung 2 suffix khac nhau cho 2 buoc:
+    //  - LayDSHocPhanLichThi -> suffix ...DSgiKRUpKAPP (module SV_ThongTin_MH),
+    //  - LayDSLichThi_KeHoachThi -> suffix ...FSkoHgokCS4gIikVKSgP (default)
+    //    hoac ...FSkoHgokCS4gIikVKSgeDSgiKRI0 (khi init truyen strHam)
+    //    kem strDaoTao_HocPhan_Id tu dropdown hoc phan.
+    LayDSThoiGianLichThi: ["strNguoiThucHien_Id"],
+    LayDSHocPhanLichThi: ["strDaoTao_ThoiGianDaoTao_Id", "strTHI_DotThi_Id", "strDiem_ThanhPhanDiem_Id", "strNguoiThucHien_Id"],
+    LayDSLichThi_KeHoachThi: ["strQLSV_NguoiHoc_Id", "strDaoTao_ThoiGianDaoTao_Id", "strDaoTao_HocPhan_Id"],
+    LayTTLichThi: ["strQLSV_NguoiHoc_Id", "strNgayDangChon"],
+    // Phuc khao (hoctap phuckhao.js).
+    LayDSThiPhucKhaoCaNhan: ["strNguoiThucHien_Id", "strDaoTao_ThoiGianDaoTao_Id", "strQLSV_NguoiHoc_Id"],
+    LayDSLichSuPhucKhao: ["strThi_DanhSachThi_TuiBai_Id"],
+    LayThoiGian: ["strNguoiThucHien_Id", "strQLSV_NguoiHoc_Id"],
+    // Ho so chi tiet (profile hoso.js getDetail_SinhVien — module SV_Custom).
+    LayThongTinChiTietHoSo: ["strId"],
 };
 
 // Dung payload CUNG sau login.
@@ -62,6 +86,10 @@ function buildPayload(session, tenEndpoint) {
         else if (f === "strChucNang_Id") payload[f] = ss.chucNangId || "";
         else if (f === "strQLSV_NguoiHoc_Id") payload[f] = nguoiHocId;
         else if (f === "strDaoTao_ChuongTrinh_Id") payload[f] = ss.chuongTrinhId || "";
+        else if (f === "strId") payload[f] = ss.userId || "";
+        else if (f === "dHieuLuc" || f === "pageIndex") payload[f] = 1;
+        else if (f === "pageSize") payload[f] = 30;
+        else if (f === "dTinQuanTrong") payload[f] = -1;
         else payload[f] = "";
     }
     return payload;
@@ -73,10 +101,33 @@ function setPayload(payload, patch) {
     return Object.assign({}, payload, patch);
 }
 
-// URL day du de POST (cum api mac dinh "sinhvienapi").
+// URL day du de POST. Portal chon cum theo tien to truoc dau "_" cua module
+// (ham makeRequest trong portalSrc/loi/Core_systemroot.js + bang Init_API
+// trong portalSrc/loi/Config.js):
+//   SV -> sinhvienapi, TS -> quanlytuyensinhapi, XLHV -> xulyhocvuapi,
+//   CMS -> cmsapi, TC -> taichinhapi, DKH -> dangkyhocapi ...
+// Truoc day mac dinh moi endpoint ve sinhvienapi nen TS_TinTuc_MH /
+// XLHV_TP_PhucKhao_MH bi 404.
+const CUM_API_THEO_TIEN_TO = {
+    SV: "sinhvienapi",
+    TS: "quanlytuyensinhapi",
+    XLHV: "xulyhocvuapi",
+    CMS: "cmsapi",
+    TC: "taichinhapi",
+    DKH: "dangkyhocapi",
+    KHCT: "kehoachchuongtrinhapi",
+    D: "quanlydiemapi",
+    TP: "thiphachapi",
+    TT: "tintucapi",
+    TN: "totnghiepapi",
+};
 function layUrl(payload, cumApi) {
-    const cum = cumApi || "sinhvienapi";
-    return "https://iu.cmcu.edu.vn/" + cum + "/api/" + payload.action;
+    if (cumApi) return "https://iu.cmcu.edu.vn/" + cumApi + "/api/" + payload.action;
+    const action = String((payload && payload.action) || "");
+    const module = action.includes("/") ? action.slice(0, action.indexOf("/")) : action;
+    const tienTo = module.includes("_") ? module.slice(0, module.indexOf("_")) : module;
+    const cum = CUM_API_THEO_TIEN_TO[tienTo] || "sinhvienapi";
+    return "https://iu.cmcu.edu.vn/" + cum + "/api/" + action;
 }
 
 module.exports = { buildPayload, setPayload, layUrl };

@@ -24,10 +24,16 @@
 
 const { APIS_KEYS } = require("./keys");
 
-// Giai field "A" cua request ve object (can biet suffix endpoint da goi).
+// Giai field "A" cua request ve object (can biet suffix endpoint da goi),
+// hoac giai Data.B cua response (key = iM cua request, VD "AzzSystem").
+// Luu y: suffix endpoint CHUA "/" (VD "DSA4...") duoc dung NGUYEN lam key
+// (khong cat). Chi khi chuoi co DAU "/" (dang "MODULE/suffix") moi cat lay
+// phan sau — neu khong de y se cat nham key iM ngan nhu "AzzSystem" (khong
+// co "/" nen giu nguyen, dung), nhung key "31415926535" cung vay.
 function giai_ma_request(aMaHoa, suffixHoacAction) {
     let key = String(suffixHoacAction || "");
     if (key.includes("/")) key = key.substring(key.indexOf("/") + 1);
+    if (!key) throw new Error("giai_ma_request can key (suffix hoac iM).");
     const mid = Buffer.from(String(aMaHoa), "base64").toString("utf8");
     let text = "";
     for (let i = 0; i < mid.length; i++) {

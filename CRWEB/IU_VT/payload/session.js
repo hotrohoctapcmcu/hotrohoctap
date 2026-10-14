@@ -4,13 +4,18 @@
  * session.js — Tu lay ID phien sau khi login.
  *
  * NHIEM VU: 1 ham duy nhat laySession(win) -> { userId, chucNangId,
- * nguoiHocId, iM, appId }. Khong dung payload, khong ma hoa, khong goi mang.
+ * nguoiHocId, iM, appId, tokenJWT }. Khong dung payload, khong ma hoa, khong goi mang.
  *
  * NGUON DU LIEU (bien edu.system tren trang web da login):
  *  - userId     <- edu.system.userId            (server cap luc login)
  *  - chucNangId <- edu.system.strChucNang_Id    (man hinh dang mo)
  *  - iM         <- edu.system.iM                 (mac dinh "AzzSystem")
  *  - appId      <- edu.system.appId
+ *  - tokenJWT   <- edu.system.tokenJWT          (server cap luc login,
+ *      portal gui kem header "Authorization: Bearer <tokenJWT>" trong moi
+ *      makeRequest — thieu la API tra 401. Nguon: ham makeRequest trong
+ *      portalSrc/loi/Core_systemroot.js:
+ *        h = "Bearer " + s.tokenJWT; s.tokenJWT && (m.headers = { Authorization: h }))
  *  Luong goc: ham AFG() trong portalSrc/loi/pagination.js gan cac bien nay
  *  sau khi giai chuoi AXYZCLRVN() (portalSrc/loi/Index.aspx).
  *  Cach lay thu cong (node thuong, khong co Electron): mo trang IU, bam F12,
@@ -32,7 +37,8 @@ async function laySession(win) {
             "userId: (window.edu && edu.system && edu.system.userId) || '', " +
             "chucNangId: (window.edu && edu.system && edu.system.strChucNang_Id) || '', " +
             "iM: (window.edu && edu.system && edu.system.iM) || '', " +
-            "appId: (window.edu && edu.system && edu.system.appId) || '' " +
+            "appId: (window.edu && edu.system && edu.system.appId) || '', " +
+            "tokenJWT: (window.edu && edu.system && edu.system.tokenJWT) || '' " +
             "}); } catch (e) { return JSON.stringify({ error: String((e && e.message) || e) }); } })()",
             true
         );
@@ -52,6 +58,7 @@ async function laySession(win) {
             nguoiHocId: s.userId, // tu xem cua minh
             iM: s.iM || IM_MAC_DINH,
             appId: s.appId || "",
+            tokenJWT: s.tokenJWT || "", // gui header Authorization: Bearer ...
         };
     }
     // Khong co Electron — khong tu lay duoc, huong dan lay tay.

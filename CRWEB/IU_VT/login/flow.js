@@ -84,7 +84,18 @@ async function tryClickSso(win) {
  */
 async function loginIU(opts = {}) {
     const timeoutMs = Number(opts.timeoutMs) || 180000;
-    const win = openLoginWindow(undefined, {});
+    // Mở cửa sổ ẨN trước, tải IU ngay để tránh trắng (show sau khi sẵn sàng).
+    const win = openLoginWindow(IU_URL, { hidden: true });
+    console.log("[IU] Đã mở cửa sổ, URL hiện tại:", safeGetURL(win, "(đang tải)"));
+
+    // Gắn phím tắt DevTools (F12 / Ctrl+Shift+I) để debug khi trắng màn hình.
+    try {
+        win.webContents.on("before-input-event", (_event, input) => {
+            if (input.key === "F12" || ((input.control || input.meta) && input.shift && input.key.toLowerCase() === "i")) {
+                win.webContents.toggleDevTools();
+            }
+        });
+    } catch { /* ignore */ }
 
     // Đã ở sẵn IU và còn phiên -> trả cookie luôn.
     if (await portalAuthState(win)) {
