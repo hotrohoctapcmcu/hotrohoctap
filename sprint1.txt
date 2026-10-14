@@ -1,0 +1,75 @@
+Sprint 1: 1, 2, 3, 4, 9, 18
+
+Giai đoạn 1: Thiết kế
+
+1. Văn Tuấn
+
+* Thiết kế cấu trúc tổng thể của dự án và các module.
+* Thiết kế các hàm public cuối cùng của từng module, được export qua index.js.
+* Thiết kế cấu trúc file và cách các module giao tiếp với nhau.
+* Thiết kế các hàm phục vụ việc phân tích, mã hóa và giải mã dữ liệu IU.
+* Thiết kế các hàm API tích hợp AI.
+* Xác định dữ liệu đầu vào và đầu ra của các hàm.
+* Hướng dẫn các thành viên triển khai theo cấu trúc đã thống nhất.
+
+2. Anh Tuấn
+
+* Phân tích dữ liệu cần lấy từ IU phục vụ Sprint 1.
+* Thiết kế các hàm lấy dữ liệu IU và xử lý Request/Response.
+* Thiết kế các hàm làm sạch và chuẩn hóa dữ liệu.
+* Thiết kế cấu trúc dữ liệu chuẩn sau khi xử lý.
+* Thiết kế các hàm cuối được export qua index.js để cung cấp dữ liệu cho các module khác.
+* Phối hợp với Văn Tuấn thống nhất cấu trúc dữ liệu.
+
+3. Long Nhật
+
+* Thiết kế cấu trúc Backend/API cho Sprint 1.
+* Thiết kế các API phục vụ 6 chức năng.
+* Thiết kế Request, Response và dữ liệu của từng API.
+* Thiết kế các hàm cuối của từng module API và export qua index.js.
+* Thiết kế cách API giao tiếp với Database.
+* Thiết kế API tiếp nhận và xử lý dữ liệu từ AI.
+
+4. Hồng Thắm
+
+* Phân tích dữ liệu cần lưu trữ cho Sprint 1.
+* Thiết kế Database và sơ đồ ERD.
+* Thiết kế các bảng, khóa, quan hệ và ràng buộc.
+* Thiết kế Query, Trigger, Procedure và các hàm xử lý dữ liệu.
+* Thiết kế các hàm truy xuất dữ liệu cuối cùng để Backend sử dụng.
+* Thống nhất cấu trúc dữ liệu với Long Nhật.
+
+5. Kiều Trang
+
+* Phân tích yêu cầu giao diện của Sprint 1.
+* Thiết kế UX/UI cho 6 chức năng.
+* Thiết kế luồng thao tác của người dùng.
+* Thiết kế các màn hình và thành phần giao diện.
+* Xác định các hàm Frontend cần sử dụng từ Backend.
+* Thiết kế cấu trúc các module Frontend.
+
+Giai đoạn 2: Triển khai
+
+* Triển khai các hàm và module theo thiết kế.
+* Hoàn thiện các file xử lý bên trong từng module.
+* Hoàn thiện index.js và export các hàm public cuối cùng.
+* Kết nối các module thông qua các hàm đã thống nhất.
+* Tích hợp Database, dữ liệu IU, Backend, AI và Frontend.
+
+Giai đoạn 3: Tích hợp và kiểm thử chéo
+
+* Tích hợp toàn bộ 6 chức năng của Sprint 1.
+* Các thành viên thực hiện kiểm thử chéo phần việc của nhau.
+* Người thực hiện chức năng không trực tiếp đánh giá kết quả kiểm thử phần mình.
+* Kiểm thử cả chức năng và khả năng kết nối giữa các module.
+* Ghi nhận lỗi, phân loại lỗi và chuyển lại cho thành viên phụ trách.
+* Thành viên phụ trách sửa lỗi.
+* Người kiểm thử thực hiện kiểm thử lại sau khi sửa.
+* Kiểm thử toàn bộ hệ thống Sprint 1 trước khi kết thúc Sprint.
+* Chỉ xác nhận hoàn thành Sprint 1 khi các chức năng đã được kiểm thử, sửa lỗi và có thể sử dụng ngay.
+
+Giai đoạn 4: Báo cáo và slide
+
+* Mỗi thành viên tự viết báo cáo cho phần mình thực hiện.
+* Các thành viên gửi nội dung cho Long Nhật để tổng hợp thành báo cáo Sprint 1.
+* Mỗi thành viên tự chuẩn bị slide và nội dung thuyết trình cho phần mình phụ trách.

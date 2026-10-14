@@ -1,0 +1,233 @@
+1. dữ liệu cần từ IU: 
+ + tên ngành học
+ + mã sv
+ + ngày tháng năm sinh
+ + bảng điểm (tất cả các môn. bao gồm: môn trượt, môn qua, điểm như nào phải lấy ra hết)
+ + tên các môn đang học(môn đã học và môn đang học, môn trong tương lai =>> tất cả các môn phải học)
+ + thời khóa biểu
+ + lịch thi
+
+2. dữ liệu cần từ edux: 
+ + các môn,từng chương,từng slide,...
+
+
+3. dữ liệu từ elearning: 
+ + bài học theo tuần: 
+   - đã học
+   - chưa học
+4. lms: 
+ + tên các môn
+ + bài tập thầy cô giao, deadline
+
+
+=>> các hàm mong muốn có: 
+
+Về hàm cào web(anh tuấn làm): 
+1. hàm getInfo() =>> data trả ra: 
+{
+  "MSV": "CMC123456",
+  "ten_nganh_hoc": "Công nghệ thông tin",
+  "ngay_thang_nam_sinh": "15/08/2005",
+
+  "bang_diem": {
+    "ky_1": {
+      "Nhap_mon_CNTT": {
+        "so_tin_chi": 3,
+        "diem_tong_ket": 8.3,
+        "diem_chu": "A",
+        "trang_thai": "dat",
+        "tong_diem": 36
+      },
+      "Toan_cao_cap": {
+        "so_tin_chi": 3,
+        "diem_tong_ket": 7.3,
+        "diem_chu": "B+",
+        "trang_thai": "dat"
+      }
+    },
+
+    "ky_2": {
+      "Lap_trinh_huong_doi_tuong": {
+        "so_tin_chi": 3,
+        "diem_tong_ket": 7.8,
+        "diem_chu": "B+",
+        "trang_thai": "dat"
+      },
+      "Cau_truc_du_lieu_va_giai_thuat": {
+        "so_tin_chi": 4,
+        "diem_tong_ket": 8.3,
+        "diem_chu": "A",
+        "trang_thai": "dat"
+      }
+    },
+
+    "ky_3": {
+      "Lap_trinh_web": {
+        "so_tin_chi": 3,
+        "diem_tong_ket": 8.5,
+        "diem_chu": "A",
+        "trang_thai": "dat"
+      },
+      "He_dieu_hanh": {
+        "so_tin_chi": 3,
+        "diem_tong_ket": 6.8,
+        "diem_chu": "B",
+        "trang_thai": "dat"
+      }
+    }
+  },
+
+  "list_mon_hoc": {
+    "Nhap_mon_CNTT": true,
+    "Toan_cao_cap": true,
+    "Lap_trinh_huong_doi_tuong": true,
+    "Cau_truc_du_lieu_va_giai_thuat": true,
+    "Lap_trinh_web": true,
+    "He_dieu_hanh": true,
+    "Tri_tue_nhan_tao": false,
+    "Mang_may_tinh": false,
+    "Cong_nghe_phan_mem": false
+  },
+
+  "tkb": [
+    {
+      "ma_mon": "CNTT301",
+      "ten_mon": "Lap_trinh_web",
+      "ten_lop": "CNTT K17A",
+      "phong": "A301",
+      "co_so": "Co so 1",
+      "thu": 2,
+      "gio_bat_dau": "07:30",
+      "gio_ket_thuc": "09:30",
+      "ngay_bat_dau": "01/09/2026",
+      "ngay_ket_thuc": "30/12/2026",
+      "giang_vien": "Nguyen Van A"
+    },
+    {
+      "ma_mon": "CNTT302",
+      "ten_mon": "Co_so_du_lieu",
+      "ten_lop": "CNTT K17A",
+      "phong": "B202",
+      "co_so": "Co so 1",
+      "thu": 3,
+      "gio_bat_dau": "09:45",
+      "gio_ket_thuc": "11:45",
+      "ngay_bat_dau": "01/09/2026",
+      "ngay_ket_thuc": "30/12/2026",
+      "giang_vien": "Tran Thi B"
+    },
+    {
+      "ma_mon": "CNTT303",
+      "ten_mon": "Tri_tue_nhan_tao",
+      "ten_lop": "CNTT K17A",
+      "phong": "C105",
+      "co_so": "Co so 2",
+      "thu": 5,
+      "gio_bat_dau": "13:30",
+      "gio_ket_thuc": "15:30",
+      "ngay_bat_dau": "01/09/2026",
+      "ngay_ket_thuc": "30/12/2026",
+      "giang_vien": "Le Van C"
+    }
+  ],
+  "edux": {
+
+  },
+  "elearning: {
+    
+  },
+  "lms": {
+
+  }
+  "lich_thi": [
+    {
+      "ma_mon": "CNTT301",
+      "ten_mon": "Lap_trinh_web",
+      "ngay_thi": "15/12/2026",
+      "gio_thi": "08:00",
+      "phong_thi": "A201",
+      "co_so": "Co so 1"
+    },
+    {
+      "ma_mon": "CNTT302",
+      "ten_mon": "Co_so_du_lieu",
+      "ngay_thi": "18/12/2026",
+      "gio_thi": "13:30",
+      "phong_thi": "B301",
+      "co_so": "Co so 1"
+    }
+  ]
+}
+2. hàm getTKB() =>> trả tkb
+3. hàm getBangDiem() =>> trả bảng điểm
+4. hàm getListMon() =>> trả tất cả môn học
+5. getLichThi() =>> trả ra lịch thi
+6. getEdux() =>> trả data edux
+7. getElearning() =>> trả data eLearning
+8. getLms() =>> trả data LMS
+
+9. loginIU() =>> đăng nhập iu
+10. loginEdux() =>> đăng nhập edux
+11. loginElearning() =>> đăng nhập elearning
+12. loginLMS() =>> đăng nhập lms
+
+13. saveCookie() =>> lưu lại cookie 
+14. delCookie() =>> xóa cookie
+15. updateData() =>> cập nhật data mới
+
+=>> các hàm database phải có: 
+// hàm chung dùng cho các hàm tiện ích khác
+1. tao_bang() =>> tạo bảng
+2. lay_du_lieu() =>> lấy dữ liệu
+3. xoa_du_lieu() =>> xóa dữ liệu
+
+4.... thêm các hàm tiện ích khác
+
+=>> các api dùng. 
+1. Thời khóa biểu thông minh
+=>> cần api lấy ra data tkb từ database
+... các api khác hỗ trợ
+2. AI xếp lịch tự học và cảnh báo trùng
+3. Quản lý Deadline và Checklist
+4. Nhắc nhở thông minh đa tầng
+5. Kho tài liệu môn học tập trung
+6. Tìm kiếm nhanh và gắn thẻ Tag
+7. Trợ lý gia sư AI
+8. Đồng hồ Pomodoro chống xao lãng
+9. Quản lý lịch thi và kế hoạch ôn thi
+10. Bản đồ thời gian học tập
+11. Phân tích tiến độ học tập
+12. Textbook và sổ tay học tập
+13. Kiểm tra kiến thức bằng AI
+14. Phân tích điểm yếu và đề xuất nội dung học
+15. AI tạo kế hoạch ôn thi
+16. Hỗ trợ viết đơn xin phép nghỉ học
+17. Đồng bộ và phân tích Email trường
+18. Hồ sơ học tập cá nhân
+
+=>>> kiến trúc file phải tuân theo: 
+folder: CRWEB 
+ +folder con: Edux
+  + file(tạo các file con) =>> file tổng hợp lại các file code con đó là index.js
+  +index.js
+ +folder con: IU
+   tương tự như trên
+ +folder con: Elearning
+   tương tự như trên
+ +folder con: lms
+   tương tự như trên
+folder: API
+ + folder con: làm theo tên của api. (file con là các hàm hỗ trợ,file hỗ trợ) nhưng tổng kết lại phải là 1 file index.js
+folder: database
+ +folder con: tao_bang
+ +folder con: truy_van
+ +folder con: thu_tuc
+ +folder con: triger
+ +folder con: view
+ file index để kết nối,khởi chạy tất cả các folder tổng kia =>> các hàm cần dùng
+folder: Frontend
+ +folder con: giao diện theo từng chức năng
+ +folder con: giao diện mẫu(file UI)
+ index.js
+
+index.js

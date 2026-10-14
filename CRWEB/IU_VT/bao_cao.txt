@@ -1,0 +1,171 @@
+BAO CAO HUONG SU DUNG — HE THONG LOGIN, BAT REQUEST VA GIAI MA PORTAL IU
+================================================================================
+Portal: https://iu.cmcu.edu.vn/congthongtin/Index.aspx
+Thu muc lam viec: login/  (du an CRWEB/IU)
+Ngay lap: 2026-10-03. Can cu: source that cua portal (file src_IU.zip da giai
+nen day du trong login/src_IU/, file loi trich san trong login/iu_src/) va cac
+module tu viet: login.js, buildPayload.js, test-diemhoc.js, test.js,
+endpoint_map.txt.
+
+1. TONG QUAN
+-------------
+Portal IU ma hoa ca hai chieu. Client (trinh duyet) gui request duoi dang
+tham so ma hoa (field "A"), server tra response duoi dang du lieu ma hoa
+(field "B" trong Data.B). Ten ham trong URL cung bi ma hoa. Bo 4 key duoi day
+la tat ca nhung gi can de lam viec voi portal:
+
+  Key               Dung cho
+  "A" (0x41)        Giai/mahoaten ham trong URL (doan suffix sau MODULE_MH).
+                    Request gui di: AE(JSON params, <suffix trong URL>).
+  "AzzSystem"       Giai Data.B trong response (AD(Data.B, iM)). Day la gia tri
+                    mac dinh cua edu.system.iM, gui kem trong moi request.
+  "AzzS"            Giai chuoi cau hinh AXYZCLRVN() nhung trong Index.aspx.
+  "31415926535"     Ma hoa session trinh duyet (sessionStorage "objUserN").
+
+  Ham goc cua portal (cuoi file assets/js/crypto-js.js):
+    AE(text, key): XOR tung charCode cua text voi key (lap lai) roi base64.
+    AD(b64, key) : base64-decode thanh chuoi UTF-8 roi XOR tung charCode voi key.
+  Luu y ky thuat: phai XOR tren charCode cua chuoi trung gian, KHONG XOR tren
+  byte Buffer tho (sai voi ky tu da byte nhu tieng Viet). Code cu mac loi nay
+  nen giai ra rac.
+
+  Cau truc URL day du:
+    https://iu.cmcu.edu.vn/{cumApi}/api/{MODULE_MH}/{suffix-ma-hoa}
+  Vi du:
+    https://iu.cmcu.edu.vn/sinhvienapi/api/SV_ThongTin_MH/DSA4CiQ1EDQgFSgiKQ00OBUpJC4KKS4o
+  Doan cuoi giai bang key "A" ra ten ham that: LayKetQuaTichLuyTheoKhoi.
+  Khi goi API that thi dung NGUYEN doan ma goc, khong dung ten da giai.
+  Danh sach tra cuu day du: login/endpoint_map.txt (112 endpoint, 35 module,
+  moi ten da doi chieu voi field func that trong source, khop 100%).
+
+2. DANG NHAP — loginIU() (trong login.js)
+------------------------------------------
+  const { loginIU, logoutIU, getIuWindow, giai_ma } = require("./login");
+
+  Chay trong Electron MAIN process (can require("electron")), vi can mo cua so
+  trinh duyet that de SSO Microsoft. Phien dang nhap giu trong partition
+  "persist:cmc-portal" nen dong cua so van KHONG mat session.
+
+  Luong:
+    1. Da co phien cu -> mo AN trang IU, SSO im lang, tra cookie ngay.
+    2. Chua login -> mo HIEN trang Microsoft de chon tai khoan, tu dieu huong
+       sang IU va tu bam nut "Sign in using Microsoft", cho toi khi vao duoc.
+  Tham so: loginIU({ timeoutMs, hidden, keepOpen })
+    - timeoutMs (mac dinh 180000): thoi gian cho nguoi dung dang nhap.
+    - hidden=true: ep mo an. Mac dinh HIEN de nguoi dung thao tac.
+    - keepOpen=true: giu cua so sau khi xong (test-diemhoc dung de bat mang).
+  Tra ve: { map, cookie, count, url }
+    - map: object { TEN_COOKIE: GIA_TRI }. cookie: chuoi header "a=b; c=d"
+      dung ngay cho fetch. count: so cookie (0 = chua login duoc).
+      url: URL hien tai cua cua so.
+  Loi: LOGIN_CLOSED (dong cua so giua chung), LOGIN_TIMEOUT (het gio),
+  LOGIN_NO_ELECTRON (chay ngoai Electron).
+  logoutIU(): dong cua so + xoa sach session (lan sau phai login lai).
+
+3. TU LAY SESSION — laySession() (trong buildPayload.js)
+---------------------------------------------------------
+  const { laySession } = require("./buildPayload");
+  const session = await laySession(getIuWindow()); // sau loginIU()
+
+  Ham doc thang bien edu.system tren trang web da login, tra ve:
+    { userId, chucNangId, nguoiHocId, iM, appId }
+  Nguon goc tung truong (theo ham AFG trong source portal):
+    - userId: edu.system.userId — ID tai khoan, server cap luc login. Dung cho
+      strNguoiThucHien_Id, strNguoiDung_Id, va mac dinh ca strQLSV_NguoiHoc_Id.
+    - chucNangId: edu.system.strChucNang_Id — ID man hinh dang mo, doi moi khi
+      chuyen menu. Server dung de phan quyen chuc nang.
+    - nguoiHocId: mac dinh = userId (tu xem du lieu cua minh). Chi khac khi
+      xem ho du lieu nguoi khac.
+    - iM: edu.system.iM, mac dinh "AzzSystem" (key giai Data.B).
+    - appId: edu.system.appId.
+  Cach lay thu cong (khi chay node thuong, khong co Electron): mo trang IU,
+  bam F12, go edu.system.userId va edu.system.strChucNang_Id; hoac bat 1
+  request trong tab Network, copy field "A" roi chay
+  giai_ma_request(A, suffix) de doc ra ca 3 ID.
+  Luu y vong doi: userId/chucNangId gan voi phien (cookie + JWT) — doi phien
+  phai lay lai; nguoiHocId/chuongTrinhId la du lieu nghiep vu, giu nguyen duoc.
+
+4. BAT REQUEST — captureDiemHoc() (trong test-diemhoc.js)
+-----------------------------------------------------------
+  Chay: npx electron test-diemhoc.js  (trong thu muc login/)
+  Luong:
+    1. loginIU({ keepOpen: true }) de co cua so da dang nhap.
+    2. Attach Chrome DevTools Protocol (CDP) vao webContents cua so do,
+       bat Network.enable, loc cac response JSON cua sinhvienapi (bo qua
+       quang cao, font, anh, css qua SKIP_URL).
+    3. Dieu huong toi https://iu.cmcu.edu.vn/congthongtin/Index.aspx#diemhoc.
+       Day la SPA hash nen chi can set hash la kich hoat goi API.
+    4. Moi response bat duoc: lay body qua Network.getResponseBody, chay
+       giai_ma() (muc 5) de giai Data.B, luu { url, mime, len, decoded }.
+    5. Cho mang ranh (khong co response moi trong 1.2s, toi da 20s) thi dung,
+       tach diem qua summarizeGrades() (tim mang co DAOTAO_HOCPHAN_TEN + DIEM,
+       khu trung theo mon+hoc ky), in tom tat va luu full vao
+       ketqua-diemhoc.json (gom url, cookieCount, api, decodedCount, grades).
+  Neu khong bat duoc API nao: kha nang phien het han hoac route doi — mo
+  DevTools (F12) trong cua so IU kiem tra truc tiep.
+
+5. GIAI MA RESPONSE — giai_ma() (trong login.js, sua theo AD goc)
+-------------------------------------------------------------------
+  const blocks = giai_ma(raw);        // raw: body text fetch, hoac object
+  const data = JSON.parse(blocks[0]); // thuong lay phan tu dau
+
+  Dau vao: string body fetch, hoac object JSON da parse. Ham quet de quy toi
+  sau 6 cap, tim moi chuoi base64 (>= 16 ky tu) roi thu lan luot 4 key
+  ["AzzSystem", "A", "AzzS", "31415926535"], giu ban doc duoc (ti le ky tu
+  in duoc > 0.9 va co dau hieu JSON). Tra ve toi da 40 block da giai.
+  Vi du that (payload B trong test.js): giai bang "AzzSystem" ra JSON hop le
+  gom rsChiTiet (63 mon: ma, ten, tin chi, DIEM, DIEMQUYDOI...) va rsTongHop
+  (10 dong tong hop theo khoi). File test.js giu san vi du nay de chay thu.
+
+6. DUNG + MA HOA PAYLOAD GUI DI — buildPayload.js
+---------------------------------------------------
+  const { buildPayload, setPayload, ma_hoa, layUrl } = require("./buildPayload");
+
+  a) buildPayload(session, tenEndpoint): goi 1 LAN sau login, tra ve object
+     payload CUNG (tham so mac dinh cua endpoint). Ten endpoint tra cot trai
+     trong endpoint_map.txt (vi du "KetQuaHocTapCaNhan"). Cac field ID tu dien
+     tu session theo dung quy tac trong diemhoc.js; field chua co gia tri de "".
+  b) setPayload(payload, patch): ham RIENG de sua gia tri thay doi (doi hoc ky,
+     doi mon...). Vi du: p = setPayload(p, { strDaoTao_ChuongTrinh_Id: "CT-002" }).
+     Tra ve object moi, khong sua object cu.
+  c) ma_hoa(payload): ma hoa dung ham AE goc (XOR voi key = suffix trong
+     action roi base64), tra ve chuoi de POST lam field "A".
+  d) Phu tro: giai_ma_request(A, suffix) giai nguoc de debug; layUrl(payload,
+     cumApi?) ghep URL day du (mac dinh cum "sinhvienapi").
+  Da kiem chung: ma_hoa(buildPayload(session, "LayDSTN_KetQua_CongNhan_VB"))
+  cho ra chuoi khop tung ky tu voi payload that bat duoc tu trinh duyet.
+
+7. LUONG END-TO-END MAU (Electron)
+------------------------------------
+  const { loginIU, getIuWindow, giai_ma } = require("./login");
+  const { laySession, buildPayload, setPayload, ma_hoa, layUrl } = require("./buildPayload");
+
+  const jar = await loginIU({ keepOpen: true });   // 1. login, lay cookie
+  const session = await laySession(getIuWindow()); // 2. tu lay ID phien
+  let p = buildPayload(session, "KetQuaHocTapCaNhan"); // 3. payload cung
+  p = setPayload(p, { strDaoTao_ChuongTrinh_Id: "ID_CT" }); // 4. sua gia tri doi
+  const res = await fetch(layUrl(p), {              // 5. POST
+    method: "POST",
+    headers: { Cookie: jar.cookie },
+    body: new URLSearchParams({ A: ma_hoa(p) }),
+  });
+  const blocks = giai_ma(await res.text());        // 6. giai Data.B
+  const data = JSON.parse(blocks[0]);              // 7. dung du lieu
+
+8. DANH MUC FILE (trong login/)
+---------------------------------
+  login.js          Dang nhap (loginIU/logoutIU/getIuWindow) + giai_ma response.
+  buildPayload.js   laySession / buildPayload / setPayload / ma_hoa /
+                    giai_ma_request / layUrl.
+  test-diemhoc.js   Demo tron vong: login -> bat API #diemhoc -> giai ma ->
+                    tom tat diem -> luu ketqua-diemhoc.json. Chay bang Electron.
+  test.js           Vi du nho goi giai_ma voi 1 payload B mau.
+  endpoint_map.txt  Bang tra cuu 112 endpoint (TenHamThat : DoanMaURL, kem
+                    package func that), gom theo 35 module. Module nhieu nhat:
+                    SV_ThongTin_MH (18: diem/TKB/lich thi/ren luyen), TC_ThongTin_MH
+                    (15: hoc phi), DKH_NguyenVong_MH (7: dang ky hoc).
+  payload.json      Vi du payload request da giai ma (endpoint cong nhan van bang).
+  src_IU/           Toan bo source portal giai nen tu src_IU.zip (5729 file).
+  iu_src/           File loi trich san: Core_systemroot.js (makeRequest),
+                    assets_js_crypto-js.js (AE/AD goc), Index.aspx (AXYZCLRVN),
+                    pagination.js (ham AFG, iM="AzzSystem"), diemhoc.js (module diem).

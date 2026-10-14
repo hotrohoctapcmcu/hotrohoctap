@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ đồ ERD Chuẩn - Sprint 1 (Khóa chính gạch chân, Không khóa ngoại, Bản số & Tham gia)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Mermaid CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #131c31;
+            --bg-card: rgba(19, 28, 49, 0.75);
+            --border-color: rgba(148, 163, 184, 0.18);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #38bdf8;
+            --accent-purple: #c084fc;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --pk-color: #facc15;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 32px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(192, 132, 252, 0.15));
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rule-banner {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .rule-item {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rule-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .diagram-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+            margin-bottom: 36px;
+            backdrop-filter: blur(10px);
+        }
+
+        .diagram-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .diagram-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            background: transparent;
+        }
+
+        /* Bảng quy tắc bản số */
+        .table-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+
+        .table-section h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        table.matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        table.matrix-table th {
+            background: rgba(15, 23, 42, 0.8);
+            color: var(--accent-blue);
+            padding: 12px 14px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        table.matrix-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        table.matrix-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-primary);
+        }
+
+        .badge-total {
+            color: var(--accent-emerald);
+            background: rgba(52, 211, 153, 0.12);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.78rem;
+        }
+
+        .badge-partial {
+            color: var(--accent-amber);
+            background: rgba(251, 191, 36, 0.12);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.78rem;
+        }
+
+        /* Danh sách thực thể */
+        .entities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 20px;
+        }
+
+        .entity-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .entity-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .entity-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .entity-attr-list {
+            list-style: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.83rem;
+        }
+
+        .entity-attr-list li {
+            padding: 4px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .entity-attr-list li.pk-item {
+            color: var(--pk-color);
+            font-weight: 600;
+        }
+
+        .entity-attr-list li.pk-item .attr-name {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        .tag-pk {
+            font-size: 0.7rem;
+            background: rgba(250, 204, 21, 0.15);
+            color: var(--pk-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">Thiết kế Mô hình Thực thể Liên kết (ERD) - Sprint 1</div>
+            <h1>Sơ đồ ERD Chuẩn Hóa Học Thuật</h1>
+            <p class="subtitle">Thống nhất toàn bộ thực thể & thuộc tính cho 6 chức năng (18, 1, 2, 3, 4, 9). Tuân thủ nghiêm ngặt quy ước: <b>Khóa chính gạch chân</b>, <b>Không hiển thị khóa ngoại</b>, <b>Thể hiện đầy đủ Ràng buộc Lực lượng & Tham gia</b>.</p>
+            
+            <div class="rule-banner">
+                <div class="rule-item">
+                    <span class="rule-dot" style="background: var(--pk-color);"></span>
+                    <span><b>Khóa chính (PK):</b> Gạch chân</span>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-dot" style="background: var(--accent-rose);"></span>
+                    <span><b>Khóa ngoại (FK):</b> Ẩn hoàn toàn khỏi thực thể</span>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-dot" style="background: var(--accent-emerald);"></span>
+                    <span><b>Ràng buộc Tham gia:</b> Toàn phần (1,1)/(1,N) & Một phần (0,1)/(0,N)</span>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-dot" style="background: var(--accent-blue);"></span>
+                    <span><b>Ràng buộc Lực lượng:</b> 1:1, 1:N</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sơ đồ ERD trực quan -->
+        <section class="diagram-wrapper">
+            <div class="diagram-header">
+                <h2>1. Sơ đồ Thực thể Quan hệ Tổng thể (Mermaid Diagram)</h2>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Quy ước Chen / Martin: Khóa chính PK, Khóa ngoại ẩn</span>
+            </div>
+
+            <div class="mermaid">
+erDiagram
+    USERS ||--o| STUDENTS : "Sở hữu hồ sơ (0,1) - (1,1)"
+    STUDENTS ||--o{ STUDENT_SUBJECTS : "Theo dõi tiến độ (0,N) - (1,1)"
+    SUBJECTS ||--o{ STUDENT_SUBJECTS : "Môn trong tiến độ (0,N) - (1,1)"
+    STUDENTS ||--o{ GRADES : "Ghi nhận điểm (0,N) - (1,1)"
+    SUBJECTS ||--o{ GRADES : "Điểm môn học (0,N) - (1,1)"
+    STUDENTS ||--o{ TIMETABLES : "Học theo TKB (0,N) - (1,1)"
+    SUBJECTS ||--o{ TIMETABLES : "Tiết học môn (0,N) - (1,1)"
+    STUDENTS ||--o{ STUDY_SCHEDULES : "Lập lịch tự học (0,N) - (1,1)"
+    SUBJECTS o|--o{ STUDY_SCHEDULES : "Tự học môn (0,N) - (0,1)"
+    STUDENTS ||--o{ ASSIGNMENTS : "Làm bài tập (0,N) - (1,1)"
+    SUBJECTS ||--o{ ASSIGNMENTS : "Giao bài tập (0,N) - (1,1)"
+    STUDENTS ||--o{ CHECKLISTS : "Quản lý To-do (0,N) - (1,1)"
+    ASSIGNMENTS o|--o{ CHECKLISTS : "Chia nhỏ bài tập (0,N) - (0,1)"
+    SUBJECTS o|--o{ CHECKLISTS : "Gắn môn task (0,N) - (0,1)"
+    STUDENTS ||--o{ REMINDERS : "Nhận nhắc nhở (0,N) - (1,1)"
+    STUDENTS ||--o{ EXAMS : "Tham gia thi (0,N) - (1,1)"
+    SUBJECTS ||--o{ EXAMS : "Môn tổ chức thi (0,N) - (1,1)"
+    EXAMS ||--o{ EXAM_STUDY_PLANS : "Kế hoạch môn thi (0,N) - (1,1)"
+    STUDENTS ||--o{ EXAM_STUDY_PLANS : "Thực hiện ôn tập (0,N) - (1,1)"
+
+    USERS {
+        int user_id PK
+        string username
+        string password_hash
+        string email
+        string full_name
+        string role
+        bit is_active
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    STUDENTS {
+        int student_id PK
+        string student_code
+        string full_name
+        string major
+        date dob
+        int enrollment_year
+        string current_semester
+        string phone
+        string avatar_url
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    SUBJECTS {
+        int subject_id PK
+        string subject_code
+        string subject_name
+        int credits
+        string description
+        string department
+        bit is_active
+        datetime2 created_at
+    }
+
+    STUDENT_SUBJECTS {
+        int student_subject_id PK
+        string status
+        string semester
+        string academic_year
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    GRADES {
+        int grade_id PK
+        string semester
+        string academic_year
+        int attempt_number
+        int credits
+        decimal component_score
+        decimal exam_score
+        decimal final_score
+        string letter_grade
+        decimal total_points
+        bit is_passed
+        string source
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    TIMETABLES {
+        int timetable_id PK
+        string class_name
+        string room
+        string campus
+        tinyint day_of_week
+        time start_time
+        time end_time
+        date start_date
+        date end_date
+        string lecturer_name
+        string semester
+        string academic_year
+        string source
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    STUDY_SCHEDULES {
+        int schedule_id PK
+        string title
+        date study_date
+        time start_time
+        time end_time
+        int duration_minutes
+        bit is_ai_suggested
+        string status
+        string notes
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    ASSIGNMENTS {
+        int assignment_id PK
+        string title
+        string description
+        datetime2 assigned_at
+        datetime2 deadline
+        string status
+        string submission_url
+        string source
+        string external_id
+        datetime2 completed_at
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    CHECKLISTS {
+        int checklist_id PK
+        string title
+        string description
+        string priority
+        datetime2 deadline
+        bit is_completed
+        datetime2 completed_at
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    REMINDERS {
+        int reminder_id PK
+        string target_type
+        int target_id
+        string title
+        string message
+        string tier
+        datetime2 remind_time
+        bit is_sent
+        datetime2 sent_at
+        string channel
+        datetime2 created_at
+    }
+
+    EXAMS {
+        int exam_id PK
+        string exam_name
+        date exam_date
+        time exam_time
+        int duration_minutes
+        string room
+        string campus
+        string exam_format
+        string identification_number
+        string source
+        datetime2 created_at
+        datetime2 updated_at
+    }
+
+    EXAM_STUDY_PLANS {
+        int plan_id PK
+        string phase_title
+        string target_description
+        date start_date
+        date end_date
+        string priority
+        string status
+        string notes
+        datetime2 created_at
+        datetime2 updated_at
+    }
+            </div>
+        </section>
+
+        <!-- Bảng Ràng buộc lực lượng và Tham gia -->
+        <section class="table-section">
+            <h3>2. Bảng Phân Tích Ràng Buộc Lực Lượng & Ràng Buộc Tham Gia</h3>
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Tên Mối Quan Hệ</th>
+                        <th>Giữa 2 Thực Thể</th>
+                        <th>Cặp Bản Số (Min, Max)</th>
+                        <th>Ràng Buộc Lực Lượng</th>
+                        <th>Ràng Buộc Tham Gia</th>
+                        <th>Ý Nghĩa Nghiệp Vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Sở hữu tài khoản</b></td>
+                        <td>USERS — STUDENTS</td>
+                        <td>(0, 1) — (1, 1)</td>
+                        <td><b>1 : 1</b></td>
+                        <td><span class="badge-partial">USERS: Một phần</span> / <span class="badge-total">STUDENTS: Toàn phần</span></td>
+                        <td>Mỗi sinh viên bắt buộc gắn với 1 tài khoản User; 1 User có thể là sinh viên hoặc vai trò khác.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Ghi nhận điểm</b></td>
+                        <td>STUDENTS — GRADES</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">GRADES: Toàn phần</span></td>
+                        <td>Sinh viên có thể chưa có điểm hoặc nhiều điểm; Mỗi bản ghi điểm bắt buộc của đúng 1 sinh viên.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Điểm môn học</b></td>
+                        <td>SUBJECTS — GRADES</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">SUBJECTS: Một phần</span> / <span class="badge-total">GRADES: Toàn phần</span></td>
+                        <td>Mỗi môn có thể có nhiều điểm thi; Một điểm thi bắt buộc của đúng 1 môn học.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Học theo TKB</b></td>
+                        <td>STUDENTS — TIMETABLES</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">TIMETABLES: Toàn phần</span></td>
+                        <td>Mỗi tiết học trên TKB bắt buộc thuộc về đúng 1 sinh viên.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Tiết học môn</b></td>
+                        <td>SUBJECTS — TIMETABLES</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">SUBJECTS: Một phần</span> / <span class="badge-total">TIMETABLES: Toàn phần</span></td>
+                        <td>Mỗi tiết học TKB bắt buộc giảng dạy đúng 1 môn học.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Lập lịch tự học</b></td>
+                        <td>STUDENTS — STUDY_SCHEDULES</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">STUDY_SCHEDULES: Toàn phần</span></td>
+                        <td>Mỗi buổi tự học dự kiến do đúng 1 sinh viên thiết lập hoặc AI đề xuất.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Tự học môn</b></td>
+                        <td>SUBJECTS — STUDY_SCHEDULES</td>
+                        <td>(0, N) — (0, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">SUBJECTS: Một phần</span> / <span class="badge-partial">STUDY_SCHEDULES: Một phần</span></td>
+                        <td>Buổi tự học có thể dành cho 1 môn cụ thể hoặc tự học chung (tùy chọn).</td>
+                    </tr>
+                    <tr>
+                        <td><b>Làm bài tập</b></td>
+                        <td>STUDENTS — ASSIGNMENTS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">ASSIGNMENTS: Toàn phần</span></td>
+                        <td>Mỗi bài tập / deadline bắt buộc giao cho đúng 1 sinh viên làm.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Giao bài tập</b></td>
+                        <td>SUBJECTS — ASSIGNMENTS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">SUBJECTS: Một phần</span> / <span class="badge-total">ASSIGNMENTS: Toàn phần</span></td>
+                        <td>Mỗi bài tập bắt buộc thuộc về đúng 1 môn học.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Quản lý To-do</b></td>
+                        <td>STUDENTS — CHECKLISTS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">CHECKLISTS: Toàn phần</span></td>
+                        <td>Mỗi task việc cần làm bắt buộc do đúng 1 sinh viên tạo.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Chia nhỏ bài tập</b></td>
+                        <td>ASSIGNMENTS — CHECKLISTS</td>
+                        <td>(0, N) — (0, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">ASSIGNMENTS: Một phần</span> / <span class="badge-partial">CHECKLISTS: Một phần</span></td>
+                        <td>Một task checklist có thể gắn vào 1 bài tập hoặc là việc cá nhân riêng.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Nhận nhắc nhở</b></td>
+                        <td>STUDENTS — REMINDERS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">REMINDERS: Toàn phần</span></td>
+                        <td>Mỗi thông báo nhắc nhở đa tầng bắt buộc gửi đích danh đến 1 sinh viên.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Tham gia thi</b></td>
+                        <td>STUDENTS — EXAMS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">STUDENTS: Một phần</span> / <span class="badge-total">EXAMS: Toàn phần</span></td>
+                        <td>Mỗi lịch thi trong hệ thống bắt buộc của đúng 1 sinh viên.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Môn tổ chức thi</b></td>
+                        <td>SUBJECTS — EXAMS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">SUBJECTS: Một phần</span> / <span class="badge-total">EXAMS: Toàn phần</span></td>
+                        <td>Mỗi kỳ thi bắt buộc tổ chức cho đúng 1 môn học.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Kế hoạch môn thi</b></td>
+                        <td>EXAMS — EXAM_STUDY_PLANS</td>
+                        <td>(0, N) — (1, 1)</td>
+                        <td><b>1 : N</b></td>
+                        <td><span class="badge-partial">EXAMS: Một phần</span> / <span class="badge-total">EXAM_STUDY_PLANS: Toàn phần</span></td>
+                        <td>Mỗi giai đoạn kế hoạch ôn tập bắt buộc thuộc về đúng 1 kỳ thi.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Thống nhất các bảng và thuộc tính (Gạch chân PK, Không FK) -->
+        <section class="table-section">
+            <h3>3. Thống Nhất Các Thực Thể & Thuộc Tính (Khóa chính gạch chân - Khóa ngoại ẩn)</h3>
+            <div class="entities-grid">
+                <!-- USERS -->
+                <div class="entity-card">
+                    <div class="entity-name">USERS <span style="font-size:0.75rem; color:var(--accent-blue);">Chức năng 18</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>user_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>username</span> <span style="color:var(--text-muted);">Unique</span></li>
+                        <li><span>password_hash</span></li>
+                        <li><span>email</span></li>
+                        <li><span>full_name</span></li>
+                        <li><span>role</span></li>
+                        <li><span>is_active</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- STUDENTS -->
+                <div class="entity-card">
+                    <div class="entity-name">STUDENTS <span style="font-size:0.75rem; color:var(--accent-blue);">Chức năng 18</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>student_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>student_code</span> <span style="color:var(--text-muted);">MSV</span></li>
+                        <li><span>full_name</span></li>
+                        <li><span>major</span></li>
+                        <li><span>dob</span></li>
+                        <li><span>enrollment_year</span></li>
+                        <li><span>current_semester</span></li>
+                        <li><span>phone</span></li>
+                        <li><span>avatar_url</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- SUBJECTS -->
+                <div class="entity-card">
+                    <div class="entity-name">SUBJECTS <span style="font-size:0.75rem; color:var(--accent-blue);">Chức năng 18</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>subject_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>subject_code</span> <span style="color:var(--text-muted);">Unique</span></li>
+                        <li><span>subject_name</span></li>
+                        <li><span>credits</span></li>
+                        <li><span>description</span></li>
+                        <li><span>department</span></li>
+                        <li><span>is_active</span></li>
+                        <li><span>created_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- GRADES -->
+                <div class="entity-card">
+                    <div class="entity-name">GRADES <span style="font-size:0.75rem; color:var(--accent-blue);">Chức năng 18</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>grade_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>semester</span></li>
+                        <li><span>academic_year</span></li>
+                        <li><span>attempt_number</span></li>
+                        <li><span>credits</span></li>
+                        <li><span>component_score</span></li>
+                        <li><span>exam_score</span></li>
+                        <li><span>final_score</span></li>
+                        <li><span>letter_grade</span></li>
+                        <li><span>total_points</span></li>
+                        <li><span>is_passed</span></li>
+                        <li><span>source</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- TIMETABLES -->
+                <div class="entity-card">
+                    <div class="entity-name">TIMETABLES <span style="font-size:0.75rem; color:var(--accent-emerald);">Chức năng 1</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>timetable_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>class_name</span></li>
+                        <li><span>room</span></li>
+                        <li><span>campus</span></li>
+                        <li><span>day_of_week</span></li>
+                        <li><span>start_time</span></li>
+                        <li><span>end_time</span></li>
+                        <li><span>start_date</span></li>
+                        <li><span>end_date</span></li>
+                        <li><span>lecturer_name</span></li>
+                        <li><span>semester</span></li>
+                        <li><span>academic_year</span></li>
+                        <li><span>source</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- STUDY_SCHEDULES -->
+                <div class="entity-card">
+                    <div class="entity-name">STUDY_SCHEDULES <span style="font-size:0.75rem; color:var(--accent-purple);">Chức năng 2</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>schedule_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>title</span></li>
+                        <li><span>study_date</span></li>
+                        <li><span>start_time</span></li>
+                        <li><span>end_time</span></li>
+                        <li><span>duration_minutes</span></li>
+                        <li><span>is_ai_suggested</span></li>
+                        <li><span>status</span></li>
+                        <li><span>notes</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- ASSIGNMENTS -->
+                <div class="entity-card">
+                    <div class="entity-name">ASSIGNMENTS <span style="font-size:0.75rem; color:var(--accent-amber);">Chức năng 3</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>assignment_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>title</span></li>
+                        <li><span>description</span></li>
+                        <li><span>assigned_at</span></li>
+                        <li><span>deadline</span></li>
+                        <li><span>status</span></li>
+                        <li><span>submission_url</span></li>
+                        <li><span>source</span></li>
+                        <li><span>external_id</span></li>
+                        <li><span>completed_at</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- CHECKLISTS -->
+                <div class="entity-card">
+                    <div class="entity-name">CHECKLISTS <span style="font-size:0.75rem; color:var(--accent-amber);">Chức năng 3</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>checklist_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>title</span></li>
+                        <li><span>description</span></li>
+                        <li><span>priority</span></li>
+                        <li><span>deadline</span></li>
+                        <li><span>is_completed</span></li>
+                        <li><span>completed_at</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- REMINDERS -->
+                <div class="entity-card">
+                    <div class="entity-name">REMINDERS <span style="font-size:0.75rem; color:var(--accent-rose);">Chức năng 4</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>reminder_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>target_type</span></li>
+                        <li><span>target_id</span></li>
+                        <li><span>title</span></li>
+                        <li><span>message</span></li>
+                        <li><span>tier</span></li>
+                        <li><span>remind_time</span></li>
+                        <li><span>is_sent</span></li>
+                        <li><span>sent_at</span></li>
+                        <li><span>channel</span></li>
+                        <li><span>created_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- EXAMS -->
+                <div class="entity-card">
+                    <div class="entity-name">EXAMS <span style="font-size:0.75rem; color:#60a5fa;">Chức năng 9</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>exam_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>exam_name</span></li>
+                        <li><span>exam_date</span></li>
+                        <li><span>exam_time</span></li>
+                        <li><span>duration_minutes</span></li>
+                        <li><span>room</span></li>
+                        <li><span>campus</span></li>
+                        <li><span>exam_format</span></li>
+                        <li><span>identification_number</span></li>
+                        <li><span>source</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+
+                <!-- EXAM_STUDY_PLANS -->
+                <div class="entity-card">
+                    <div class="entity-name">EXAM_STUDY_PLANS <span style="font-size:0.75rem; color:#60a5fa;">Chức năng 9</span></div>
+                    <ul class="entity-attr-list">
+                        <li class="pk-item"><span class="attr-name"><u>plan_id</u></span> <span class="tag-pk">PK</span></li>
+                        <li><span>phase_title</span></li>
+                        <li><span>target_description</span></li>
+                        <li><span>start_date</span></li>
+                        <li><span>end_date</span></li>
+                        <li><span>priority</span></li>
+                        <li><span>status</span></li>
+                        <li><span>notes</span></li>
+                        <li><span>created_at</span></li>
+                        <li><span>updated_at</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Hệ thống Quản lý Học tập Thông minh — Mô hình ERD Chuẩn hóa Học thuật (Sprint 1)</p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'dark',
+            er: {
+                useMaxWidth: true,
+                entityPadding: 16,
+                stroke: '#38bdf8',
+                fill: '#131c31',
+                fontSize: 13
+            }
+        });
+    </script>
+</body>
+</html>
